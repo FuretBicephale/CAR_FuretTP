@@ -1,9 +1,11 @@
+cmake_minimum_required(VERSION 2.8)
+
 project(FuretTP)
 
 set(executable_name "FuretTP")
 
 file(
-	GLOBAL_RECURSE
+	GLOB_RECURSE
 	
 	include_files
 
@@ -11,7 +13,7 @@ file(
 )
 
 file(
-	GLOBAL_RECURSE
+	GLOB_RECURSE
 	
 	source_files
 
