@@ -4,6 +4,10 @@ project(FuretTP)
 
 set(executable_name "FuretTP")
 
+add_definitions(-std=c++11)
+
+include_directories(include)
+
 file(
 	GLOB_RECURSE
 	

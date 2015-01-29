@@ -29,3 +29,6 @@
 
 # Tempory File
 *~
+
+# User File
+*.user
