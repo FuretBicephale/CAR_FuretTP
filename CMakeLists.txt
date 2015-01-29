@@ -24,4 +24,12 @@ file(
 	src/*.cpp	
 )
 
+file(
+        GLOB_RECURSE
+
+        tests_files
+
+        tests/*.cpp
+)
+
 add_executable(${executable_name} ${include_files} ${source_files})

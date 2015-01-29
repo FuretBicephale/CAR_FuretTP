@@ -3,7 +3,7 @@
 using namespace FuretTP;
 
 int main() {
-	FTPServer server;
+    //FTPServer server;
 
-	server.run();
+    //server.run();
 }
