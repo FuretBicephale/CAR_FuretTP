@@ -11,6 +11,10 @@ Listener::Listener() : _socket(UNINITIALIZED_SOCKET) {
 
 }
 
+Listener::~Listener() {
+	close();
+}
+
 void Listener::listen(unsigned int port) {
 	struct sockaddr_in address;
 	memset(&address, 0, sizeof(struct sockaddr_in));
@@ -26,8 +30,6 @@ void Listener::listen(unsigned int port) {
 	if(::listen(_socket, MaxSimultaneousConnection) == -1) {
 		throw SystemException("Unable to listen socket", errno);
 	}
-
-
 }
 
 void Listener::accept(Socket& socket) {
@@ -43,4 +45,11 @@ void Listener::accept(Socket& socket) {
 	}
 
 	socket._initialize(client_socket);
+}
+
+void Listener::close() {
+	if(_socket != UNINITIALIZED_SOCKET) {
+		close(_socket);
+		_socket = UNINITIALIZED_SOCKET;
+	}
 }

@@ -29,12 +29,16 @@ namespace FuretTP {
 			const int MaxSimultaneousConnection = 8;
 
 			Listener();
+			~Listener();
 
 			/// \brief bind a port for listen client connections
 			void listen(unsigned int port);
 
 			/// \brief wait a client. When connection is etablished, this function return the client Socket
 			void accept(Socket& socket);
+
+			/// \brief close the socket
+			void close();
 
 		private:
 			SocketDescriptor _socket;
