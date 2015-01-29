@@ -2,6 +2,7 @@
 #define _NETWORK_TCP_SOCKET_H
 
 #include "network/tcp/TCP.h"
+#include "network/ip/Address.h"
 
 namespace FuretTP {
 
@@ -15,7 +16,7 @@ namespace FuretTP {
 			Socket();
 			~Socket();
 
-			void connect(const IPAddress& address, unsigned int port);
+            void connect(const ip::Address& address, unsigned int port);
 
 			void close();
 
