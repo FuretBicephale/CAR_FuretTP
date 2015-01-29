@@ -4,6 +4,8 @@ project(FuretTP)
 
 set(executable_name "FuretTP")
 
+include_directories(include)
+
 file(
 	GLOB_RECURSE
 	
@@ -18,6 +20,14 @@ file(
 	source_files
 
 	src/*.cpp	
+)
+
+file(
+        GLOB_RECURSE
+
+        tests_files
+
+        tests/*.cpp
 )
 
 add_executable(${executable_name} ${include_files} ${source_files})

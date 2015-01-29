@@ -1,7 +1,7 @@
 #include "core/FTPServer.h"
 
 int main() {
-	FTPServer server;
+    //FTPServer server;
 
-	server.run();
+    //server.run();
 }
