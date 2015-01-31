@@ -7,6 +7,8 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
+#include "exception/AddressNotFoundException.h"
+
 namespace FuretTP {
 
     namespace ip {

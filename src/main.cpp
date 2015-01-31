@@ -6,4 +6,6 @@ int main() {
     //FTPServer server;
 
     //server.run();
+
+    return 0;
 }

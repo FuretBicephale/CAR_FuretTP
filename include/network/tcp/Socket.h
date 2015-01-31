@@ -4,6 +4,8 @@
 #include "network/tcp/TCP.h"
 #include "network/ip/Address.h"
 
+#include <unistd.h>
+
 namespace FuretTP {
 
 	namespace tcp {

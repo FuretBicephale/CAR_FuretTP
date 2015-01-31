@@ -49,7 +49,7 @@ void Listener::accept(Socket& socket) {
 
 void Listener::close() {
 	if(_socket != UNINITIALIZED_SOCKET) {
-		close(_socket);
+        ::close(_socket);
 		_socket = UNINITIALIZED_SOCKET;
 	}
 }

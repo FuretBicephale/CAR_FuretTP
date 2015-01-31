@@ -32,4 +32,6 @@ file(
         tests/*.cpp
 )
 
+add_subdirectory(tests)
+
 add_executable(${executable_name} ${include_files} ${source_files})
