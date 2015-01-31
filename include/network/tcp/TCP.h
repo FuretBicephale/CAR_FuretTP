@@ -3,7 +3,7 @@
 
 namespace FuretTP {
 
-	namespace tcp {
+	namespace TCP {
 
 		typedef int SocketDescriptor;
 		#define UNINITIALIZED_SOCKET 0

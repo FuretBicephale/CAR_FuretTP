@@ -34,4 +34,7 @@ file(
 
 add_subdirectory(tests)
 
+find_package(Threads)
+
 add_executable(${executable_name} ${include_files} ${source_files})
+target_link_libraries (${executable_name} ${CMAKE_THREAD_LIBS_INIT})

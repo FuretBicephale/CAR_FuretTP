@@ -2,6 +2,6 @@
 
 using namespace FuretTP;
 
-AddressNotFoundException::AddressNotFoundException(const std::string& address) : std::runtime_error("Address not found : \""+address+"\"") {
+AddressNotFoundException::AddressNotFoundException(const std::string& address) : Exception("Address not found : \""+address+"\"") {
 
 }

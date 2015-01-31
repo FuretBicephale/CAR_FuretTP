@@ -1,7 +1,7 @@
 #ifndef _NETWORK_IP_ADDRESS_H
 #define _NETWORK_IP_ADDRESS_H
 
-#include <string>
+#include <iostream>
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -11,17 +11,27 @@
 
 namespace FuretTP {
 
-    namespace ip {
+	namespace IP {
 
         class Address {
 
         public:
+			Address();
             Address(const std::string& hostname);
+			Address(const Address& model);
 
+			Address& operator=(const Address& model);
+
+			friend std::ostream& operator<<(std::ostream& stream, const Address& address);
+
+			void _initialize();
         private:
             struct hostent* _host;
 
         };
+
+		std::ostream& operator<<(std::ostream& stream, const Address& address);
+
     }
 }
 

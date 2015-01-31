@@ -3,12 +3,13 @@
 
 #include "network/tcp/TCP.h"
 #include "network/ip/Address.h"
+#include "exception/SystemException.h"
 
 #include <unistd.h>
 
 namespace FuretTP {
 
-	namespace tcp {
+	namespace TCP {
 
 		class Socket {
 
@@ -16,16 +17,29 @@ namespace FuretTP {
 
 		public:
 			Socket();
+			Socket(Socket&& that);
 			~Socket();
 
-            void connect(const ip::Address& address, unsigned int port);
+			void connect(const IP::Address& address, unsigned int port);
+
+			unsigned int receive(void* buffer, unsigned int bufferSize);
+			void send(const Packet& packet);
 
 			void close();
+
+			bool isOpen() const;
+
+			const IP::Address& getAddress() const;
 
 		private:
 			void _initialize(SocketDescriptor socket);
 
+			//Noncopyable
+			Socket(const Socket& model);
+			Socket& operator=(const Socket& model);
+
 			SocketDescriptor _socket;
+			IP::Address _address;
 
 		};
 	}

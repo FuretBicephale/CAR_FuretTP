@@ -2,6 +2,6 @@
 
 using namespace FuretTP;
 
-SystemException::SystemException(const std::string& message, int error) : std::runtime_error("[System Exception] "+message+" | System message : "+strerror(error)) {
+SystemException::SystemException(const std::string& message, int error) : Exception("[System Exception] "+message+" | System message : "+strerror(error)+" [Code="+std::to_string(error)+"]") {
 
 }
