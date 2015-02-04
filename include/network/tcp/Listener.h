@@ -6,7 +6,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <netdb.h>
 
 #include <cerrno>
 #include <cstring>
@@ -18,7 +17,7 @@
 
 namespace FuretTP {
 
-	namespace tcp {
+	namespace TCP {
 
 		///
 		/// \brief TCP client listenner. Thi class use POSIX Socket.
