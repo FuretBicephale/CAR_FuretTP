@@ -18,6 +18,8 @@ namespace FuretTP {
 
 		void run();
 
+		const FTPServerConfiguration& getConfiguration() const;
+
 
 	private:
 		const FTPServerConfiguration&  _configuration;

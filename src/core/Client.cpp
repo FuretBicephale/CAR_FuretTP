@@ -12,18 +12,22 @@ Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _s
 void Client::run() {
 	std::cout << "New client connected width id=" << _uid << " [" << _socket.getAddress() << "]" << std::endl;
 
-	_socket.send(MSG::ConnectionInitialization(_server.getConfiguration().getMOTD()).getPacket());
+	Packet packet;
+
+	MSG::ConnectionInitialization(_server->getConfiguration().getMOTD()).generatePacket(packet);
+
+	std::cout << packet << std::endl;
+
+	_socket.send(packet);
 
 	while(_socket.isOpen()) {
+		Packet packet;
 
-#define RECEIVE_BUFFER_SIZE 4096
-		char buffer[RECEIVE_BUFFER_SIZE];
-		int size;
+		_socket.receive(packet);
 
-		size = _socket.receive(buffer, RECEIVE_BUFFER_SIZE);
-
-		std::cout << "Received buffer (" << size << ")" << std::endl;
-		std::cout <<  buffer << std::endl;
+		std::cout << "Received buffer (" << packet.getSize() << ")" << std::endl;
+		std::cout <<  packet << std::endl;
+		//FTPMessage* message = FTPMessageFactoy::eval(packet);
 	}
 
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;

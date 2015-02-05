@@ -32,14 +32,22 @@ void Socket::connect(const IP::Address& address, unsigned int port) {
 
 }
 
-unsigned int Socket::receive(void* buffer, unsigned int bufferSize) {
+void Socket::receive(Packet& packet) {
+#define RECEIVE_BUFFER_SIZE 4096
+	char buffer[RECEIVE_BUFFER_SIZE];
 	int size;
 
-	std::cout << "w8 data..." << std::endl;
-	if((size = recv(_socket, buffer, bufferSize, 0)) == -1) {
+	if((size = recv(_socket, buffer, RECEIVE_BUFFER_SIZE, 0)) == -1) {
 		THROW(SystemException, "Error during recv", errno);
 	}
-	return size;
+
+	packet.rawWrite(buffer, size);
+}
+
+void Socket::send(const Packet& packet) {
+	if(::send(_socket, packet.getBuffer(), packet.getSize(), 0) == -1) {
+		THROW(SystemException, "Error during send", errno);
+	}
 }
 
 void Socket::close() {

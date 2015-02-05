@@ -25,3 +25,7 @@ void FTPServer::run() {
 	}
 
 }
+
+const FTPServerConfiguration& FTPServer::getConfiguration() const {
+		return _configuration;
+}

@@ -3,6 +3,7 @@
 
 #include "network/tcp/TCP.h"
 #include "network/ip/Address.h"
+#include "network/Packet.h"
 #include "exception/SystemException.h"
 
 #include <unistd.h>
@@ -22,7 +23,7 @@ namespace FuretTP {
 
 			void connect(const IP::Address& address, unsigned int port);
 
-			unsigned int receive(void* buffer, unsigned int bufferSize);
+			void receive(Packet& packet);
 			void send(const Packet& packet);
 
 			void close();
