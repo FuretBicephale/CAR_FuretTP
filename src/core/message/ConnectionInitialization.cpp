@@ -3,7 +3,7 @@
 using namespace FuretTP;
 using namespace MSG;
 
-ConnectionInitialization::ConnectionInitialization(const std::string& motd) : FTPMessage(ConnectionInitialization::Code), _motd(motd) {
+ConnectionInitialization::ConnectionInitialization(const std::string& motd) : Message(ConnectionInitialization::Code), _motd(motd) {
 
 }
 

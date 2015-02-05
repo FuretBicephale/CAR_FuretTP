@@ -1,7 +1,7 @@
 #ifndef _FTP_SERVER_H
 #define _FTP_SERVER_H
 
-#include "core/FTPServerConfiguration.h"
+#include "core/ServerConfiguration.h"
 
 #include "network/tcp/Listener.h"
 #include "system/Thread.h"
@@ -14,15 +14,15 @@ namespace FuretTP {
 	class FTPServer {
 
 	public:
-		FTPServer(const FTPServerConfiguration& configuration);
+        FTPServer(const ServerConfiguration& configuration);
 
 		void run();
 
-		const FTPServerConfiguration& getConfiguration() const;
+        const ServerConfiguration& getConfiguration() const;
 
 
 	private:
-		const FTPServerConfiguration&  _configuration;
+        const ServerConfiguration&  _configuration;
 
 	};
 }

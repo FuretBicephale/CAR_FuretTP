@@ -9,7 +9,7 @@ int main() {
 	try {
 		std::cout << ".: FuretTP :." << std::endl;
 
-		FTPServerConfiguration configuration;
+		ServerConfiguration configuration;
 
 		FTPServer server(configuration);
 

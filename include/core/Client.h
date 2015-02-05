@@ -8,22 +8,22 @@
 
 namespace FuretTP {
 
-	class FTPServer;
+    class FTPServer;
 
-	class Client {
+    class Client {
 
-	public:
-		Client(FTPServer* server, TCP::Socket& socket);
+    public:
+        Client(FTPServer* server, TCP::Socket& socket);
 
-		void run();
+        void run();
 
-	private:
-		unsigned int _uid;
-		TCP::Socket _socket;
-		FTPServer* _server;
+    private:
+        unsigned int _uid;
+        TCP::Socket _socket;
+        FTPServer* _server;
 
-		static unsigned int _uidCounter;
-	};
+        static unsigned int _uidCounter;
+    };
 }
 
 #endif

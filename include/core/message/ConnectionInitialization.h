@@ -3,13 +3,13 @@
 
 #include <string>
 
-#include "core/message/FTPMessage.h"
+#include "core/message/Message.h"
 
 namespace FuretTP {
 
 	namespace MSG {
 
-		class ConnectionInitialization : public FTPMessage {
+        class ConnectionInitialization : public Message {
 
 		public:
 			ConnectionInitialization(const std::string& motd);
