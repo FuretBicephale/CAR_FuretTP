@@ -1,5 +1,5 @@
-#ifndef _FTP_MESSAGE_H
-#define _FTP_MESSAGE_H
+#ifndef _FURETTP_ANSWER_H
+#define _FURETTP_ANSWER_H
 
 #include "network/Packet.h"
 
@@ -7,11 +7,11 @@
 
 namespace FuretTP {
 
-	class FTPMessage {
+	class Answer {
 
 	public:
-		FTPMessage(unsigned int code);
-		virtual ~FTPMessage();
+		Answer(unsigned int code);
+		virtual ~Answer();
 
 		void generatePacket(Packet& packet);
 

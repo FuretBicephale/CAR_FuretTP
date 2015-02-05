@@ -37,9 +37,12 @@ void Socket::receive(Packet& packet) {
 	char buffer[RECEIVE_BUFFER_SIZE];
 	int size;
 
-	if((size = recv(_socket, buffer, RECEIVE_BUFFER_SIZE, 0)) == -1) {
-		THROW(SystemException, "Error during recv", errno);
+	do {
+		if((size = recv(_socket, buffer, RECEIVE_BUFFER_SIZE, 0)) == -1) {
+			THROW(SystemException, "Error during recv", errno);
+		}
 	}
+	while(size == 0);
 
 	packet.rawWrite(buffer, size);
 }

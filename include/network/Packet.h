@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
-
+#include <cctype>
 namespace FuretTP {
 
 	class Packet {
@@ -23,6 +23,8 @@ namespace FuretTP {
 
 		Packet& operator<<(const std::string& str);
 
+		Packet& operator>>(std::string& str);
+
 		friend std::ostream& operator<<(std::ostream& stream, const Packet& packet);
 
 
@@ -35,6 +37,7 @@ namespace FuretTP {
 		char* _buffer;
 		unsigned int _cursor;
 		unsigned int _allocated;
+		unsigned int _readCursor;
 	};
 
 	std::ostream& operator<<(std::ostream& stream, const Packet& packet);

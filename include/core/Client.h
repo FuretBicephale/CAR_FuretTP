@@ -4,7 +4,9 @@
 #include "network/tcp/Socket.h"
 #include "exception/SystemException.h"
 
-#include "message/ConnectionInitialization.h"
+#include "message/answer/ConnectionInitializationAnswer.h"
+#include "core/FTPRequestHandler.h"
+#include "core/message/request/RequestFactory.h"
 
 namespace FuretTP {
 

@@ -14,7 +14,7 @@ void Client::run() {
 
 	Packet packet;
 
-	MSG::ConnectionInitialization(_server->getConfiguration().getMOTD()).generatePacket(packet);
+	ConnectionInitializationAnswer(_server->getConfiguration().getMOTD()).generatePacket(packet);
 
 	std::cout << packet << std::endl;
 
@@ -27,7 +27,10 @@ void Client::run() {
 
 		std::cout << "Received buffer (" << packet.getSize() << ")" << std::endl;
 		std::cout <<  packet << std::endl;
-		//FTPMessage* message = FTPMessageFactoy::eval(packet);
+
+		std::unique_ptr<Request> message = RequestFactory::eval(packet);
+
+		//FTPRequestHandler::process(message);
 	}
 
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
