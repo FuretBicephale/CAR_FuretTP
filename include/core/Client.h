@@ -5,27 +5,35 @@
 #include "exception/SystemException.h"
 
 #include "message/answer/ConnectionInitializationAnswer.h"
-#include "core/FTPRequestHandler.h"
+#include "core/RequestHandler.h"
 #include "core/message/request/RequestFactory.h"
 
 namespace FuretTP {
 
-	class FTPServer;
+    class FTPServer;
 
-	class Client {
+    class Client {
 
-	public:
-		Client(FTPServer* server, TCP::Socket& socket);
+    public:
+        Client(FTPServer* server, TCP::Socket& socket);
 
-		void run();
+        void run();
 
-	private:
-		unsigned int _uid;
-		TCP::Socket _socket;
-		FTPServer* _server;
+		void setUsername(const std::string& username);
 
-		static unsigned int _uidCounter;
-	};
+		const std::string& getUsername() const;
+		TCP::Socket& getSocket();
+
+    private:
+        unsigned int _uid;
+        TCP::Socket _socket;
+        FTPServer* _server;
+
+        static unsigned int _uidCounter;
+
+		std::string _username;
+		std::string _password;
+    };
 }
 
 #endif

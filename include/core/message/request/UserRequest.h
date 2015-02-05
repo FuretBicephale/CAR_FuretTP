@@ -10,6 +10,8 @@ namespace FuretTP {
 	public:
 		UserRequest(const std::string& username);
 
+		const std::string& getUsername() const;
+
 	private:
 		std::string _username;
 

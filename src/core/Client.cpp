@@ -28,10 +28,24 @@ void Client::run() {
 		std::cout << "Received buffer (" << packet.getSize() << ")" << std::endl;
 		std::cout <<  packet << std::endl;
 
-		std::unique_ptr<Request> message = RequestFactory::eval(packet);
+		Request* message = RequestFactory::eval(packet);
 
-		//FTPRequestHandler::process(message);
+		RequestHandler::process(*message, this);
+
+		delete message;
 	}
 
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
+}
+
+void Client::setUsername(const std::string& username) {
+	_username = username;
+}
+
+const std::string& Client::getUsername() const {
+	return _username;
+}
+
+TCP::Socket& Client::getSocket() {
+	return _socket;
 }

@@ -2,7 +2,7 @@
 
 using namespace FuretTP;
 
-FTPServer::FTPServer(const FTPServerConfiguration& configuration) :  _configuration(configuration) {
+FTPServer::FTPServer(const ServerConfiguration& configuration) :  _configuration(configuration) {
 
 }
 
@@ -26,6 +26,6 @@ void FTPServer::run() {
 
 }
 
-const FTPServerConfiguration& FTPServer::getConfiguration() const {
+const ServerConfiguration& FTPServer::getConfiguration() const {
 		return _configuration;
 }

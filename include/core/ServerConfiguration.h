@@ -5,10 +5,10 @@
 
 namespace FuretTP {
 
-    class FTPServerConfiguration {
+    class ServerConfiguration {
 
     public:
-        FTPServerConfiguration();
+        ServerConfiguration();
         void loadDefault();
 
         unsigned int getBindPort() const;

@@ -2,7 +2,7 @@
 
 using namespace FuretTP;
 
-std::unique_ptr<Request> RequestFactory::eval(Packet& packet) {
+Request* RequestFactory::eval(Packet& packet) {
 
 	std::string message_command;
 
@@ -11,7 +11,7 @@ std::unique_ptr<Request> RequestFactory::eval(Packet& packet) {
 	if(message_command == "USER") {
 		std::string username;
 		packet >> username;
-		return std::unique_ptr<Request>(new UserRequest(username));
+		return new UserRequest(username);
 	}
 
 

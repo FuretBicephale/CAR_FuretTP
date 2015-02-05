@@ -16,3 +16,19 @@ void Answer::generatePacket(Packet& packet) {
 	this->fillPacket(packet);
 	packet << "\n";
 }
+
+void Answer::fillPacket(Packet& packet) {
+
+}
+
+/*
+ *	Standart answers
+ */
+
+AnswerSuccess::AnswerSuccess() : Answer(200) {
+
+}
+
+AnswerWaitPassword::AnswerWaitPassword() : Answer(331) {
+
+}

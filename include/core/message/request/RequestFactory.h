@@ -16,7 +16,7 @@ namespace FuretTP {
 
 	public:
 		/// Return an FTPMessage. Receiver is responsable of the return delete
-		static std::unique_ptr<Request> eval(Packet& packet);
+		static Request* eval(Packet& packet);
 
 	private:
 		//Static class
