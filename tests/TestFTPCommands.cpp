@@ -1,50 +1,70 @@
 #include <gtest/gtest.h>
 
+#define OK 200
+
 namespace {
 
-// The fixture for testing class Foo.
-class TestFTPCommands : public ::testing::Test {
- protected:
-  // You can remove any or all of the following functions if its body
-  // is empty.
+    class TestFTPCommands : public ::testing::Test {
+    private:
 
-  TestFTPCommands() {
-    // You can do set-up work for each test here.
-  }
+        TestFTPCommands() {
+            FTPServer server = new FTPServer("127.0.0.1", 2121);
+            FTPClient client = new FTPClient();
+        }
 
-  virtual ~TestFTPCommands() {
-    // You can do clean-up work that doesn't throw exceptions here.
-  }
+        virtual ~TestFTPCommands() {
+            delete server;
+            delete client;
+        }
 
-  // If the constructor and destructor are not enough for setting up
-  // and cleaning up each test, you can define the following methods:
+    };
 
-  virtual void SetUp() {
-    // Code here will be called immediately after the constructor (right
-    // before each test).
-  }
+    TEST_F(TestFTPCommands, testAUTH) {
+        client.send("USER", "toto");
+        ASSERT_EQ(client.getReturnCode(), OK);
+        client.send("PASS", "12345");
+        ASSERT_EQ(client.getReturnCode(), OK);
+        ASSERT_EQ(client.getMessage(), "connected");
+    }
 
-  virtual void TearDown() {
-    // Code here will be called immediately after each test (right
-    // before the destructor).
-  }
+    TEST_F(TestFTPCommands, testLIST) {
+        client.send("LIST");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
 
-  // Objects declared here can be used by all tests in the test case for Foo.
-};
+    TEST_F(TestFTPCommands, testRETR) {
+        client.send("RETR", "toto.txt");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
 
-// Tests that the Foo::Bar() method does Abc.
-TEST_F(TestFTPCommands, MethodBarDoesAbc) {
-    ASSERT_TRUE(1+1 == 2);
-}
+    TEST_F(TestFTPCommands, testSTOR) {
+        client.send("STOR", "toto.txt");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
 
-// Tests that Foo does Xyz.
-TEST_F(TestFTPCommands, DoesXyz) {
-  // Exercises the Xyz feature of Foo.
-}
+    TEST_F(TestFTPCommands, testQUIT) {
+        client.send("QUIT");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
 
-}  // namespace
+    TEST_F(TestFTPCommands, testPWD) {
+        client.send("PWD");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
 
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+    TEST_F(TestFTPCommands, testCWD) {
+        client.send("CWD", "toto");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
+
+    TEST_F(TestFTPCommands, testCDUP) {
+        client.send("CDUP");
+        ASSERT_EQ(client.getAnswer(), OK);
+    }
+
+    int main(int argc, char **argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    }
+
 }
