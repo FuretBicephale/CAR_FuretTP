@@ -5,7 +5,7 @@ using namespace FuretTP;
 
 unsigned int Client::_uidCounter(0);
 
-Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server) {
+Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user() {
 
 }
 
@@ -38,21 +38,27 @@ void Client::run() {
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
 }
 bool Client::setUsername(const std::string& username) {
-	_username = username;
+	if(_server->getConfiguration().getUserList().hasUser(username)) {
+		_user = User(_server->getConfiguration().getUserList().findUser(username));
+		return true;
+	}
 
 	return false;
 }
 
 bool Client::login(const std::string& password) {
+	if(password == _user.getPassword()) {
+		return true;
+	}
 	return false;
 }
 
 void Client::resetLogin() {
-
+	_user = User();
 }
 
-const std::string& Client::getUsername() const {
-	return _username;
+const User& Client::getUser() const {
+	return _user;
 }
 
 TCP::Socket& Client::getSocket() {

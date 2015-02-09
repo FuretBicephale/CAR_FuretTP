@@ -12,6 +12,14 @@ void ServerConfiguration::loadDefault() {
 	_motd = "Welcome on FuretTP Server V1.0";
 }
 
+UserList& ServerConfiguration::getUserList() {
+	return _userList;
+}
+
+const UserList& ServerConfiguration::getUserList() const {
+	return _userList;
+}
+
 const std::string& ServerConfiguration::getUserConfigurationPathname() const {
 	return _userConfigurationPathname;
 }

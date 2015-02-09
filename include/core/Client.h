@@ -1,6 +1,7 @@
 #ifndef _FURETTP_CLIENT_H
 #define _FURETTP_CLIENT_H
 
+#include "core/User.h"
 #include "network/tcp/Socket.h"
 #include "exception/SystemException.h"
 
@@ -28,7 +29,8 @@ namespace FuretTP {
 		/// \brief reset loggin information
 		void resetLogin();
 
-		const std::string& getUsername() const;
+		const User& getUser() const;
+
 		TCP::Socket& getSocket();
 
     private:
@@ -38,8 +40,7 @@ namespace FuretTP {
 
         static unsigned int _uidCounter;
 
-		std::string _username;
-		std::string _password;
+		User _user;
     };
 }
 

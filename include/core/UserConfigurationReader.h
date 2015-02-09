@@ -1,11 +1,14 @@
 #ifndef _FURETTP_USER_CONFIGURATION_H
 #define _FURETTP_USER_CONFIGURATION_H
 
-#include <string>
+#include <iostream>
 #include <fstream>
+#include <cstring>
 
 #include "exception/FileNotFoundException.h"
+#include "exception/IncorrecteFileFormatException.h"
 #include "core/ServerConfiguration.h"
+#include "core/User.h"
 
 namespace FuretTP {
 

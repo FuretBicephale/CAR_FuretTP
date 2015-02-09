@@ -46,7 +46,7 @@ void RequestHandler::processPass(PassRequest& request, Client* client) {
 	Packet p;
 
 	if(client->login(request.getPassword())) {
-		AnswerLoginOk answer("Welcome "+client->getUsername());
+		AnswerLoginOk answer("Welcome "+client->getUser().getUsername());
 		answer.generatePacket(p);
 
 	} else {
