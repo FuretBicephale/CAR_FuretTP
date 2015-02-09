@@ -11,10 +11,14 @@ namespace FuretTP {
         ServerConfiguration();
         void loadDefault();
 
+		const std::string& getUserConfigurationPathname() const;
+
         unsigned int getBindPort() const;
 		const std::string& getMOTD() const;
 
+
     private:
+		std::string _userConfigurationPathname;
         unsigned int _bindPort;
 		std::string _motd;
 

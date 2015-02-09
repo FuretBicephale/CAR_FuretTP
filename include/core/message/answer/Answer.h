@@ -30,14 +30,44 @@ namespace FuretTP {
 
 	public:
 		AnswerSuccess();
+
+		static const unsigned int Code = 200;
 	};
 
-	/// \brief 331 Right user require password
-	class AnswerWaitPassword : public Answer {
+	/// \brief 331 username exist, require password
+	class AnswerUsernameOK : public Answer {
 
 	public:
-		AnswerWaitPassword();
+		AnswerUsernameOK();
+
+		static const unsigned int Code = 331;
 	};
+
+	/// \brief 330 user identifiant ok
+	class AnswerLoginOk : public Answer {
+
+	public:
+		AnswerLoginOk();
+		AnswerLoginOk(const std::string& loginMessage);
+
+		void fillPacket(Packet& packet);
+
+		static const unsigned int Code = 330;
+
+	private:
+		std::string _message;
+	};
+
+	/// \brief 430 username or password incorrect
+	class AnswerLoginFail : public Answer {
+
+	public:
+		AnswerLoginFail();
+
+		static const unsigned int Code = 430;
+	};
+
+
 
 }
 

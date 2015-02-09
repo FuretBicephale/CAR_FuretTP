@@ -12,6 +12,8 @@ namespace FuretTP {
 
 		const std::string& getUsername() const;
 
+		static constexpr const char* CommandName = "USER";
+
 	private:
 		std::string _username;
 

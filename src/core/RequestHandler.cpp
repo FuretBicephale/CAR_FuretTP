@@ -6,11 +6,11 @@ using namespace FuretTP;
 
 void RequestHandler::process(Request& request, Client* client) {
 	const std::string& name = request.getCommandName();
-    if(name == "USER") {
+	if(name == UserRequest::CommandName) {
 		processUser(static_cast<UserRequest&>(request), client);
-	} /*else if(name == "PASS") {
-        processPass(static_cast<PassRequest&> request, client);
-	} else if(name == "RETR") {
+	} else if(name == PassRequest::CommandName) {
+		processPass(static_cast<PassRequest&>(request), client);
+	} /*else if(name == "RETR") {
         processRetr(static_cast<RetrRequest&> request, client);
     } else if(name == "STOR") {
         processStor(static_cast<StorRequest&> request, client);
@@ -30,18 +30,34 @@ void RequestHandler::process(Request& request, Client* client) {
 void RequestHandler::processUser(UserRequest& request, Client* client) {
 	Packet p;
 
-	client->setUsername(request.getUsername());
+	if(!client->setUsername(request.getUsername())) {
+		AnswerLoginFail answer;
+		answer.generatePacket(p);
+	}
+	else {
+		AnswerUsernameOK answer;
+		answer.generatePacket(p);
+	}
 
-	AnswerWaitPassword answer;
-	answer.generatePacket(p);
+	client->getSocket().send(p);
+}
+
+void RequestHandler::processPass(PassRequest& request, Client* client) {
+	Packet p;
+
+	if(client->login(request.getPassword())) {
+		AnswerLoginOk answer("Welcome "+client->getUsername());
+		answer.generatePacket(p);
+
+	} else {
+		AnswerLoginFail answer;
+		answer.generatePacket(p);
+		client->resetLogin();
+	}
 
 	client->getSocket().send(p);
 }
 /*
-void RequestHandler::processPass(PassRequest &request, Client &client) {
-    client.password = message.password;
-}
-
 void RequestHandler::processRetr(RetrRequest &request, Client &client) {
     // TODO
 }

@@ -25,10 +25,26 @@ void Answer::fillPacket(Packet& packet) {
  *	Standart answers
  */
 
-AnswerSuccess::AnswerSuccess() : Answer(200) {
+AnswerSuccess::AnswerSuccess() : Answer(AnswerSuccess::Code) {
 
 }
 
-AnswerWaitPassword::AnswerWaitPassword() : Answer(331) {
+AnswerUsernameOK::AnswerUsernameOK() : Answer(AnswerUsernameOK::Code) {
+
+}
+
+AnswerLoginOk::AnswerLoginOk() : Answer(AnswerLoginOk::Code), _message() {
+
+}
+
+AnswerLoginOk::AnswerLoginOk(const std::string& loginMessage) : Answer(AnswerLoginOk::Code), _message(loginMessage)  {
+
+}
+
+void AnswerLoginOk::fillPacket(Packet& packet) {
+	packet << " " << _message;
+}
+
+AnswerLoginFail::AnswerLoginFail() : Answer(AnswerLoginFail::Code) {
 
 }

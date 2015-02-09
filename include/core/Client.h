@@ -19,7 +19,14 @@ namespace FuretTP {
 
         void run();
 
-		void setUsername(const std::string& username);
+		/// \brief set username of the client
+		bool setUsername(const std::string& username);
+
+		/// \brief try to loggin with the previous username.
+		bool login(const std::string& password);
+
+		/// \brief reset loggin information
+		void resetLogin();
 
 		const std::string& getUsername() const;
 		TCP::Socket& getSocket();

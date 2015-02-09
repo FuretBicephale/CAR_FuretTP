@@ -5,7 +5,7 @@
 #include "core/message/answer/Answer.h"
 
 #include "core/message/request/UserRequest.h"
-
+#include "core/message/request/PassRequest.h"
 
 namespace FuretTP {
 
@@ -26,8 +26,8 @@ namespace FuretTP {
 
         // Server command handlers
 		static void processUser(UserRequest& request, Client* client);
-		/*static void processPass(PassRequest &request, Client &client);
-        static void processRetr(RertRequest &request, Client &client);
+		static void processPass(PassRequest& request, Client* client);
+	   /* static void processRetr(RertRequest &request, Client &client);
         static void processStor(StorRequest &request, Client &client);
         static void processList(ListRequest &request, Client &client);
         static void processQuit(QuitRequest &request, Client &client);

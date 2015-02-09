@@ -1,5 +1,7 @@
 #include "core/FTPServer.h"
 
+#include "core/UserConfigurationReader.h"
+
 #include <iostream>
 
 using namespace FuretTP;
@@ -10,6 +12,10 @@ int main() {
 		std::cout << ".: FuretTP :." << std::endl;
 
 		ServerConfiguration configuration;
+
+		std::cout << "Read user list configuration (" << configuration.getUserConfigurationPathname() << ")" << std::endl;
+
+		UserConfigurationReader::process(configuration.getUserConfigurationPathname(), configuration);
 
 		FTPServer server(configuration);
 

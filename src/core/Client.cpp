@@ -37,9 +37,18 @@ void Client::run() {
 
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
 }
-
-void Client::setUsername(const std::string& username) {
+bool Client::setUsername(const std::string& username) {
 	_username = username;
+
+	return false;
+}
+
+bool Client::login(const std::string& password) {
+	return false;
+}
+
+void Client::resetLogin() {
+
 }
 
 const std::string& Client::getUsername() const {

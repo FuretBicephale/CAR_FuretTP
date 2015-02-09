@@ -2,7 +2,7 @@
 
 using namespace FuretTP;
 
-UserRequest::UserRequest(const std::string& username) : Request("USER"), _username(username) {
+UserRequest::UserRequest(const std::string& username) : Request(UserRequest::CommandName), _username(username) {
 
 }
 

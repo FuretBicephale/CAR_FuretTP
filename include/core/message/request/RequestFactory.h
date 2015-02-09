@@ -8,6 +8,7 @@
 #include "exception/UnrecognizedMessageException.h"
 
 #include "core/message/request/UserRequest.h"
+#include "core/message/request/PassRequest.h"
 #include "network/Packet.h"
 
 namespace FuretTP {

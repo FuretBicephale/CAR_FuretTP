@@ -7,8 +7,13 @@ ServerConfiguration::ServerConfiguration() {
 }
 
 void ServerConfiguration::loadDefault() {
+	_userConfigurationPathname = "user.conf";
 	_bindPort = 4223;
 	_motd = "Welcome on FuretTP Server V1.0";
+}
+
+const std::string& ServerConfiguration::getUserConfigurationPathname() const {
+	return _userConfigurationPathname;
 }
 
 unsigned int ServerConfiguration::getBindPort() const {
