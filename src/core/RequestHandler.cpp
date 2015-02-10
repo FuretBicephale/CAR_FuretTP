@@ -1,5 +1,6 @@
 #include "core/RequestHandler.h"
 #include "core/Client.h"
+#include <dirent.h>
 
 using namespace FuretTP;
 
@@ -10,14 +11,14 @@ void RequestHandler::process(Request& request, Client* client) {
 		processUser(static_cast<UserRequest&>(request), client);
 	} else if(name == PassRequest::CommandName) {
 		processPass(static_cast<PassRequest&>(request), client);
-	} else if(name == PortRequest::CommandName) {
+    } else if(name == "LIST") {
+        processList(static_cast<ListRequest&>(request), client);
+    } /*else if(name == PortRequest::CommandName) {
 		processPort(static_cast<PortRequest&>(request), client);
-	}/*else if(name == "RETR") {
+    }else if(name == "RETR") {
         processRetr(static_cast<RetrRequest&> request, client);
     } else if(name == "STOR") {
         processStor(static_cast<StorRequest&> request, client);
-    } else if(name == "LIST") {
-        processList(static_cast<ListRequest&> request, client);
     } else if(name == "QUIT") {
         processQuit(static_cast<QuitRequest&> request, client);
     } else if(name == "PWD") {
@@ -60,12 +61,32 @@ void RequestHandler::processPass(PassRequest& request, Client* client) {
 	client->getSocket().send(p);
 }
 
-void RequestHandler::processPort(PortRequest& request, Client* client) {
+void RequestHandler::processList(ListRequest& request, Client* client) {
+    Packet p;
+
+    const std::string currDir = client->getCurrentDir();
+    const std::string listDir = "";
+
+    std::cout << currDir << std::endl;
+
+    DIR* dir = opendir(currDir.c_str());
+    struct dirent* ent;
+    if(dir != NULL) {
+        while((ent = readdir(dir)) != NULL) {
+            std::cout << ent << std::endl;
+        }
+        closedir(dir);
+    } else {
+        //Fail
+    }
+}
+
+/*void RequestHandler::processPort(PortRequest& request, Client* client) {
 	Packet p;
 
 	if(client->openConnection(IP::Address(request.getAddress()), request.getPort())) {
 		AnswerSuccess answer();
-		answer.addArgument(PortRequest::CommandName);
+        answer.addArgument(PortRequest::CommandName);
 		answer.generatePacket(p);
 
 	} else {
@@ -76,16 +97,12 @@ void RequestHandler::processPort(PortRequest& request, Client* client) {
 
 	client->getSocket().send(p);
 }
-/*
+
 void RequestHandler::processRetr(RetrRequest &request, Client &client) {
     // TODO
 }
 
 void RequestHandler::processStor(StorRequest &request, Client &client) {
-    // TODO
-}
-
-void RequestHandler::processList(ListRequest &request, Client &client) {
     // TODO
 }
 
