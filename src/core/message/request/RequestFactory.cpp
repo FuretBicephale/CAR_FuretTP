@@ -18,6 +18,13 @@ Request* RequestFactory::eval(Packet& packet) {
 		packet >> password;
 		return new PassRequest(password);
 	}
+	else if(message_command == PortRequest::CommandName) {
+		std::string address;
+		packet >> address;
+		return new PortRequest(address);
+	}
 
-	THROW(UnrecognizedMessageException, message_command)
+	std::cerr << "Unreconized command \"" << message_command << "\"" << std::endl;
+
+	return nullptr;
 }

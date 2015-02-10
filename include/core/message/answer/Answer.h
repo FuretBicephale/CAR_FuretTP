@@ -3,6 +3,7 @@
 
 #include "network/Packet.h"
 
+#include <vector>
 #include <string>
 
 namespace FuretTP {
@@ -17,8 +18,11 @@ namespace FuretTP {
 
 		virtual void fillPacket(Packet& packet);
 
+		void addArgument(const std::string& argument);
+
 	private:
 		unsigned int _code;
+		std::vector<std::string> _arguments;
 	};
 
 	/*
@@ -32,6 +36,7 @@ namespace FuretTP {
 		AnswerSuccess();
 
 		static const unsigned int Code = 200;
+
 	};
 
 	/// \brief 331 username exist, require password
@@ -43,7 +48,7 @@ namespace FuretTP {
 		static const unsigned int Code = 331;
 	};
 
-	/// \brief 330 user identifiant ok
+	/// \brief 230 user identifiant ok
 	class AnswerLoginOk : public Answer {
 
 	public:
@@ -52,7 +57,7 @@ namespace FuretTP {
 
 		void fillPacket(Packet& packet);
 
-		static const unsigned int Code = 330;
+		static const unsigned int Code = 230;
 
 	private:
 		std::string _message;
@@ -67,6 +72,15 @@ namespace FuretTP {
 		static const unsigned int Code = 430;
 	};
 
+	/// \brief 502 unimplemented command
+
+	class AnswerUnimplemented : public Answer {
+
+	public:
+		AnswerUnimplemented();
+
+		static const unsigned int Code = 502;
+	};
 
 
 }

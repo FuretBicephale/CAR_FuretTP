@@ -5,6 +5,7 @@
 
 namespace FuretTP {
 
+	/// \brief Request send for end the login process. this message contains the user's passwors as first argument
 	class PassRequest : public Request {
 
 	public:
