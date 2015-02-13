@@ -19,7 +19,6 @@ Request* RequestFactory::eval(Packet& packet) {
 		return new PassRequest(password);
 	}
     else if(message_command == ListRequest::CommandName) {
-        std::cout << "List Request" << std::endl;
         return new ListRequest();
     }
 	else if(message_command == PortRequest::CommandName) {
@@ -28,7 +27,7 @@ Request* RequestFactory::eval(Packet& packet) {
 		return new PortRequest(address);
     }
 
-	std::cerr << "Unreconized command \"" << message_command << "\"" << std::endl;
+    std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 
 	return nullptr;
 }

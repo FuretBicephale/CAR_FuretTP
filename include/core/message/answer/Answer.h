@@ -72,6 +72,23 @@ namespace FuretTP {
 		static const unsigned int Code = 430;
 	};
 
+    class AnswerListOk : public Answer {
+
+    public:
+        AnswerListOk();
+
+        static const unsigned int Code = 150;
+    };
+
+    class AnswerListFail : public Answer {
+
+    public:
+        AnswerListFail();
+
+        static const unsigned int Code = 550;
+    };
+
+
 	/// \brief 502 unimplemented command
 
 	class AnswerUnimplemented : public Answer {

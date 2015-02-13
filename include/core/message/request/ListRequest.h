@@ -10,7 +10,7 @@ namespace FuretTP {
     public:
         ListRequest();
 
-        static constexpr const char* CommandName = "CDUP"; //Test
+        static constexpr const char* CommandName = "LIST";
 
     private:
 

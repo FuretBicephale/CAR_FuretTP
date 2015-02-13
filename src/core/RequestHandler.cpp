@@ -86,18 +86,17 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
     const std::string currDir = client->getCurrentDir();
     const std::string listDir = "";
 
-    std::cout << currDir << std::endl;
-
     DIR* dir = opendir(currDir.c_str());
     struct dirent* ent;
     if(dir != NULL) {
         while((ent = readdir(dir)) != NULL) {
-			std::cout << ent << std::endl;
+            std::cout << ent->d_name << std::endl;
         }
         closedir(dir);
     } else {
         //Fail
     }
+
 }
 
 /*void RequestHandler::processPort(PortRequest& request, Client* client) {
