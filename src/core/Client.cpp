@@ -72,6 +72,10 @@ bool Client::openConnection(const IP::Address& address, unsigned int port) {
 	return true;
 }
 
+void Client::setCurrentDirectory(const std::string& pathname) {
+
+}
+
 const User& Client::getUser() const {
 	return _user;
 }

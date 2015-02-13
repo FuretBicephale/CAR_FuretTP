@@ -32,6 +32,9 @@ namespace FuretTP {
 		/// \brief open new connection with client
 		bool openConnection(const IP::Address& address, unsigned int port);
 
+		/// \brief set client current directory from it root directory
+		void setCurrentDirectory(const std::string& pathname);
+
 		const User& getUser() const;
 
         const std::string& getCurrentDir() const;

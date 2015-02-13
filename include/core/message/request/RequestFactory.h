@@ -7,11 +7,13 @@
 #include "core/message/request/Request.h"
 #include "core/message/answer/Answer.h"
 #include "exception/UnrecognizedMessageException.h"
+#include "network/ip/Address.h"
 
 #include "core/message/request/UserRequest.h"
 #include "core/message/request/PassRequest.h"
 #include "core/message/request/ListRequest.h"
 #include "core/message/request/PortRequest.h"
+#include "core/message/request/RetrRequest.h"
 #include "network/Packet.h"
 
 namespace FuretTP {

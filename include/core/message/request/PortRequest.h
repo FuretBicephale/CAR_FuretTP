@@ -2,6 +2,7 @@
 #define _FURETTP_PORT_REQUEST_H
 
 #include "core/message/request/Request.h"
+#include "network/ip/Address.h"
 
 namespace FuretTP {
 
@@ -9,17 +10,15 @@ namespace FuretTP {
 	class PortRequest : public Request {
 
 	public:
-		PortRequest(const std::string& address);
+		PortRequest(const IP::Address& address, unsigned int port);
 
-		const std::string& getAddress() const;
+		const IP::Address& getAddress() const;
 		unsigned int getPort() const;
 
 		static constexpr const char* CommandName = "PORT";
 
 	private:
-		void _parseArgument(const std::string& address);
-
-		std::string _address;
+		IP::Address _address;
 		unsigned int _port;
 
 	};

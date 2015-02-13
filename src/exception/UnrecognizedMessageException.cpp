@@ -2,6 +2,6 @@
 
 using namespace FuretTP;
 
-UnrecognizedMessageException::UnrecognizedMessageException(const std::string& command_name) : Exception("Unrecognized message \""+command_name+"\"") {
+UnrecognizedMessageException::UnrecognizedMessageException(const std::string& command_name, const std::string& reason) : Exception("Unrecognized message \""+command_name+"\""+(reason != "" ? " | "+reason : "")) {
 
 }

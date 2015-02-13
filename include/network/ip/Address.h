@@ -22,9 +22,13 @@ namespace FuretTP {
 
 			Address& operator=(const Address& model);
 
+			const char* getRawAddress() const;
+			int getAddressType() const;
+
 			friend std::ostream& operator<<(std::ostream& stream, const Address& address);
 
 			void _initialize();
+
         private:
             struct hostent* _host;
 

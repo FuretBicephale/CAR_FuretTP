@@ -28,8 +28,28 @@ void Socket::_initialize(SocketDescriptor socket) {
 }
 
 void Socket::connect(const IP::Address& address, unsigned int port) {
+	close();
+
 	_address = address;
 
+	_socket = ::socket(AF_INET, SOCK_STREAM, 0);
+	if(_socket == -1) {
+		_socket = UNINITIALIZED_SOCKET;
+		THROW(SystemException, "Unable to create socket", errno);
+	}
+
+	struct sockaddr_in addr_in;
+	memset(&addr_in, 0, sizeof(struct sockaddr_in));
+
+	addr_in.sin_addr = *(struct in_addr*)address.getRawAddress();
+	addr_in.sin_port = htons(port);
+	addr_in.sin_family = address.getAddressType();
+
+
+	if(::connect(_socket,(struct sockaddr*) &addr_in, sizeof(struct sockaddr_in)) == -1) {
+		_socket = UNINITIALIZED_SOCKET;
+		THROW(SystemException, "Unable to connect socket", errno);
+	}
 }
 
 void Socket::receive(Packet& packet) {

@@ -8,7 +8,7 @@ namespace FuretTP {
 	class UnrecognizedMessageException 	: public Exception {
 
 	public:
-		UnrecognizedMessageException(const std::string& command_name);
+		UnrecognizedMessageException(const std::string& command, const std::string& reason = "");
 	};
 }
 

@@ -58,6 +58,11 @@ AnswerLoginFail::AnswerLoginFail() : Answer(AnswerLoginFail::Code) {
 
 }
 
+AnswerOpenConnectionFailed::AnswerOpenConnectionFailed() : Answer(AnswerOpenConnectionFailed::Code) {
+
+}
+
+
 AnswerUnimplemented::AnswerUnimplemented() : Answer(AnswerUnimplemented::Code) {
 
 }

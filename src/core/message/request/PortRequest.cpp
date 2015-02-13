@@ -2,20 +2,14 @@
 
 using namespace FuretTP;
 
-PortRequest::PortRequest(const std::string& address) : Request(PortRequest::CommandName), _address(), _port(0) {
+PortRequest::PortRequest(const IP::Address& address, unsigned int port) : Request(PortRequest::CommandName), _address(address), _port(port) {
 
 }
 
-const std::string& PortRequest::getAddress() const {
+const IP::Address& PortRequest::getAddress() const {
 	return _address;
 }
 
 unsigned int PortRequest::getPort() const {
 	return _port;
-}
-
-void PortRequest::_parseArgument(const std::string& address) {
-#define ADDRESS_MAX_LENGTH 1024
-	//char c_str[LINE_MAX_SIZE];
-
 }

@@ -27,6 +27,13 @@ Address& Address::operator=(const Address& model) {
 		_host = model._host;
 }
 
+const char* Address::getRawAddress() const {
+	return _host->h_addr;
+}
+
+int Address::getAddressType() const {
+	return _host->h_addrtype;
+}
 
 std::ostream& FuretTP::IP::operator<<(std::ostream& stream, const Address& address) {
 	if(address._host == nullptr) {

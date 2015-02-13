@@ -15,11 +15,9 @@ void RequestHandler::process(Request& request, Client* client) {
 		processPort(static_cast<PortRequest&>(request), client);
 	} else if(name == ListRequest::CommandName) {
         processList(static_cast<ListRequest&>(request), client);
-    } /*else if(name == PortRequest::CommandName) {
-		processPort(static_cast<PortRequest&>(request), client);
-    }else if(name == "RETR") {
-        processRetr(static_cast<RetrRequest&> request, client);
-    } else if(name == "STOR") {
+	} else if(name == RetrRequest::CommandName) {
+		processRetr(static_cast<RetrRequest&>(request), client);
+	} /*else if(name == "STOR") {
         processStor(static_cast<StorRequest&> request, client);
     } else if(name == "QUIT") {
         processQuit(static_cast<QuitRequest&> request, client);
@@ -68,11 +66,10 @@ void RequestHandler::processPort(PortRequest& request, Client* client) {
 
 	if(client->openConnection(IP::Address(request.getAddress()), request.getPort())) {
 		AnswerSuccess answer;
-		answer.addArgument(PortRequest::CommandName);
 		answer.generatePacket(p);
 
 	} else {
-		AnswerLoginFail answer;
+		AnswerOpenConnectionFailed answer;
 		answer.generatePacket(p);
 		client->resetLogin();
 	}
@@ -99,27 +96,11 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
 
 }
 
-/*void RequestHandler::processPort(PortRequest& request, Client* client) {
-	Packet p;
 
-	if(client->openConnection(IP::Address(request.getAddress()), request.getPort())) {
-		AnswerSuccess answer();
-        answer.addArgument(PortRequest::CommandName);
-		answer.generatePacket(p);
-
-	} else {
-		AnswerLoginFail answer;
-		answer.generatePacket(p);
-		client->resetLogin();
-	}
-
-	client->getSocket().send(p);
-}
-
-void RequestHandler::processRetr(RetrRequest &request, Client &client) {
+void RequestHandler::processRetr(RetrRequest& request, Client* client) {
     // TODO
 }
-
+/*
 void RequestHandler::processStor(StorRequest &request, Client &client) {
     // TODO
 }

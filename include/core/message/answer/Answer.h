@@ -88,6 +88,16 @@ namespace FuretTP {
         static const unsigned int Code = 550;
     };
 
+	/// \brief 425 can't open a data connection
+
+	class AnswerOpenConnectionFailed : public Answer {
+
+	public:
+		AnswerOpenConnectionFailed();
+
+		static const unsigned int Code = 425;
+	};
+
 
 	/// \brief 502 unimplemented command
 
