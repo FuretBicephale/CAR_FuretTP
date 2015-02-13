@@ -5,7 +5,7 @@ using namespace FuretTP;
 
 unsigned int Client::_uidCounter(0);
 
-Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user() {
+Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user(), _currDir("./") {
 
 }
 
@@ -74,6 +74,10 @@ bool Client::openConnection(const IP::Address& address, unsigned int port) {
 
 const User& Client::getUser() const {
 	return _user;
+}
+
+const std::string& Client::getCurrentDir() const {
+    return _currDir;
 }
 
 TCP::Socket& Client::getSocket() {

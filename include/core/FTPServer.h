@@ -20,10 +20,8 @@ namespace FuretTP {
 
         const ServerConfiguration& getConfiguration() const;
 
-
 	private:
         const ServerConfiguration&  _configuration;
-
 	};
 }
 

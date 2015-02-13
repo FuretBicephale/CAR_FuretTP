@@ -16,6 +16,6 @@ unsigned int PortRequest::getPort() const {
 
 void PortRequest::_parseArgument(const std::string& address) {
 #define ADDRESS_MAX_LENGTH 1024
-	char c_str[LINE_MAX_SIZE];
+	//char c_str[LINE_MAX_SIZE];
 
 }

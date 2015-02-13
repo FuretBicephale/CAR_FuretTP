@@ -34,12 +34,15 @@ namespace FuretTP {
 
 		const User& getUser() const;
 
+        const std::string& getCurrentDir() const;
+
 		TCP::Socket& getSocket();
 
     private:
         unsigned int _uid;
         TCP::Socket _socket;
         FTPServer* _server;
+        std::string _currDir;
 
 		TCP::Socket _activeSocket;
 

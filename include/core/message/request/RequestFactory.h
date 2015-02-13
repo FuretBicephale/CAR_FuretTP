@@ -10,6 +10,7 @@
 
 #include "core/message/request/UserRequest.h"
 #include "core/message/request/PassRequest.h"
+#include "core/message/request/ListRequest.h"
 #include "core/message/request/PortRequest.h"
 #include "network/Packet.h"
 
