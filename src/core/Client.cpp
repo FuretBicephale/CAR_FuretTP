@@ -30,9 +30,18 @@ void Client::run() {
 
 		Request* message = RequestFactory::eval(packet);
 
-		RequestHandler::process(*message, this);
+		if(message != nullptr) {
+			RequestHandler::process(*message, this);
+			delete message;
+		}
+		else {
+			Packet answer_packet;
 
-		delete message;
+			AnswerUnimplemented answer;
+			answer.generatePacket(answer_packet);
+
+			_socket.send(answer_packet);
+		}
 	}
 
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
@@ -55,6 +64,12 @@ bool Client::login(const std::string& password) {
 
 void Client::resetLogin() {
 	_user = User();
+}
+
+bool Client::openConnection(const IP::Address& address, unsigned int port) {
+	_activeSocket.connect(address, port);
+
+	return true;
 }
 
 const User& Client::getUser() const {

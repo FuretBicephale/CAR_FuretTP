@@ -29,6 +29,9 @@ namespace FuretTP {
 		/// \brief reset loggin information
 		void resetLogin();
 
+		/// \brief open new connection with client
+		bool openConnection(const IP::Address& address, unsigned int port);
+
 		const User& getUser() const;
 
 		TCP::Socket& getSocket();
@@ -37,6 +40,8 @@ namespace FuretTP {
         unsigned int _uid;
         TCP::Socket _socket;
         FTPServer* _server;
+
+		TCP::Socket _activeSocket;
 
         static unsigned int _uidCounter;
 

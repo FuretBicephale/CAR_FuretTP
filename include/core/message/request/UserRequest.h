@@ -5,6 +5,7 @@
 
 namespace FuretTP {
 
+	/// \brief Request send when user begin login. this command contains the username as first argument
 	class UserRequest : public Request {
 
 	public:

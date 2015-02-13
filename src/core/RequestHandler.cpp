@@ -10,7 +10,9 @@ void RequestHandler::process(Request& request, Client* client) {
 		processUser(static_cast<UserRequest&>(request), client);
 	} else if(name == PassRequest::CommandName) {
 		processPass(static_cast<PassRequest&>(request), client);
-	} /*else if(name == "RETR") {
+	} else if(name == PortRequest::CommandName) {
+		processPort(static_cast<PortRequest&>(request), client);
+	}/*else if(name == "RETR") {
         processRetr(static_cast<RetrRequest&> request, client);
     } else if(name == "STOR") {
         processStor(static_cast<StorRequest&> request, client);
@@ -47,6 +49,23 @@ void RequestHandler::processPass(PassRequest& request, Client* client) {
 
 	if(client->login(request.getPassword())) {
 		AnswerLoginOk answer("Welcome "+client->getUser().getUsername());
+		answer.generatePacket(p);
+
+	} else {
+		AnswerLoginFail answer;
+		answer.generatePacket(p);
+		client->resetLogin();
+	}
+
+	client->getSocket().send(p);
+}
+
+void RequestHandler::processPort(PortRequest& request, Client* client) {
+	Packet p;
+
+	if(client->openConnection(IP::Address(request.getAddress()), request.getPort())) {
+		AnswerSuccess answer();
+		answer.addArgument(PortRequest::CommandName);
 		answer.generatePacket(p);
 
 	} else {
