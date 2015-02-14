@@ -30,39 +30,3 @@ void Answer::addArgument(const std::string& argument) {
 	_arguments.push_back(argument);
 }
 
-/*
- *	Standart answers
- */
-
-AnswerSuccess::AnswerSuccess() : Answer(AnswerSuccess::Code) {
-
-}
-
-AnswerUsernameOK::AnswerUsernameOK() : Answer(AnswerUsernameOK::Code) {
-
-}
-
-AnswerLoginOk::AnswerLoginOk() : Answer(AnswerLoginOk::Code), _message() {
-
-}
-
-AnswerLoginOk::AnswerLoginOk(const std::string& loginMessage) : Answer(AnswerLoginOk::Code), _message(loginMessage)  {
-
-}
-
-void AnswerLoginOk::fillPacket(Packet& packet) {
-	packet << " " << _message;
-}
-
-AnswerLoginFail::AnswerLoginFail() : Answer(AnswerLoginFail::Code) {
-
-}
-
-AnswerOpenConnectionFailed::AnswerOpenConnectionFailed() : Answer(AnswerOpenConnectionFailed::Code) {
-
-}
-
-
-AnswerUnimplemented::AnswerUnimplemented() : Answer(AnswerUnimplemented::Code) {
-
-}

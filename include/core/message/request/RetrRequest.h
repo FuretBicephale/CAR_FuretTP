@@ -6,7 +6,7 @@
 
 namespace FuretTP {
 
-	/// Command send by the client when he want open a new connection.
+	/// Command send by the client for receive a remote file
 	class RetrRequest : public Request {
 
 	public:

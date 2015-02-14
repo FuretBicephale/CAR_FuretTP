@@ -41,6 +41,7 @@ namespace FuretTP {
 
 			SocketDescriptor _socket;
 			IP::Address _address;
+			unsigned int _port;
 
 		};
 	}

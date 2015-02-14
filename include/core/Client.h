@@ -3,9 +3,9 @@
 
 #include "core/User.h"
 #include "network/tcp/Socket.h"
+#include "network/tcp/Listener.h"
 #include "exception/SystemException.h"
 
-#include "message/answer/ConnectionInitializationAnswer.h"
 #include "core/RequestHandler.h"
 #include "core/message/request/RequestFactory.h"
 
@@ -30,24 +30,32 @@ namespace FuretTP {
 		void resetLogin();
 
 		/// \brief open new connection with client
-		bool openConnection(const IP::Address& address, unsigned int port);
+		bool openActiveConnection(const IP::Address& address, unsigned int port);
 
-		/// \brief set client current directory from it root directory
+		/// \brief set client current directory from it root directory. This pathname need to be absolute from root user (begin with a "/")
 		void setCurrentDirectory(const std::string& pathname);
+
+		/// \brief entering in passive mode
+		void switchPassiveMode();
 
 		const User& getUser() const;
 
-        const std::string& getCurrentDir() const;
+		const std::string& getCurrentDirectory() const;
 
 		TCP::Socket& getSocket();
+		TCP::Socket& getActiveDataSocket();
+		TCP::Listener& getPassiveDataSocket();
 
     private:
         unsigned int _uid;
         TCP::Socket _socket;
         FTPServer* _server;
-        std::string _currDir;
+		std::string _currrentDirectory;
 
-		TCP::Socket _activeSocket;
+		bool _inPassiveMode;
+
+		TCP::Socket _activeDataSocket;
+		TCP::Listener _passiveDataSocket;
 
         static unsigned int _uidCounter;
 

@@ -3,7 +3,7 @@
 using namespace FuretTP;
 using namespace TCP;
 
-Socket::Socket() : _socket(UNINITIALIZED_SOCKET), _address() {
+Socket::Socket() : _socket(UNINITIALIZED_SOCKET), _address(), _port(0) {
 
 }
 
@@ -30,8 +30,6 @@ void Socket::_initialize(SocketDescriptor socket) {
 void Socket::connect(const IP::Address& address, unsigned int port) {
 	close();
 
-	_address = address;
-
 	_socket = ::socket(AF_INET, SOCK_STREAM, 0);
 	if(_socket == -1) {
 		_socket = UNINITIALIZED_SOCKET;
@@ -50,9 +48,15 @@ void Socket::connect(const IP::Address& address, unsigned int port) {
 		_socket = UNINITIALIZED_SOCKET;
 		THROW(SystemException, "Unable to connect socket", errno);
 	}
+
+	_address = address;
+	_port = port;
 }
 
 void Socket::receive(Packet& packet) {
+	if(_socket == UNINITIALIZED_SOCKET)
+		return;
+
 #define RECEIVE_BUFFER_SIZE 4096
 	char buffer[RECEIVE_BUFFER_SIZE];
 	int size;
@@ -68,6 +72,9 @@ void Socket::receive(Packet& packet) {
 }
 
 void Socket::send(const Packet& packet) {
+	if(_socket == UNINITIALIZED_SOCKET)
+		return;
+
 	if(::send(_socket, packet.getBuffer(), packet.getSize(), 0) == -1) {
 		THROW(SystemException, "Error during send", errno);
 	}

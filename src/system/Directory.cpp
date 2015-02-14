@@ -2,19 +2,9 @@
 
 using namespace FuretTP;
 
-Directory::Entry::Entry(const std::string& name, char type) : _name(name), _type(type) {
 
-}
 
-const std::string& Directory::Entry::getName() const {
-	return _name;
-}
-
-char Directory::Entry::getType() const {
-	return _type;
-}
-
-Directory::Directory() : _directory(nullptr) {
+Directory::Directory() : _directory(nullptr), _pathname() {
 
 }
 
@@ -27,13 +17,26 @@ void Directory::open(const std::string& pathname) {
 		_directory = nullptr;
 		THROW(SystemException, "Unable open directory \""+pathname+"\"", errno);
 	}
+	_pathname = pathname;
 }
 
 void Directory::list(std::vector<Entry>& entries) {
 	if(_directory != nullptr) {
 		struct dirent* directory_entry;
 		while ((directory_entry = readdir(_directory)) != nullptr) {
-			  entries.push_back(Entry(directory_entry->d_name, directory_entry->d_type));
+			Entry entry;
+			struct stat stat;
+
+			if(::stat(std::string(_pathname+directory_entry->d_name).c_str(),&stat) == -1) {
+				THROW(SystemException, "Unable open directory \""+std::string(_pathname+directory_entry->d_name)+"\"", errno);
+			}
+
+			entry.permission = "-rw-r--r--";
+			entry.size = stat.st_size;
+			entry.name = directory_entry->d_name;
+
+
+			entries.push_back(entry);
 		}
 	}
 }

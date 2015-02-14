@@ -14,6 +14,11 @@
 #include "core/message/request/ListRequest.h"
 #include "core/message/request/PortRequest.h"
 #include "core/message/request/RetrRequest.h"
+#include "core/message/request/SystRequest.h"
+#include "core/message/request/FeatRequest.h"
+#include "core/message/request/PwdRequest.h"
+#include "core/message/request/TypeRequest.h"
+#include "core/message/request/PasvRequest.h"
 #include "network/Packet.h"
 
 namespace FuretTP {

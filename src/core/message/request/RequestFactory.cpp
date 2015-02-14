@@ -81,6 +81,42 @@ Request* RequestFactory::eval(Packet& packet) {
 		packet >> filename;
 		return new RetrRequest(filename);
 	}
+	else if(message_command == SystRequest::CommandName) {
+		return new SystRequest();
+	}
+	else if(message_command == FeatRequest::CommandName) {
+		return new FeatRequest();
+	}
+	else if(message_command == PwdRequest::CommandName) {
+		return new PwdRequest();
+	}
+	else if(message_command == TypeRequest::CommandName) {
+		std::string type_char;
+		packet >> type_char;
+
+		TypeRequest::Type type;
+		switch(type_char.at(0)) {
+		case 'A':
+			type = TypeRequest::Ascii;
+			break;
+		case 'E':
+			type = TypeRequest::Ebcdic;
+			break;
+		case 'I':
+			type = TypeRequest::Image;
+			break;
+		case 'L':
+			type = TypeRequest::Local;
+			break;
+		default:
+			THROW(UnrecognizedMessageException, "TYPE", "Unrecognized type "+type_char)
+		}
+
+		return new TypeRequest(type);
+	}
+	else if(message_command == PasvRequest::CommandName) {
+		return new PasvRequest();
+	}
 
     std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 

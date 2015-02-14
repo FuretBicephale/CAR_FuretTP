@@ -3,6 +3,8 @@
 
 #include <string>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include <dirent.h>
 #include <vector>
 
@@ -13,15 +15,13 @@ namespace FuretTP {
 	class Directory {
 
 	public:
-		class Entry {
+		struct Entry {
 		public:
-			Entry(const std::string& name, char type);
+			std::string permission;
+			unsigned int size;
+			std::string name;
 
-			const std::string& getName() const;
-			char getType() const;
-		private:
-			std::string _name;
-			char _type;
+
 		};
 
 		Directory();
@@ -33,6 +33,7 @@ namespace FuretTP {
 
 	private:
 		DIR* _directory;
+		std::string _pathname;
 	};
 }
 #endif

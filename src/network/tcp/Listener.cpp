@@ -3,7 +3,7 @@
 using namespace FuretTP;
 using namespace TCP;
 
-Listener::Listener() : _socket(UNINITIALIZED_SOCKET) {
+Listener::Listener() : _socket(UNINITIALIZED_SOCKET), _address(), _port(0) {
 
 	if((_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
 		THROW(SystemException, "Unable to create socket", errno);
@@ -23,13 +23,37 @@ void Listener::listen(unsigned int port) {
 	address.sin_family = AF_INET;
 	address.sin_port = htons(port);
 
-	if(bind(_socket, (struct sockaddr*)&address, sizeof(struct sockaddr_in)) == -1) {
+	if(::bind(_socket, (struct sockaddr*)&address, sizeof(struct sockaddr_in)) == -1) {
 		THROW(SystemException, "Unable to bind socket", errno);
 	}
 
 	if(::listen(_socket, MaxSimultaneousConnection) == -1) {
 		THROW(SystemException, "Unable to listen socket", errno);
 	}
+}
+
+unsigned int Listener::listen() {
+	struct sockaddr_in address;
+	memset(&address, 0, sizeof(struct sockaddr_in));
+
+	address.sin_addr.s_addr = htonl(INADDR_ANY);
+	address.sin_family = AF_INET;
+	address.sin_port = 0;
+
+	if(::bind(_socket, (struct sockaddr*)&address, sizeof(struct sockaddr_in)) == -1) {
+		THROW(SystemException, "Unable to bind socket", errno);
+	}
+
+	socklen_t length = sizeof(struct sockaddr_in);
+	getsockname(_socket, (struct sockaddr*)&address, &length);
+
+	if(::listen(_socket, MaxSimultaneousConnection) == -1) {
+		THROW(SystemException, "Unable to listen socket", errno);
+	}
+
+	_port = address.sin_port;
+
+	return _port;
 }
 
 void Listener::accept(Socket& socket) {
@@ -52,4 +76,8 @@ void Listener::close() {
         ::close(_socket);
 		_socket = UNINITIALIZED_SOCKET;
 	}
+}
+
+unsigned int Listener::getPort() const {
+	return _port;
 }

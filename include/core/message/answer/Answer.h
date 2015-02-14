@@ -25,53 +25,6 @@ namespace FuretTP {
 		std::vector<std::string> _arguments;
 	};
 
-	/*
-	 *	Standart answers
-	 */
-
-	/// \brief 200 OK
-	class AnswerSuccess : public Answer {
-
-	public:
-		AnswerSuccess();
-
-		static const unsigned int Code = 200;
-
-	};
-
-	/// \brief 331 username exist, require password
-	class AnswerUsernameOK : public Answer {
-
-	public:
-		AnswerUsernameOK();
-
-		static const unsigned int Code = 331;
-	};
-
-	/// \brief 230 user identifiant ok
-	class AnswerLoginOk : public Answer {
-
-	public:
-		AnswerLoginOk();
-		AnswerLoginOk(const std::string& loginMessage);
-
-		void fillPacket(Packet& packet);
-
-		static const unsigned int Code = 230;
-
-	private:
-		std::string _message;
-	};
-
-	/// \brief 430 username or password incorrect
-	class AnswerLoginFail : public Answer {
-
-	public:
-		AnswerLoginFail();
-
-		static const unsigned int Code = 430;
-	};
-
     class AnswerListOk : public Answer {
 
     public:
@@ -88,32 +41,6 @@ namespace FuretTP {
         static const unsigned int Code = 550;
     };
 
-	/// \brief 425 can't open a data connection
-
-	class AnswerOpenConnectionFailed : public Answer {
-
-	public:
-		AnswerOpenConnectionFailed();
-
-		static const unsigned int Code = 425;
-	};
-
-
-	/// \brief 502 unimplemented command
-
-	class AnswerUnimplemented : public Answer {
-
-	public:
-		AnswerUnimplemented();
-
-		static const unsigned int Code = 502;
-	};
-
-
 }
-
-
-
-
 
 #endif

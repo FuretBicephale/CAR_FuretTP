@@ -5,7 +5,8 @@ using namespace FuretTP;
 
 unsigned int Client::_uidCounter(0);
 
-Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user(), _currDir("./") {
+Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user(), _currrentDirectory("/"),
+	_inPassiveMode(false), _activeDataSocket(), _passiveDataSocket() {
 
 }
 
@@ -14,7 +15,9 @@ void Client::run() {
 
 	Packet packet;
 
-	ConnectionInitializationAnswer(_server->getConfiguration().getMOTD()).generatePacket(packet);
+	AnswerSuccess answer;
+	answer.addArgument(_server->getConfiguration().getMOTD());
+	answer.generatePacket(packet);
 
 	std::cout << packet << std::endl;
 
@@ -38,6 +41,7 @@ void Client::run() {
 			Packet answer_packet;
 
 			AnswerUnimplemented answer;
+			answer.addArgument("Uninplemented command");
 			answer.generatePacket(answer_packet);
 
 			_socket.send(answer_packet);
@@ -66,24 +70,39 @@ void Client::resetLogin() {
 	_user = User();
 }
 
-bool Client::openConnection(const IP::Address& address, unsigned int port) {
-	_activeSocket.connect(address, port);
+bool Client::openActiveConnection(const IP::Address& address, unsigned int port) {
+	_activeDataSocket.connect(address, port);
 
 	return true;
 }
 
 void Client::setCurrentDirectory(const std::string& pathname) {
+	_currrentDirectory = pathname;
+}
 
+void Client::switchPassiveMode() {
+	_inPassiveMode = true;
+
+	_passiveDataSocket.listen();
 }
 
 const User& Client::getUser() const {
 	return _user;
 }
 
-const std::string& Client::getCurrentDir() const {
-    return _currDir;
+const std::string& Client::getCurrentDirectory() const {
+	return _currrentDirectory;
 }
 
 TCP::Socket& Client::getSocket() {
 	return _socket;
 }
+
+TCP::Socket& Client::getActiveDataSocket() {
+	return _activeDataSocket;
+}
+
+TCP::Listener& Client::getPassiveDataSocket() {
+	return _passiveDataSocket;
+}
+
