@@ -8,7 +8,7 @@
 
 namespace FTP {
 
-	/// \brief 331 username OK, require password
+    /// \brief 331 Username OK, require password
 	class AnswerUsernameOK : public Answer {
 
 	public:

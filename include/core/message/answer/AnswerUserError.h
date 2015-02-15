@@ -8,8 +8,7 @@
 
 namespace FTP {
 
-	/// \brief 425 can't open a data connection
-
+    /// \brief 425 Can't open a data connection
 	class AnswerOpenConnectionFailed : public Answer {
 
 	public:
@@ -19,7 +18,7 @@ namespace FTP {
 	};
 
 
-	/// \brief 430 username or password incorrect
+    /// \brief 430 Username or password incorrect
 	class AnswerLoginFail : public Answer {
 
 	public:
