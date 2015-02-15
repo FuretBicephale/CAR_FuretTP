@@ -23,6 +23,9 @@
 #include "core/message/request/PasvRequest.h"
 #include "core/message/request/CWDRequest.h"
 #include "core/message/request/CDUPRequest.h"
+#include "core/message/request/MkdRequest.h"
+#include "core/message/request/RmdRequest.h"
+#include "core/message/request/QuitRequest.h"
 #include "system/Directory.h"
 
 #include "network/ip/Address.h"
@@ -58,8 +61,9 @@ namespace FuretTP {
 		static void processPasv(PasvRequest& request, Client* client);
         static void processCwd(CWDRequest& request, Client* client);
         static void processCdup(CDUPRequest& request, Client* client);
-	   /* static void processQuit(QuitRequest &request, Client &client);*/
-
+		static void processMkd(MkdRequest& request, Client* client);
+		static void processRmd(RmdRequest& request, Client* client);
+		static void processQuit(QuitRequest& request, Client* client);
     };
 }
 

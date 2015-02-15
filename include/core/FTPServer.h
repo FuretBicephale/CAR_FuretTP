@@ -18,10 +18,15 @@ namespace FuretTP {
 
 		void run();
 
+		void close();
+
         const ServerConfiguration& getConfiguration() const;
 
 	private:
         const ServerConfiguration&  _configuration;
+
+		TCP::Listener _listener;
+
 	};
 }
 

@@ -38,6 +38,16 @@ namespace FuretTP {
 
 	};
 
+	/// \brief 221 server close connection
+	class AnswerServerCloseConnection: public Answer {
+
+	public:
+		AnswerServerCloseConnection();
+
+		static const unsigned int Code = 221;
+
+	};
+
 	/// \brief 225 Data connection open, no transfert in progress
 	class AnswerDataConnectionOpen: public Answer {
 
@@ -82,7 +92,7 @@ namespace FuretTP {
 	class AnswerPathnameCreated: public Answer {
 
 	public:
-		AnswerPathnameCreated(const std::string& pathname);
+		AnswerPathnameCreated();
 
 		static const unsigned int Code = 257;
 

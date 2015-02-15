@@ -130,6 +130,19 @@ Request* RequestFactory::eval(Packet& packet) {
     else if(message_command == CDUPRequest::CommandName) {
         return new CDUPRequest();
     }
+	else if(message_command == MkdRequest::CommandName) {
+		std::string directory;
+		packet >> directory;
+		return new MkdRequest(directory);
+	}
+	else if(message_command == RmdRequest::CommandName) {
+		std::string directory;
+		packet >> directory;
+		return new RmdRequest(directory);
+	}
+	else if(message_command == QuitRequest::CommandName) {
+		return new QuitRequest();
+	}
 
     std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 

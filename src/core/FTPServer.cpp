@@ -2,21 +2,19 @@
 
 using namespace FuretTP;
 
-FTPServer::FTPServer(const ServerConfiguration& configuration) :  _configuration(configuration) {
+FTPServer::FTPServer(const ServerConfiguration& configuration) :  _configuration(configuration), _listener() {
 
 }
 
 void FTPServer::run() {
 
-	TCP::Listener listener;
-
-	listener.listen(_configuration.getBindPort());
+	_listener.listen(_configuration.getBindPort());
 
 	std::cout << "Listen connection on port " << _configuration.getBindPort() << std::endl;
 
-	while(true) {
+	while(_listener.isOpen()) {
 		TCP::Socket client;
-		listener.accept(client);
+		_listener.accept(client);
 
 		Thread<Client> thread(new Client(this, client));
 		thread.run();
@@ -24,6 +22,10 @@ void FTPServer::run() {
 
 	}
 
+}
+
+void FTPServer::close() {
+	_listener.close();
 }
 
 const ServerConfiguration& FTPServer::getConfiguration() const {

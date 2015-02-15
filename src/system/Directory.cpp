@@ -28,7 +28,7 @@ void Directory::list(std::vector<Entry>& entries) {
 			struct stat stat;
 
 			if(::stat(std::string(_pathname+directory_entry->d_name).c_str(),&stat) == -1) {
-				THROW(SystemException, "Unable open directory \""+std::string(_pathname+directory_entry->d_name)+"\"", errno);
+				THROW(SystemException, "Unable open file \""+std::string(_pathname+directory_entry->d_name)+"\"", errno);
 			}
 
 			switch (stat.st_mode & S_IFMT) {

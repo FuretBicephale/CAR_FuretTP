@@ -31,9 +31,13 @@ namespace FuretTP {
 		void resetLogin();
 
 		/// \brief open new connection with client
-		void openActiveConnection();
+		void openDataConnection();
 
-		void closeActiveConnection();
+		void sendToDataConnection(const Packet& packet);
+
+		void receiveFromDataConnection(Packet& packet);
+
+		void closeDataConnection();
 
 		void setNextActiveConnection(const IP::Address& address, unsigned int port);
 
@@ -43,13 +47,16 @@ namespace FuretTP {
 		/// \brief entering in passive mode
 		void switchPassiveMode();
 
+		/// \brief close the client connection and terminate client
+		void close();
+
+
 		const User& getUser() const;
 
 		const std::string& getCurrentDirectory() const;
 
 		TCP::Socket& getSocket();
-		TCP::Socket& getActiveDataSocket();
-		TCP::Listener& getPassiveDataSocket();
+		TCP::Listener& getPassiveDataListener();
 
     private:
         unsigned int _uid;
@@ -58,9 +65,11 @@ namespace FuretTP {
 		std::string _currrentDirectory;
 
 		bool _inPassiveMode;
-
+		bool  _isOpen;
 		TCP::Socket _activeDataSocket;
-		TCP::Listener _passiveDataSocket;
+
+		TCP::Listener _passiveDataListener;
+		TCP::Socket _passiveDataSocket;
 
 		IP::Address _nextActiveAddress;
 		unsigned int _nextActivePort;

@@ -5,10 +5,6 @@ using namespace TCP;
 
 Listener::Listener() : _socket(UNINITIALIZED_SOCKET), _address(), _port(0) {
 
-	if((_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-		THROW(SystemException, "Unable to create socket", errno);
-	}
-
 }
 
 Listener::~Listener() {
@@ -16,6 +12,11 @@ Listener::~Listener() {
 }
 
 void Listener::listen(unsigned int port) {
+
+	if((_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+		THROW(SystemException, "Unable to create socket", errno);
+	}
+
 	struct sockaddr_in address;
 	memset(&address, 0, sizeof(struct sockaddr_in));
 
@@ -30,9 +31,16 @@ void Listener::listen(unsigned int port) {
 	if(::listen(_socket, MaxSimultaneousConnection) == -1) {
 		THROW(SystemException, "Unable to listen socket", errno);
 	}
+
+	_port = port;
 }
 
 unsigned int Listener::listen() {
+
+	if((_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+		THROW(SystemException, "Unable to create socket", errno);
+	}
+
 	struct sockaddr_in address;
 	memset(&address, 0, sizeof(struct sockaddr_in));
 
@@ -51,7 +59,7 @@ unsigned int Listener::listen() {
 		THROW(SystemException, "Unable to listen socket", errno);
 	}
 
-	_port = address.sin_port;
+	_port = ntohs(address.sin_port);
 
 	return _port;
 }
@@ -76,6 +84,10 @@ void Listener::close() {
         ::close(_socket);
 		_socket = UNINITIALIZED_SOCKET;
 	}
+}
+
+bool Listener::isOpen() const {
+	return _socket != UNINITIALIZED_SOCKET;
 }
 
 unsigned int Listener::getPort() const {
