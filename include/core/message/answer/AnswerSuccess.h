@@ -28,7 +28,7 @@ namespace FTP {
 
 	};
 
-	/// \brief 215 system name
+    /// \brief 215 System name
 	class AnswerSystemName: public Answer {
 
 	public:
@@ -68,7 +68,7 @@ namespace FTP {
 
 	};
 
-	/// \brief 227 entering passive mode
+    /// \brief 227 Entering passive mode
 	class AnswerEnteringPassiveMode: public Answer {
 
 	public:
@@ -79,7 +79,7 @@ namespace FTP {
 	};
 
 
-	/// \brief 230 user identifiant ok
+    /// \brief 230 User identifiant ok
 	class AnswerLoginOk : public Answer {
 
 	public:
@@ -88,7 +88,7 @@ namespace FTP {
 		static const unsigned int Code = 230;
 	};
 
-	/// \brief 257 system name
+    /// \brief 257 System pathname
 	class AnswerPathnameCreated: public Answer {
 
 	public:

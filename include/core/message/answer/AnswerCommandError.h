@@ -9,7 +9,6 @@
 namespace FTP {
 
 	/// \brief 502 unimplemented command
-
 	class AnswerUnimplemented : public Answer {
 
 	public:
@@ -19,7 +18,6 @@ namespace FTP {
 	};
 
 	/// \brief 550 file unavailable
-
 	class AnswerFileUnavailable : public Answer {
 
 	public:
