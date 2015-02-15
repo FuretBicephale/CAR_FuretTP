@@ -2,11 +2,11 @@
 
 using namespace FTP;
 
-User::User() : _username(), _password(), _homeDir() {
+User::User() : _username(), _password(), _homeDir(), _mode(0) {
 
 }
 
-User::User(const std::string& username, const std::string& password, const std::string& homeDir) : _username(username), _password(password), _homeDir(homeDir) {
+User::User(const std::string& username, const std::string& password, const std::string& homeDir, int mode) : _username(username), _password(password), _homeDir(homeDir), _mode(mode) {
 
 }
 
@@ -20,6 +20,10 @@ const std::string& User::getPassword() const {
 
 const std::string& User::getHomeDir() const {
 	return _homeDir;
+}
+
+int User::getMode() const {
+	return _mode;
 }
 
 UserList::UserList() : _userList() {

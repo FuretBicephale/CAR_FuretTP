@@ -29,17 +29,22 @@ namespace FTP {
         /// \param username User's username
         /// \param password User's password
         /// \param homeDir User's root directory
-        ///
-		User(const std::string& username, const std::string& password, const std::string& homeDir);
+		/// \param user mode (read/write)
+		User(const std::string& username, const std::string& password, const std::string& homeDir, int mode);
 
 		const std::string& getUsername() const;
 		const std::string& getPassword() const;
 		const std::string& getHomeDir() const;
+		int getMode() const;
+
+		static const int ReadFlag = 0x1;
+		static const int WriteFlag = 0x2;
 
 	private:
         std::string _username; ///< User's username
         std::string _password; ///< User's password
         std::string _homeDir; ///< User's root directory
+		int _mode;
 	};
 
     ///

@@ -35,6 +35,8 @@ namespace FTP {
         unsigned int getBindPort() const;
 		const std::string& getMOTD() const;
 
+		void setBindPort(unsigned int port);
+
 
     private:
 

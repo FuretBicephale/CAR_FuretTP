@@ -17,6 +17,15 @@ namespace FTP {
 		static const unsigned int Code = 502;
 	};
 
+	/// \brief 532 need account for storing files.
+	class AnswerAuthRequired : public Answer {
+
+	public:
+		AnswerAuthRequired();
+
+		static const unsigned int Code = 532;
+	};
+
 	/// \brief 550 file unavailable
 	class AnswerFileUnavailable : public Answer {
 

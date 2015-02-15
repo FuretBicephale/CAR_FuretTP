@@ -6,6 +6,10 @@ AnswerUnimplemented::AnswerUnimplemented() : Answer(AnswerUnimplemented::Code) {
 
 }
 
+AnswerAuthRequired::AnswerAuthRequired() : Answer(AnswerAuthRequired::Code) {
+
+}
+
 AnswerFileUnavailable::AnswerFileUnavailable() : Answer(AnswerFileUnavailable::Code) {
 
 }

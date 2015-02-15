@@ -141,6 +141,13 @@ std::cout << "(" << client->getUser().getHomeDir() << ";" << client->getCurrentD
 void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 	Packet p, p2;
 
+	if(client->getUser().getMode() & User::ReadFlag) {
+		AnswerAuthRequired answer;
+		answer.addArgument("No read privilege");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+	}
+
 	std::string filename = client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getFilename();
 
 	std::ifstream file(filename, std::ios::in);
@@ -181,7 +188,16 @@ void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 }
 
 void RequestHandler::processStor(StorRequest& request, Client* client) {
+
+
 	Packet p, p2;
+
+	if(client->getUser().getMode() & User::WriteFlag) {
+		AnswerAuthRequired answer;
+		answer.addArgument("No write privilege");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+	}
 
 	std::string filename = client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getFilename();
 
@@ -317,6 +333,14 @@ void RequestHandler::processCdup(CDUPRequest& request, Client* client) {
 
 void RequestHandler::processMkd(MkdRequest& request, Client* client) {
 	Packet p;
+
+	if(client->getUser().getMode() & User::WriteFlag) {
+		AnswerAuthRequired answer;
+		answer.addArgument("No write privilege");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+	}
+
 	if(mkdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str(), S_IRWXU | S_IRWXG | S_IRWXO) == -1) {
 		AnswerFileUnavailable answer;
 		answer.addArgument("Unable to create \""+request.getName()+"/\".");
@@ -332,6 +356,14 @@ void RequestHandler::processMkd(MkdRequest& request, Client* client) {
 
 void RequestHandler::processRmd(RmdRequest& request, Client* client) {
 	Packet p;
+
+	if(client->getUser().getMode() & User::WriteFlag) {
+		AnswerAuthRequired answer;
+		answer.addArgument("No write privilege");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+	}
+
 	if(rmdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str()) == -1) {
 		AnswerFileUnavailable answer;
 		answer.addArgument("Unable to delete \""+request.getName()+"/\".");

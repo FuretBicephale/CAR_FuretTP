@@ -16,7 +16,10 @@ file(
 	
 	include_files
 
-	include/*.h
+	include/core/*.h
+	include/exception/*.h
+	include/network/*.h
+	include/system/*.h
 )
 
 file(
@@ -24,7 +27,10 @@ file(
 	
 	source_files
 
-	src/*.cpp	
+	src/core/*.cpp
+	src/exception/*.cpp
+	src/network/*.cpp
+	src/system/*.cpp
 )
 
 file(
@@ -35,12 +41,12 @@ file(
         test/*.cpp
 )
 
-add_subdirectory(test)
 
 find_package(Threads)
 
 configure_file("user.conf" "user.conf" COPYONLY)
 
+add_subdirectory(test)
 
-add_executable(${executable_name} ${include_files} ${source_files})
+add_executable(${executable_name} ${include_files} ${source_files} src/main.cpp)
 target_link_libraries (${executable_name} ${CMAKE_THREAD_LIBS_INIT})

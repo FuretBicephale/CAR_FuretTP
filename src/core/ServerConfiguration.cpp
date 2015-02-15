@@ -31,3 +31,7 @@ unsigned int ServerConfiguration::getBindPort() const {
 const std::string& ServerConfiguration::getMOTD() const {
 	return _motd;
 }
+
+void ServerConfiguration::setBindPort(unsigned int port) {
+	_bindPort = port;
+}
