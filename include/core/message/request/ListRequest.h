@@ -5,9 +5,20 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::ListRequest
+    /// \ingroup request
+    /// \brief List request.
+    ///
+    /// Display every files present in the current directory.
+    ///
     class ListRequest : public Request {
 
     public:
+
+        ///
+        /// \brief ListRequest constructor
+        ///
         ListRequest();
 
         static constexpr const char* CommandName = "LIST";

@@ -17,9 +17,9 @@ namespace FTP {
     ///
     /// \class ftp::Client
     /// \ingroup core
-    /// \brief User connexion to the Server.
+    /// \brief User connection to the Server.
     ///
-    /// Represents the connexion between the user and the server.
+    /// Represents the connection between the user and the server.
     /// It's used to receive and send the different packet between the both entities.
     ///
     class Client {
@@ -34,9 +34,9 @@ namespace FTP {
         Client(FTPServer* server, TCP::Socket& socket);
 
         ///
-        /// \brief Runs the connexion between Client and Server.
+        /// \brief Runs the connection between Client and Server.
         ///
-        /// Runs the connexion between Client and Server while the socket is open.
+        /// Runs the connection between Client and Server while the socket is open.
         /// Receives each packet from the user and interprets them.
         /// If the received packet is a known request, it calls the RequestHandler, else it sends an unimplemented command packet.
         ///
@@ -63,17 +63,16 @@ namespace FTP {
 		/// \brief open new data connection with client
 		void openDataConnection();
 
-		/// \brief send packet on data connection
+        /// \brief send packet on data connection
 		void sendToDataConnection(const Packet& packet);
 
-
-		/// \brief receive packet on data connection
+        /// \brief receive packet on data connection
 		void receiveFromDataConnection(Packet& packet);
 
 		/// \brief Close the current data connection with the client.
 		void closeDataConnection();
 
-        /// \brief
+        /// \brief Set next port and address for active connection
 		void setNextActiveConnection(const IP::Address& address, unsigned int port);
 
         ///
@@ -112,12 +111,12 @@ namespace FTP {
 		TCP::Listener _passiveDataListener; ///< the socket listener used in passive mode
 		TCP::Socket _passiveDataSocket; ///< current data socket used in passive mode
 
-        IP::Address _nextActiveAddress; ///<
-        unsigned int _nextActivePort; ///<
+        IP::Address _nextActiveAddress; ///< Next address for active connection
+        unsigned int _nextActivePort; ///< Next port for active connection
 
-        static unsigned int _uidCounter; ///<
+        static unsigned int _uidCounter; ///< connection counter
 
-        User _user; ///< User linked to this connexion
+        User _user; ///< User linked to this connection
     };
 }
 

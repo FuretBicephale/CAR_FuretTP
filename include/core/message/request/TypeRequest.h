@@ -6,10 +6,20 @@
 
 namespace FTP {
 
-	/// Command send by the client for known server system
+    ///
+    /// \class ftp::TypeRequest
+    /// \ingroup request
+    /// \brief Type request.
+    ///
+    /// Set the type of file to be transferred
+    ///
 	class TypeRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief File type enumeration
+        ///
 		enum Type {
 			Ascii,
 			Ebcdic,
@@ -17,6 +27,10 @@ namespace FTP {
 			Local
 		};
 
+        ///
+        /// \brief TypeRequest constructor
+        /// \param type File type to set
+        ///
 		TypeRequest(Type type);
 
 		Type getType() const;
@@ -24,7 +38,7 @@ namespace FTP {
 		static constexpr const char* CommandName = "TYPE";
 
 	private:
-		Type _type;
+        Type _type; ///< The file type to set
 	};
 }
 

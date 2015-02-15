@@ -75,7 +75,13 @@ namespace FTP {
         /// \param username the username of the user we're searching for
         /// \return the user if he's finded, throw an UserNotFoundException otherwise
         ///
-		const User& findUser(const std::string& username) const;
+        const User& findUser(const std::string& username) const;
+
+        ///
+        /// \brief hasUser Says if the list contains an user with the username username
+        /// \param username
+        /// \return True if the list contains the user username, False otherwise
+        ///
 		bool hasUser(const std::string& username) const;
 
 	private:

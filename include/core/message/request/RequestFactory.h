@@ -30,11 +30,26 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::RequestFactory
+    /// \ingroup request
+    /// \brief Determine the class of request packet
+    ///
+    /// RequestFactory is a static class.
+    /// It evaluate a packet in order to create a request from it.
+    ///
 	class RequestFactory {
 
 	public:
-		/// Return an FTPMessage. Receiver is responsable of the return delete
-		static Request* eval(Packet& packet);
+
+        ///
+        /// \brief Create a request from the packet
+        /// \param packet The packet to evaluate
+        /// \return FTPMessage
+        ///
+        /// The receiver is responsible of the returned object deletion
+        ///
+        static Request* eval(Packet& packet);
 
 	private:
 		//Static class

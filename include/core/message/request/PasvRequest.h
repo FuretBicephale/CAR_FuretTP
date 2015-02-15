@@ -5,11 +5,21 @@
 
 namespace FTP {
 
-	/// \brief Request send entering in passive mode
+    ///
+    /// \class ftp::PasvRequest
+    /// \ingroup request
+    /// \brief Pasv request.
+    ///
+    /// Request sent in order to enter in passive mode.
+    ///
 	class PasvRequest : public Request {
 
 	public:
-		PasvRequest();
+
+        ///
+        /// \brief PasvRequest constructor
+        ///
+        PasvRequest();
 
 		static constexpr const char* CommandName = "PASV";
 

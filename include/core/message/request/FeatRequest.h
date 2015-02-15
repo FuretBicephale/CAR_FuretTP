@@ -5,10 +5,20 @@
 
 namespace FTP {
 
-	/// \brief Request send for know extra command supported by server (undefined in RFC 959)
+    ///
+    /// \class ftp::FeatRequest
+    /// \ingroup request
+    /// \brief Feat request.
+    ///
+    /// Request sent to know extra command supported by server undefined in RFC 959.
+    ///
 	class FeatRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief FeatRequest constructor
+        ///
 		FeatRequest();
 
 		static constexpr const char* CommandName = "FEAT";
