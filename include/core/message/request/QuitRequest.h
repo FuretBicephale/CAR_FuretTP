@@ -5,9 +5,20 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::QuitRequest
+    /// \ingroup request
+    /// \brief Quit request.
+    ///
+    /// Command sent to the server when an user quit it.
+    ///
 	class QuitRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief QuitRequest constructor
+        ///
 		QuitRequest();
 
 		static constexpr const char* CommandName = "QUIT";

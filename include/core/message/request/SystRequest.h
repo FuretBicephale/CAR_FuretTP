@@ -11,7 +11,7 @@ namespace FTP {
     /// \ingroup request
     /// \brief Syst request.
     ///
-    /// Command sent by the client to know server system.
+    /// Asks the server's system.
     ///
 	class SystRequest : public Request {
 

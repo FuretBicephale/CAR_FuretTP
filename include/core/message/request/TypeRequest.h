@@ -11,14 +11,14 @@ namespace FTP {
     /// \ingroup request
     /// \brief Type request.
     ///
-    ///
+    /// Set the type of file to be transferred
     ///
 	class TypeRequest : public Request {
 
 	public:
 
         ///
-        /// \brief The Type enum
+        /// \brief File type enumeration
         ///
 		enum Type {
 			Ascii,
@@ -29,7 +29,7 @@ namespace FTP {
 
         ///
         /// \brief TypeRequest constructor
-        /// \param type
+        /// \param type File type to set
         ///
 		TypeRequest(Type type);
 
@@ -38,7 +38,7 @@ namespace FTP {
 		static constexpr const char* CommandName = "TYPE";
 
 	private:
-        Type _type; ///<
+        Type _type; ///< The file type to set
 	};
 }
 

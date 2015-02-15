@@ -17,7 +17,7 @@ namespace FTP {
     /// \brief Represents the FTP Server.
     ///
     /// Represents the FTP Server.
-    /// It receives user connexions then create a Client instance for each of them.
+    /// It receives user connections then create a Client instance for each of them.
     ///
 	class FTPServer {
 
@@ -32,17 +32,20 @@ namespace FTP {
         ///
         /// \brief run the server while the application is launched
         ///
-        /// Creates a Client instance each time the server receives a user connexion and create a new thread.
+        /// Creates a Client instance each time the server receives a user connection and create a new thread.
         ///
 		void run();
 
+        ///
+        /// \brief Close the server and every connection
+        ///
 		void close();
 
         const ServerConfiguration& getConfiguration() const;
 
 	private:
         const ServerConfiguration&  _configuration; ///< Current configuration of the server
-		TCP::Listener _listener;
+        TCP::Listener _listener; ///<
 
 	};
 }

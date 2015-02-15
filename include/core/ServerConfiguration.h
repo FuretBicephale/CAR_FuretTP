@@ -24,7 +24,7 @@ namespace FTP {
         ServerConfiguration();
 
         ///
-        /// \brief loadDefault
+        /// \brief Load the default server configuration
         ///
         void loadDefault();
 

@@ -39,12 +39,6 @@ namespace FTP {
 		void generatePacket(Packet& packet);
 
         ///
-        /// \brief fillPacket
-        /// \param packet
-        ///
-		virtual void fillPacket(Packet& packet);
-
-        ///
         /// \brief Add a string argument to the answer.
         /// \param argument the string to add
         ///
