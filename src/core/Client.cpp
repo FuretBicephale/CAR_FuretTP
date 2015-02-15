@@ -6,7 +6,7 @@ using namespace FTP;
 unsigned int Client::_uidCounter(0);
 
 Client::Client(FTPServer* server, TCP::Socket& socket) : _uid(_uidCounter++), _socket(std::move(socket)), _server(server), _user(), _currrentDirectory("/"),
-	_inPassiveMode(false), _activeDataSocket(), _passiveDataSocket() {
+	_inPassiveMode(false), _activeDataSocket(), _passiveDataSocket(), _isOpen(true) {
 
 }
 
@@ -23,7 +23,7 @@ void Client::run() {
 
 	_socket.send(packet);
 
-	while(_socket.isOpen()) {
+	while(_socket.isOpen() && _isOpen) {
 		Packet packet;
 
 		_socket.receive(packet);
@@ -48,6 +48,11 @@ void Client::run() {
 		}
 	}
 
+	_socket.close();
+	_activeDataSocket.close();
+	_passiveDataListener.close();
+	_passiveDataSocket.close();
+
 	std::cout << "[Client " << _uid << "] Disconnected " << std::endl;
 }
 bool Client::setUsername(const std::string& username) {
@@ -70,17 +75,43 @@ void Client::resetLogin() {
 	_user = User();
 }
 
-void Client::openActiveConnection() {
-	if(_nextActivePort == 0)
-		THROW(NoActiveConnectionException, "");
-
-	_activeDataSocket.connect(_nextActiveAddress, _nextActivePort);
-	std::cout << "[Client " << _uid << "] Open new active data connection (" << _nextActiveAddress << ":" << _nextActivePort << ") " << std::endl;
+void Client::openDataConnection() {
+	if(_inPassiveMode) {
+		_passiveDataSocket.close();
+		_passiveDataListener.accept(_passiveDataSocket);
+		std::cout << "[Client " << _uid << "] Accept new passive data connection" << std::endl;
+	}
+	else {
+		if(_nextActivePort == 0)
+			THROW(NoActiveConnectionException, "");
+		_activeDataSocket.close();
+		_activeDataSocket.connect(_nextActiveAddress, _nextActivePort);
+		std::cout << "[Client " << _uid << "] Open new active data connection (" << _nextActiveAddress << ":" << _nextActivePort << ") " << std::endl;
+	}
 }
 
-void Client::closeActiveConnection() {
-	_activeDataSocket.close();
-	std::cout << "[Client " << _uid << "] close active data connection" << std::endl;
+void Client::sendToDataConnection(const Packet& packet) {
+	if(_inPassiveMode) {
+		_passiveDataSocket.send(packet);
+	} else {
+		_activeDataSocket.send(packet);
+	}
+}
+
+void Client::receiveFromDataConnection(Packet& packet) {
+	if(_inPassiveMode) {
+		_passiveDataSocket.receive(packet);
+	} else {
+		_activeDataSocket.receive(packet);
+	}
+}
+
+void Client::closeDataConnection() {
+	if(_inPassiveMode) {
+		_passiveDataSocket.close();
+	} else {
+		_activeDataSocket.close();
+	}
 }
 
 void Client::setNextActiveConnection(const IP::Address& address, unsigned int port) {
@@ -92,10 +123,16 @@ void Client::setCurrentDirectory(const std::string& pathname) {
 	_currrentDirectory = pathname;
 }
 
+
 void Client::switchPassiveMode() {
 	_inPassiveMode = true;
 
-	_passiveDataSocket.listen();
+	_passiveDataListener.close();
+	_passiveDataListener.listen();
+}
+
+void Client::close() {
+	_isOpen = false;
 }
 
 const User& Client::getUser() const {
@@ -110,11 +147,6 @@ TCP::Socket& Client::getSocket() {
 	return _socket;
 }
 
-TCP::Socket& Client::getActiveDataSocket() {
-	return _activeDataSocket;
+TCP::Listener& Client::getPassiveDataListener() {
+	return _passiveDataListener;
 }
-
-TCP::Listener& Client::getPassiveDataSocket() {
-	return _passiveDataSocket;
-}
-

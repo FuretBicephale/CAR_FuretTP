@@ -36,10 +36,14 @@ namespace FTP {
         ///
 		void run();
 
+		void close();
+
         const ServerConfiguration& getConfiguration() const;
 
 	private:
         const ServerConfiguration&  _configuration; ///< Current configuration of the server
+		TCP::Listener _listener;
+
 	};
 }
 

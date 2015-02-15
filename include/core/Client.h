@@ -47,6 +47,7 @@ namespace FTP {
 
         ///
 		/// \brief try to loggin with the previous username.
+
         /// \param password Password send by the user.
         /// \return True if the client is logged in, false otherwise.
         ///
@@ -59,11 +60,18 @@ namespace FTP {
         /// \brief Reset login informations.
         void resetLogin();
 
-        /// \brief Open a new connection with the client.
-		void openActiveConnection();
+		/// \brief open new data connection with client
+		void openDataConnection();
 
-        /// \brief Close the current connection with the client.
-		void closeActiveConnection();
+		/// \brief send packet on data connection
+		void sendToDataConnection(const Packet& packet);
+
+
+		/// \brief receive packet on data connection
+		void receiveFromDataConnection(Packet& packet);
+
+		/// \brief Close the current data connection with the client.
+		void closeDataConnection();
 
         /// \brief
 		void setNextActiveConnection(const IP::Address& address, unsigned int port);
@@ -78,16 +86,20 @@ namespace FTP {
         /// \brief Entering in passive mode
 		void switchPassiveMode();
 
+		/// \brief close the client connection and terminate client
+		void close();
+
+
 		const User& getUser() const;
 
 		const std::string& getCurrentDirectory() const;
 
 		TCP::Socket& getSocket();
-		TCP::Socket& getActiveDataSocket();
-		TCP::Listener& getPassiveDataSocket();
+		TCP::Listener& getPassiveDataListener();
 
     private:
 
+		bool  _isOpen; ///< True if the client is running, false otherwise
         unsigned int _uid; ///< Client id
         TCP::Socket _socket; ///< Client socket
         FTPServer* _server; ///< Server which client is connected to
@@ -95,8 +107,10 @@ namespace FTP {
 
         bool _inPassiveMode; ///< True if the client is in passive mode, false otherwise
 
-        TCP::Socket _activeDataSocket; ///<
-        TCP::Listener _passiveDataSocket; ///<
+		TCP::Socket _activeDataSocket; ///< current data socket used in active mode
+
+		TCP::Listener _passiveDataListener; ///< the socket listener used in passive mode
+		TCP::Socket _passiveDataSocket; ///< current data socket used in passive mode
 
         IP::Address _nextActiveAddress; ///<
         unsigned int _nextActivePort; ///<

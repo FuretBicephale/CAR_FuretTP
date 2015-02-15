@@ -1,7 +1,7 @@
 #ifndef _FTP_DIRECTORY_H
 #define _FTP_DIRECTORY_H
 
-#include <string>
+#include <iostream>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>

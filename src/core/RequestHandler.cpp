@@ -17,6 +17,8 @@ void RequestHandler::process(Request& request, Client* client) {
         processList(static_cast<ListRequest&>(request), client);
 	} else if(name == RetrRequest::CommandName) {
 		processRetr(static_cast<RetrRequest&>(request), client);
+	} else if(name == StorRequest::CommandName) {
+		processStor(static_cast<StorRequest&>(request), client);
 	} else if(name == SystRequest::CommandName) {
 		processSyst(static_cast<SystRequest&>(request), client);
 	} else if(name == FeatRequest::CommandName) {
@@ -31,14 +33,14 @@ void RequestHandler::process(Request& request, Client* client) {
         processCwd(static_cast<CWDRequest&>(request), client);
     }  else if(name == CDUPRequest::CommandName) {
         processCdup(static_cast<CDUPRequest&>(request), client);
-    }
-	/*else if(name == "STOR") {
-        processStor(static_cast<StorRequest&> request, client);
-    } else if(name == "QUIT") {
-        processQuit(static_cast<QuitRequest&> request, client);
-    } else if(name == "PWD") {
-        processPwd(static_cast<PwdRequest&> request, client);
-    }*/
+	} else if(name == MkdRequest::CommandName) {
+		processMkd(static_cast<MkdRequest&>(request), client);
+	} else if(name == RmdRequest::CommandName) {
+		processRmd(static_cast<RmdRequest&>(request), client);
+	} else if(name == QuitRequest::CommandName) {
+		processQuit(static_cast<QuitRequest&>(request), client);
+	}
+
 }
 
 void RequestHandler::processUser(UserRequest& request, Client* client) {
@@ -103,7 +105,7 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
 		client->getSocket().send(p2);
 
 		Directory directory;
-
+std::cout << "(" << client->getUser().getHomeDir() << ";" << client->getCurrentDirectory() << ")" << std::endl;
 		directory.open(client->getUser().getHomeDir()+client->getCurrentDirectory());
 
 
@@ -118,15 +120,16 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
 				p_data << it->permission << " " << "1" << " " <<  client->getUser().getUsername() << " " << std::to_string(it->size) << " " << it->lastModification << " " << it->name << "\r\n";
 		}
 
-		client->openActiveConnection();
-		client->getActiveDataSocket().send(p_data);
-		client->closeActiveConnection();
+		client->openDataConnection();
+		client->sendToDataConnection(p_data);
+		client->closeDataConnection();
 
 		AnswerTransfertSuccess answer2;
 		answer2.addArgument("Data sended successfully");
 		answer2.generatePacket(p);
 	}
 	catch(SystemException& e) {
+		std::cout << e.getMessage() << std::endl;
 		AnswerFileUnavailable answer;
 		answer.addArgument("Unable to read \""+client->getCurrentDirectory()+"\"");
 		answer.generatePacket(p);
@@ -138,7 +141,7 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
 void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 	Packet p, p2;
 
-	std::string filename = client->getUser().getHomeDir()+request.getFilename();
+	std::string filename = client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getFilename();
 
 	std::ifstream file(filename, std::ios::in);
 
@@ -164,10 +167,11 @@ void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 		file.read(buffer, size);
 		p_data.rawWrite(buffer, size);
 		delete buffer;
+		file.close();
 
-		client->openActiveConnection();
-		client->getActiveDataSocket().send(p_data);
-		client->closeActiveConnection();
+		client->openDataConnection();
+		client->sendToDataConnection(p_data);
+		client->closeDataConnection();
 
 		AnswerTransfertSuccess answer2;
 		answer2.addArgument("Data sended successfully");
@@ -179,7 +183,7 @@ void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 void RequestHandler::processStor(StorRequest& request, Client* client) {
 	Packet p, p2;
 
-	std::string filename = client->getUser().getHomeDir()+request.getFilename();
+	std::string filename = client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getFilename();
 
 	std::ofstream file(filename, std::ios::out | std::ios::trunc);
 
@@ -195,12 +199,14 @@ void RequestHandler::processStor(StorRequest& request, Client* client) {
 		answer.generatePacket(p);
 		client->getSocket().send(p);
 
-		client->openActiveConnection();
-
+		client->openDataConnection();
 		Packet packet_data;
-		client->getActiveDataSocket().receive(packet_data);
+
+		client->receiveFromDataConnection(packet_data);
 		file.write(packet_data.getBuffer(), packet_data.getSize());
-		client->closeActiveConnection();
+		file.close();
+
+		client->closeDataConnection();
 
 		AnswerTransfertSuccess answer2;
 		answer2.addArgument("Data sended successfully");
@@ -234,7 +240,8 @@ void RequestHandler::processFeat(FeatRequest& request, Client* client) {
 void RequestHandler::processPwd(PwdRequest& request, Client* client) {
 	Packet p;
 
-	AnswerPathnameCreated answer("\""+client->getCurrentDirectory()+"\"");
+	AnswerPathnameCreated answer;
+	answer.addArgument("\""+client->getCurrentDirectory()+"\" is current directory.");
 	answer.generatePacket(p);
 	client->getSocket().send(p);
 }
@@ -253,33 +260,37 @@ void RequestHandler::processPasv(PasvRequest& request, Client* client) {
 
 	client->switchPassiveMode();
 
+	std::cout << "Open passiv connection (127.0.0.1:" << client->getPassiveDataListener().getPort() << ")" << std::endl;
+
 	AnswerEnteringPassiveMode answer;
-	answer.addArgument("Entering Passive Mode (127,0,0,1,"+std::to_string((client->getPassiveDataSocket().getPort() >> 8) & 0xFF)+","+std::to_string(client->getPassiveDataSocket().getPort() & 0xFF)+").");
+	answer.addArgument("Entering Passive Mode (127,0,0,1,"+std::to_string((client->getPassiveDataListener().getPort() >> 8) & 0xFF)+","+std::to_string(client->getPassiveDataListener().getPort() & 0xFF)+").");
 	answer.generatePacket(p);
 	client->getSocket().send(p);
 }
 
 void RequestHandler::processCwd(CWDRequest& request, Client* client) {
     Packet p;
-    const std::string directory_path = request.getDirectory();
 
-    if(directory_path.compare(0, 1, "/") == 0) {
-        try {
-            Directory directory;
-            directory.open(client->getUser().getHomeDir()+directory_path);
-            client->setCurrentDirectory(directory_path);
-            AnswerSuccess answer;
-            answer.generatePacket(p);
-        } catch(SystemException& e) {
-            AnswerFileUnavailable answer;
-            answer.addArgument("Unable to access to \""+directory_path+"\"");
-            answer.generatePacket(p);
-        }
-    } else {
-        AnswerFileUnavailable answer;
-        answer.addArgument("Unable to access to \""+directory_path+"\"");
-        answer.generatePacket(p);
-    }
+	try {
+		Directory directory;
+		std::string pathname;
+		if(request.getDirectory().at(0) == '/') // absolute
+			pathname = request.getDirectory();
+		else
+			pathname = client->getCurrentDirectory()+request.getDirectory();
+
+		pathname = pathname.back() == '/' ? pathname : pathname +"/";
+
+		directory.open(client->getUser().getHomeDir()+pathname);
+		client->setCurrentDirectory(pathname);
+		AnswerSuccess answer;
+		answer.addArgument("Change directory to \""+pathname+"\"");
+		answer.generatePacket(p);
+	} catch(SystemException& e) {
+		AnswerFileUnavailable answer;
+		answer.addArgument("Unable to access to \""+request.getDirectory()+"\"");
+		answer.generatePacket(p);
+	}
 
     client->getSocket().send(p);
 }
@@ -287,28 +298,59 @@ void RequestHandler::processCwd(CWDRequest& request, Client* client) {
 void RequestHandler::processCdup(CDUPRequest& request, Client* client) {
     std::string directory = client->getCurrentDirectory();
 
-    if(directory.compare(0, directory.length(), "/") != 0) {
-        size_t index = directory.find_last_of('/');
-        if(index == 0) {
-            directory = directory.substr(0, index+1);
-        } else {
-            directory = directory.substr(0, index);
-        }
-    }
-    CWDRequest newRequest(directory);
-    processCwd(newRequest, client);
+	if(directory.size() > 1) {
+		unsigned int index = client->getCurrentDirectory().substr(0, client->getCurrentDirectory().size()-1).find_last_of("/");
+		std::cout << "->>" << client->getCurrentDirectory().substr(0, client->getCurrentDirectory().size()-1) << std::endl;
+		std::cout << "->>" << client->getCurrentDirectory().substr(0, index+1) << std::endl;
+		CWDRequest newRequest(client->getCurrentDirectory().substr(0, index+1));
+		processCwd(newRequest, client);
+	}
+	else {
+		Packet p;
+		AnswerSuccess answer;
+		answer.addArgument("Change directory to \""+client->getCurrentDirectory()+"\"");
+		answer.generatePacket(p);
+	}
+
+
 }
 
-/*
-void RequestHandler::processStor(StorRequest &request, Client &client) {
-    // TODO
+void RequestHandler::processMkd(MkdRequest& request, Client* client) {
+	Packet p;
+	if(mkdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str(), S_IRWXU | S_IRWXG | S_IRWXO) == -1) {
+		AnswerFileUnavailable answer;
+		answer.addArgument("Unable to create \""+request.getName()+"/\".");
+		answer.generatePacket(p);
+	}
+	else {
+		AnswerPathnameCreated answer;
+		answer.addArgument("\""+request.getName()+"/\" created.");
+		answer.generatePacket(p);
+	}
+	client->getSocket().send(p);
 }
 
-void RequestHandler::processQuit(QuitRequest &request, Client &client) {
-    // TODO
+void RequestHandler::processRmd(RmdRequest& request, Client* client) {
+	Packet p;
+	if(rmdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str()) == -1) {
+		AnswerFileUnavailable answer;
+		answer.addArgument("Unable to delete \""+request.getName()+"/\".");
+		answer.generatePacket(p);
+	}
+	else {
+		AnswerPathnameCreated answer;
+		answer.addArgument("\""+request.getName()+"/\" delete.");
+		answer.generatePacket(p);
+	}
+	client->getSocket().send(p);
 }
 
-void RequestHandler::processPwd(PwdRequest &request, Client &client) {
-    // TODO
+void RequestHandler::processQuit(QuitRequest& request, Client* client) {
+	Packet p;
+	AnswerServerCloseConnection answer;
+	answer.addArgument("Bye bye.");
+	answer.generatePacket(p);
+	client->getSocket().send(p);
+
+	client->close();
 }
-*/

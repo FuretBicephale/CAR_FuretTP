@@ -6,6 +6,15 @@
 
 using namespace FTP;
 
+//Useful for stopping server on exit program request.
+static FTPServer* server_ref = nullptr;
+
+void onExit() {
+	if(server_ref != nullptr) {
+		server_ref->close();
+	}
+}
+
 int main() {
 
 	try {
@@ -18,6 +27,9 @@ int main() {
 		UserConfigurationReader::process(configuration.getUserConfigurationPathname(), configuration);
 
 		FTPServer server(configuration);
+		server_ref = &server;
+
+		atexit(onExit);
 
 		server.run();
 

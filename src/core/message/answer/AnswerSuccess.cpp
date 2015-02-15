@@ -14,6 +14,10 @@ AnswerSystemName::AnswerSystemName(const std::string& systemName) : Answer(Answe
 	addArgument(systemName);
 }
 
+AnswerServerCloseConnection::AnswerServerCloseConnection() : Answer(AnswerServerCloseConnection::Code) {
+
+}
+
 AnswerDataConnectionOpen::AnswerDataConnectionOpen() : Answer(AnswerDataConnectionOpen::Code) {
 
 }
@@ -30,6 +34,6 @@ AnswerLoginOk::AnswerLoginOk() : Answer(AnswerLoginOk::Code) {
 
 }
 
-AnswerPathnameCreated::AnswerPathnameCreated(const std::string& pathname) : Answer(AnswerPathnameCreated::Code) {
-	addArgument(pathname);
+AnswerPathnameCreated::AnswerPathnameCreated() : Answer(AnswerPathnameCreated::Code) {
+
 }

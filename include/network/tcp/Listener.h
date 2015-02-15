@@ -43,6 +43,8 @@ namespace FTP {
 			/// \brief close the socket
 			void close();
 
+			bool isOpen() const;
+
 			unsigned int getPort() const;
 
 		private:
