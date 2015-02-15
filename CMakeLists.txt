@@ -30,12 +30,12 @@ file(
 file(
         GLOB_RECURSE
 
-        tests_files
+        test_files
 
-        tests/*.cpp
+        test/*.cpp
 )
 
-add_subdirectory(tests)
+add_subdirectory(test)
 
 find_package(Threads)
 
