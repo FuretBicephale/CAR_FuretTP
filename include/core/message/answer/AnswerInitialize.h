@@ -9,7 +9,6 @@
 namespace FTP {
 
 	/// \brief 150 file status okay; about to open data connection.
-
 	class AnswerFileStatusOK : public Answer {
 
 	public:

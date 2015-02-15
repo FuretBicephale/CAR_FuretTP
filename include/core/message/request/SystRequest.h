@@ -6,10 +6,20 @@
 
 namespace FTP {
 
-	/// Command send by the client for known server system
+    ///
+    /// \class ftp::SystRequest
+    /// \ingroup request
+    /// \brief Syst request.
+    ///
+    /// Command sent by the client to know server system.
+    ///
 	class SystRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief SystRequest constructor
+        ///
 		SystRequest();
 
 		static constexpr const char* CommandName = "SYST";

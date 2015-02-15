@@ -6,10 +6,21 @@
 
 namespace FTP {
 
-	/// Command send by the client for upload a file
+    ///
+    /// \class ftp::StorRequest
+    /// \ingroup request
+    /// \brief Stor request.
+    ///
+    /// Command sent by the client to upload a file on the server.
+    ///
 	class StorRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief StorRequest constructor
+        /// \param filename the file to upload on the server
+        ///
 		StorRequest(const std::string& filename);
 
 		const std::string& getFilename() const;
@@ -17,7 +28,7 @@ namespace FTP {
 		static constexpr const char* CommandName = "STOR";
 
 	private:
-		std::string _filename;
+        std::string _filename; ///< the file the user wants to upload on the server
 
 	};
 }

@@ -11,28 +11,30 @@ namespace FTP {
     ///
     /// \class ftp::Answer
     /// \ingroup answer
-    /// \brief Basic request's answer
+    /// \brief Basic request's answer.
+    ///
+    /// Represents a packet send by the server to the user in response of a request.
     ///
 	class Answer {
 
 	public:
 
         ///
-        /// \brief Answer constructor
+        /// \brief Answer constructor.
         /// \param code Return code value of the answer
         ///
 		Answer(unsigned int code);
 
         ///
-        /// \brief Answer desctructor
+        /// \brief Answer desctructor.
         ///
 		virtual ~Answer();
 
         ///
-        /// \brief generatePacket generate a packet to send to the user from the answer class
+        /// \brief generatePacket generate a packet to send to the user from the answer class.
         /// \param packet Packet which will contains the generated packet
         ///
-        /// The packet will have the following format : <_code> <_arguments>
+        /// The packet will have the following format : <_code> <_arguments>.
         ///
 		void generatePacket(Packet& packet);
 
@@ -43,7 +45,7 @@ namespace FTP {
 		virtual void fillPacket(Packet& packet);
 
         ///
-        /// \brief addArgument Add a string argument to the answer
+        /// \brief Add a string argument to the answer.
         /// \param argument the string to add
         ///
 		void addArgument(const std::string& argument);

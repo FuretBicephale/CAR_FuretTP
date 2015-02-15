@@ -6,10 +6,20 @@
 
 namespace FTP {
 
-	/// Command send by the client for known server system
+    ///
+    /// \class ftp::TypeRequest
+    /// \ingroup request
+    /// \brief Type request.
+    ///
+    ///
+    ///
 	class TypeRequest : public Request {
 
 	public:
+
+        ///
+        /// \brief The Type enum
+        ///
 		enum Type {
 			Ascii,
 			Ebcdic,
@@ -17,6 +27,10 @@ namespace FTP {
 			Local
 		};
 
+        ///
+        /// \brief TypeRequest constructor
+        /// \param type
+        ///
 		TypeRequest(Type type);
 
 		Type getType() const;
@@ -24,7 +38,7 @@ namespace FTP {
 		static constexpr const char* CommandName = "TYPE";
 
 	private:
-		Type _type;
+        Type _type; ///<
 	};
 }
 
