@@ -1,9 +1,9 @@
-#ifndef _FURETTP_RMD_REQUEST_H
-#define _FURETTP_RMD_REQUEST_H
+#ifndef _FTP_RMD_REQUEST_H
+#define _FTP_RMD_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class RmdRequest : public Request {
 

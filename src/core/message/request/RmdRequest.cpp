@@ -1,6 +1,6 @@
 #include "core/message/request/RmdRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 RmdRequest::RmdRequest(const std::string& name) : Request(RmdRequest::CommandName), _name(name) {
 

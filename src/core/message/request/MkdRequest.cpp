@@ -1,6 +1,6 @@
 #include "core/message/request/MkdRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 MkdRequest::MkdRequest(const std::string& name) : Request(MkdRequest::CommandName), _name(name) {
 

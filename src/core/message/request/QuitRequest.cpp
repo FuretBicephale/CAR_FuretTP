@@ -1,6 +1,6 @@
 #include "core/message/request/QuitRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 QuitRequest::QuitRequest() : Request(QuitRequest::CommandName) {
 

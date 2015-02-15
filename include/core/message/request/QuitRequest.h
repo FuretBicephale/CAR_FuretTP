@@ -1,9 +1,9 @@
-#ifndef _FURETTP_QUIT_REQUEST_H
-#define _FURETTP_QUIT_REQUEST_H
+#ifndef _FTP_QUIT_REQUEST_H
+#define _FTP_QUIT_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class QuitRequest : public Request {
 
