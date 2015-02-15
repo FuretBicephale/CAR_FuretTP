@@ -20,6 +20,8 @@
 #include "core/message/request/PwdRequest.h"
 #include "core/message/request/TypeRequest.h"
 #include "core/message/request/PasvRequest.h"
+#include "core/message/request/CWDRequest.h"
+#include "core/message/request/CDUPRequest.h"
 #include "network/Packet.h"
 
 namespace FuretTP {

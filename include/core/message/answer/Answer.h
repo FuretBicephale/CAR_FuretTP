@@ -41,6 +41,22 @@ namespace FuretTP {
         static const unsigned int Code = 550;
     };
 
+    class AnswerCWDOk : public Answer {
+
+    public:
+        AnswerCWDOk();
+
+        static const unsigned int Code = 250;
+    };
+
+    class AnswerCWDFail : public Answer {
+
+    public:
+        AnswerCWDFail();
+
+        static const unsigned int Code = 550;
+    };
+
 }
 
 #endif
