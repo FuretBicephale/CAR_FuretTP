@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-namespace FuretTP {
+namespace FTP {
 
 	class FTPServer {
 

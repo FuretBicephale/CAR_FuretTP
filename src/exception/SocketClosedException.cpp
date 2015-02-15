@@ -1,6 +1,6 @@
 #include "exception/SocketClosedException.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 SocketClosedException::SocketClosedException(const std::string& message) : Exception("Socket  Closed : \""+message+"\"") {
 

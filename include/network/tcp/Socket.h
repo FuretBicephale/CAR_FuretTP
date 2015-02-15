@@ -9,7 +9,7 @@
 
 #include <unistd.h>
 
-namespace FuretTP {
+namespace FTP {
 
 	namespace TCP {
 

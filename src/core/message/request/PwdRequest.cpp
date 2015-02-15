@@ -1,6 +1,6 @@
 #include "core/message/request/PwdRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 PwdRequest::PwdRequest() : Request(PwdRequest::CommandName) {
 

@@ -10,7 +10,7 @@
 
 #include "exception/AddressNotFoundException.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	namespace IP {
 

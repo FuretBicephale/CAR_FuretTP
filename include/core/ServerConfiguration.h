@@ -5,7 +5,7 @@
 
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
     class ServerConfiguration {
 

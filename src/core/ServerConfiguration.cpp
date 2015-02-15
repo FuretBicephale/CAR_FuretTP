@@ -1,6 +1,6 @@
 #include "core/ServerConfiguration.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 ServerConfiguration::ServerConfiguration() {
 	loadDefault();
@@ -9,7 +9,7 @@ ServerConfiguration::ServerConfiguration() {
 void ServerConfiguration::loadDefault() {
 	_userConfigurationPathname = "user.conf";
 	_bindPort = 4224;
-	_motd = "Welcome on FuretTP Server V1.0";
+    _motd = "Welcome on FTP Server V1.0";
 }
 
 UserList& ServerConfiguration::getUserList() {

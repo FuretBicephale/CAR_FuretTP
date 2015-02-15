@@ -1,6 +1,6 @@
 #include "core/UserConfigurationReader.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 void UserConfigurationReader::process(const std::string& pathname, ServerConfiguration& configuration) {
 

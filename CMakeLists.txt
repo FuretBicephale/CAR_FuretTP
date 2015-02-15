@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(FuretTP)
+project(FTP)
 
-set(executable_name "FuretTP")
+set(executable_name "FTP")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 add_definitions(-std=c++11)
-add_definitions(-DFURETTP_SYST_NAME="${CMAKE_SYSTEM_NAME}")
+add_definitions(-DFTP_SYST_NAME="${CMAKE_SYSTEM_NAME}")
 
 include_directories(include)
 

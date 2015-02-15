@@ -1,9 +1,9 @@
-#ifndef _FURETTP_PASV_REQUEST_H
-#define _FURETTP_PASV_REQUEST_H
+#ifndef _FTP_PASV_REQUEST_H
+#define _FTP_PASV_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	/// \brief Request send entering in passive mode
 	class PasvRequest : public Request {

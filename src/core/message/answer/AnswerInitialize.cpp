@@ -1,6 +1,6 @@
 #include "core/message/answer/AnswerInitialize.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AnswerFileStatusOK::AnswerFileStatusOK() : Answer(AnswerFileStatusOK::Code) {
 

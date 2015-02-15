@@ -1,5 +1,5 @@
-#ifndef _FURETTP_USER_CONFIGURATION_H
-#define _FURETTP_USER_CONFIGURATION_H
+#ifndef _FTP_USER_CONFIGURATION_H
+#define _FTP_USER_CONFIGURATION_H
 
 #include <iostream>
 #include <fstream>
@@ -10,7 +10,7 @@
 #include "core/ServerConfiguration.h"
 #include "core/User.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class UserConfigurationReader {
 

@@ -1,5 +1,5 @@
-#ifndef _FURETTP_CLIENT_H
-#define _FURETTP_CLIENT_H
+#ifndef _FTP_CLIENT_H
+#define _FTP_CLIENT_H
 
 #include "core/User.h"
 #include "network/tcp/Socket.h"
@@ -10,10 +10,15 @@
 #include "core/RequestHandler.h"
 #include "core/message/request/RequestFactory.h"
 
-namespace FuretTP {
+namespace FTP {
 
     class FTPServer;
 
+    ///
+    /// \class ftp::Client
+    /// \ingroup core
+    ///
+    ///
     class Client {
 
     public:

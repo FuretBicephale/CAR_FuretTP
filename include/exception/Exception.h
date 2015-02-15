@@ -1,5 +1,5 @@
-#ifndef _FURETTP_EXCEPTION_H
-#define _FURETTP_EXCEPTION_H
+#ifndef _FTP_EXCEPTION_H
+#define _FTP_EXCEPTION_H
 
 #define THROW(EXCEPTION_TYPE, ...) {\
 			EXCEPTION_TYPE exception(__VA_ARGS__);\
@@ -10,7 +10,7 @@
 #include <string>
 #include <stdexcept>
 
-namespace FuretTP {
+namespace FTP {
 
 	class Exception {
 

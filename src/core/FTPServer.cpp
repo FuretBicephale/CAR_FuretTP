@@ -1,6 +1,6 @@
 #include "core/FTPServer.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 FTPServer::FTPServer(const ServerConfiguration& configuration) :  _configuration(configuration) {
 

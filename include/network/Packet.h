@@ -1,12 +1,12 @@
-#ifndef _FURETTP_PACKET_H
-#define _FURETTP_PACKET_H
+#ifndef _FTP_PACKET_H
+#define _FTP_PACKET_H
 
 #include <string>
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
 #include <cctype>
-namespace FuretTP {
+namespace FTP {
 
 	class Packet {
 

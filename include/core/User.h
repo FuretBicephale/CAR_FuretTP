@@ -1,12 +1,12 @@
-#ifndef _FURETTP_USER_H
-#define _FURETTP_USER_H
+#ifndef _FTP_USER_H
+#define _FTP_USER_H
 
 #include "exception/UserNotFoundException.h"
 
 #include <vector>
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
 	struct User {
 

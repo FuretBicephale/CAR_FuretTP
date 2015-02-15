@@ -27,7 +27,7 @@
 
 #include "network/ip/Address.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class Client;
 

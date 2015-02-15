@@ -1,6 +1,6 @@
 #include "core/message/request/FeatRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 FeatRequest::FeatRequest() : Request(FeatRequest::CommandName) {
 

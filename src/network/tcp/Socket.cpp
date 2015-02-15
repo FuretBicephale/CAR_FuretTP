@@ -1,6 +1,6 @@
 #include "network/tcp/Socket.h"
 
-using namespace FuretTP;
+using namespace FTP;
 using namespace TCP;
 
 Socket::Socket() : _socket(UNINITIALIZED_SOCKET), _address(), _port(0) {

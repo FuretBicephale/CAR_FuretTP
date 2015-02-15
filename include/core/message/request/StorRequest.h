@@ -1,10 +1,10 @@
-#ifndef _FURETTP_STOR_REQUEST_H
-#define _FURETTP_STOR_REQUEST_H
+#ifndef _FTP_STOR_REQUEST_H
+#define _FTP_STOR_REQUEST_H
 
 #include "core/message/request/Request.h"
 #include "network/ip/Address.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	/// Command send by the client for upload a file
 	class StorRequest : public Request {

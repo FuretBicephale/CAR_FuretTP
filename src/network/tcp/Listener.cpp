@@ -1,6 +1,6 @@
 #include "network/tcp/Listener.h"
 
-using namespace FuretTP;
+using namespace FTP;
 using namespace TCP;
 
 Listener::Listener() : _socket(UNINITIALIZED_SOCKET), _address(), _port(0) {

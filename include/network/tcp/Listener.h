@@ -15,7 +15,7 @@
 
 #include "exception/SystemException.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	namespace TCP {
 

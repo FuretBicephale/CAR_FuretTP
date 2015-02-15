@@ -1,5 +1,5 @@
-#ifndef _FURETTP_DIRECTORY_H
-#define _FURETTP_DIRECTORY_H
+#ifndef _FTP_DIRECTORY_H
+#define _FTP_DIRECTORY_H
 
 #include <string>
 #include <sys/types.h>
@@ -10,7 +10,7 @@
 
 #include "exception/SystemException.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class Directory {
 

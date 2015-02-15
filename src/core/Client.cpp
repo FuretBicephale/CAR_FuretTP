@@ -1,7 +1,7 @@
 #include "core/Client.h"
 #include "core/FTPServer.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 unsigned int Client::_uidCounter(0);
 

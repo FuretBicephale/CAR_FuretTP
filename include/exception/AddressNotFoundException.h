@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <cstring>
 
-namespace FuretTP {
+namespace FTP {
 
     /// \brief Exception for Operating system error
 	class AddressNotFoundException : public Exception {

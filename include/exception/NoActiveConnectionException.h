@@ -1,11 +1,11 @@
-#ifndef _FURETTP_NO_ACTIVE_CONNECTION_EXCEPTION_H
-#define _FURETTP_NO_ACTIVE_CONNECTION_EXCEPTION_H
+#ifndef _FTP_NO_ACTIVE_CONNECTION_EXCEPTION_H
+#define _FTP_NO_ACTIVE_CONNECTION_EXCEPTION_H
 
 #include <string>
 
 #include "exception/Exception.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class NoActiveConnectionException : public Exception {
 

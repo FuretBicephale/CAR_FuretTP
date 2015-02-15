@@ -1,6 +1,6 @@
 #include "network/Packet.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 Packet::Packet() : _buffer(nullptr), _cursor(0), _allocated(0), _readCursor(0) {
 	_buffer = (char*)malloc(BaseAlloc);
@@ -68,7 +68,7 @@ Packet& Packet::operator>>(std::string& str) {
 	return *this;
 }
 
-std::ostream& FuretTP::operator<<(std::ostream& stream, const Packet& packet) {
+std::ostream& FTP::operator<<(std::ostream& stream, const Packet& packet) {
 	stream.write(packet._buffer, packet._cursor);
 	return stream;
 }

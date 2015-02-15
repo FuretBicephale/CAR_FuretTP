@@ -1,6 +1,6 @@
 #include "network/ip/Address.h"
 
-using namespace FuretTP;
+using namespace FTP;
 using namespace IP;
 
 Address::Address() : _host(nullptr) {
@@ -35,7 +35,7 @@ int Address::getAddressType() const {
 	return _host->h_addrtype;
 }
 
-std::ostream& FuretTP::IP::operator<<(std::ostream& stream, const Address& address) {
+std::ostream& FTP::IP::operator<<(std::ostream& stream, const Address& address) {
 	if(address._host == nullptr) {
 	   stream << "Unknown";
 	}

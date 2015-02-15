@@ -1,6 +1,6 @@
 #include "core/message/request/PasvRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 PasvRequest::PasvRequest() : Request(PasvRequest::CommandName) {
 

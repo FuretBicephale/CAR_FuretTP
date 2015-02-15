@@ -1,9 +1,9 @@
-#ifndef _FURETTP_CWD_REQUEST_H
-#define _FURETTP_CWD_REQUEST_H
+#ifndef _FTP_CWD_REQUEST_H
+#define _FTP_CWD_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
     class CWDRequest : public Request {
 

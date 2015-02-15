@@ -1,6 +1,6 @@
 #include "core/message/request/StorRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 StorRequest::StorRequest(const std::string& filename) : Request(StorRequest::CommandName), _filename(filename) {
 

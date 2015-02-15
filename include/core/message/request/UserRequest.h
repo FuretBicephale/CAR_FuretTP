@@ -1,9 +1,9 @@
-#ifndef _FURETTP_USER_REQUEST_H
-#define _FURETTP_USER_REQUEST_H
+#ifndef _FTP_USER_REQUEST_H
+#define _FTP_USER_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	/// \brief Request send when user begin login. this command contains the username as first argument
 	class UserRequest : public Request {

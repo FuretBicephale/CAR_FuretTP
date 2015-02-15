@@ -1,6 +1,6 @@
 #include "core/message/answer/AnswerUserError.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AnswerLoginFail::AnswerLoginFail() : Answer(AnswerLoginFail::Code) {
 

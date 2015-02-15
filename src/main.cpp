@@ -4,12 +4,12 @@
 
 #include <iostream>
 
-using namespace FuretTP;
+using namespace FTP;
 
 int main() {
 
 	try {
-		std::cout << ".: FuretTP :." << std::endl;
+        std::cout << ".: FTP :." << std::endl;
 
 		ServerConfiguration configuration;
 
