@@ -122,6 +122,9 @@ Request* RequestFactory::eval(Packet& packet) {
         packet >> directory;
         return new CWDRequest(directory);
     }
+    else if(message_command == CDUPRequest::CommandName) {
+        return new CDUPRequest();
+    }
 
     std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 

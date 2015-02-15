@@ -29,6 +29,8 @@ void RequestHandler::process(Request& request, Client* client) {
 		processPasv(static_cast<PasvRequest&>(request), client);
     } else if(name == CWDRequest::CommandName) {
         processCwd(static_cast<CWDRequest&>(request), client);
+    }  else if(name == CDUPRequest::CommandName) {
+        processCdup(static_cast<CDUPRequest&>(request), client);
     }
 	/*else if(name == "STOR") {
         processStor(static_cast<StorRequest&> request, client);
@@ -36,9 +38,7 @@ void RequestHandler::process(Request& request, Client* client) {
         processQuit(static_cast<QuitRequest&> request, client);
     } else if(name == "PWD") {
         processPwd(static_cast<PwdRequest&> request, client);
-    }  else if(name == "CDUP") {
-        processCdup(static_cast<CdupRequest&> request, client);
-	}*/
+    }*/
 }
 
 void RequestHandler::processUser(UserRequest& request, Client* client) {
@@ -217,7 +217,7 @@ void RequestHandler::processPasv(PasvRequest& request, Client* client) {
 	client->getSocket().send(p);
 }
 
-void RequestHandler::processCwd(CWDRequest &request, Client* client) {
+void RequestHandler::processCwd(CWDRequest& request, Client* client) {
     Packet p;
     const std::string directory_path = request.getDirectory();
 
@@ -230,7 +230,7 @@ void RequestHandler::processCwd(CWDRequest &request, Client* client) {
             answer.generatePacket(p);
         } catch(SystemException& e) {
             AnswerFileUnavailable answer;
-            answer.addArgument("Unable to access to \""+client->getCurrentDirectory()+"\"");
+            answer.addArgument("Unable to access to \""+directory_path+"\"");
             answer.generatePacket(p);
         }
     } else {
@@ -240,6 +240,21 @@ void RequestHandler::processCwd(CWDRequest &request, Client* client) {
     }
 
     client->getSocket().send(p);
+}
+
+void RequestHandler::processCdup(CDUPRequest& request, Client* client) {
+    std::string directory = client->getCurrentDirectory();
+
+    if(directory.compare(0, directory.length(), "/") != 0) {
+        size_t index = directory.find_last_of('/');
+        if(index == 0) {
+            directory = directory.substr(0, index+1);
+        } else {
+            directory = directory.substr(0, index);
+        }
+    }
+    CWDRequest newRequest(directory);
+    processCwd(newRequest, client);
 }
 
 /*
@@ -252,10 +267,6 @@ void RequestHandler::processQuit(QuitRequest &request, Client &client) {
 }
 
 void RequestHandler::processPwd(PwdRequest &request, Client &client) {
-    // TODO
-}
-
-void RequestHandler::processCdup(CdupRequest &request, Client &client) {
     // TODO
 }
 */
