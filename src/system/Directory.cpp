@@ -31,10 +31,36 @@ void Directory::list(std::vector<Entry>& entries) {
 				THROW(SystemException, "Unable open directory \""+std::string(_pathname+directory_entry->d_name)+"\"", errno);
 			}
 
-			entry.permission = "-rw-r--r--";
+			switch (stat.st_mode & S_IFMT) {
+			case S_IFDIR:
+				entry.permission += "d";
+				break;
+			default:
+				entry.permission += "-";
+				break;
+			}
+
+			entry.permission += stat.st_mode & S_IRUSR ? "r" : "-";
+			entry.permission += stat.st_mode & S_IWUSR ? "w" : "-";
+			entry.permission += stat.st_mode & S_IXUSR ? "x" : "-";
+
+			entry.permission += stat.st_mode & S_IRGRP ? "r" : "-";
+			entry.permission += stat.st_mode & S_IWGRP ? "w" : "-";
+			entry.permission += stat.st_mode & S_IXGRP ? "x" : "-";
+
+			entry.permission += stat.st_mode & S_IROTH ? "r" : "-";
+			entry.permission += stat.st_mode & S_IWOTH ? "w" : "-";
+			entry.permission += stat.st_mode & S_IXOTH ? "x" : "-";
+
 			entry.size = stat.st_size;
 			entry.name = directory_entry->d_name;
-
+#define FORMAT_BUFFER_SIZE 64
+			char bufferData[FORMAT_BUFFER_SIZE];
+			struct tm timeinfo;
+			tzset();
+			localtime_r(&(stat.st_mtim.tv_sec), &timeinfo);
+			strftime(bufferData, FORMAT_BUFFER_SIZE, "%h %e %R", &timeinfo);
+			entry.lastModification = bufferData;
 
 			entries.push_back(entry);
 		}

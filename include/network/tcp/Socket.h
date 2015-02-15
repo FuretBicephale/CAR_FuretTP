@@ -5,6 +5,7 @@
 #include "network/ip/Address.h"
 #include "network/Packet.h"
 #include "exception/SystemException.h"
+#include "exception/SocketClosedException.h"
 
 #include <unistd.h>
 

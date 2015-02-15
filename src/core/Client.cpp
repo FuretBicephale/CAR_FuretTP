@@ -70,10 +70,22 @@ void Client::resetLogin() {
 	_user = User();
 }
 
-bool Client::openActiveConnection(const IP::Address& address, unsigned int port) {
-	_activeDataSocket.connect(address, port);
+void Client::openActiveConnection() {
+	if(_nextActivePort == 0)
+		THROW(NoActiveConnectionException, "");
 
-	return true;
+	_activeDataSocket.connect(_nextActiveAddress, _nextActivePort);
+	std::cout << "[Client " << _uid << "] Open new active data connection (" << _nextActiveAddress << ":" << _nextActivePort << ") " << std::endl;
+}
+
+void Client::closeActiveConnection() {
+	_activeDataSocket.close();
+	std::cout << "[Client " << _uid << "] close active data connection" << std::endl;
+}
+
+void Client::setNextActiveConnection(const IP::Address& address, unsigned int port) {
+	_nextActiveAddress = address;
+	_nextActivePort = port;
 }
 
 void Client::setCurrentDirectory(const std::string& pathname) {

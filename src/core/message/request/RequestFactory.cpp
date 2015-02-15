@@ -81,6 +81,11 @@ Request* RequestFactory::eval(Packet& packet) {
 		packet >> filename;
 		return new RetrRequest(filename);
 	}
+	else if(message_command == StorRequest::CommandName) {
+		std::string filename;
+		packet >> filename;
+		return new StorRequest(filename);
+	}
 	else if(message_command == SystRequest::CommandName) {
 		return new SystRequest();
 	}

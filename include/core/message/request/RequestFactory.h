@@ -14,6 +14,7 @@
 #include "core/message/request/ListRequest.h"
 #include "core/message/request/PortRequest.h"
 #include "core/message/request/RetrRequest.h"
+#include "core/message/request/StorRequest.h"
 #include "core/message/request/SystRequest.h"
 #include "core/message/request/FeatRequest.h"
 #include "core/message/request/PwdRequest.h"

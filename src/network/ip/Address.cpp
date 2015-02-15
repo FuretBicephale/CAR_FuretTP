@@ -40,7 +40,8 @@ std::ostream& FuretTP::IP::operator<<(std::ostream& stream, const Address& addre
 	   stream << "Unknown";
 	}
 	else {
-		stream << "Unknown";
+		char* buffer = inet_ntoa(*((struct in_addr *)address._host->h_addr_list[0]));
+		stream << buffer;
 	}
 	return stream;
 }

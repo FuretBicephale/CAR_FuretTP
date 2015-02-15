@@ -55,7 +55,7 @@ void Socket::connect(const IP::Address& address, unsigned int port) {
 
 void Socket::receive(Packet& packet) {
 	if(_socket == UNINITIALIZED_SOCKET)
-		return;
+		THROW(SocketClosedException, "Trying receive packet on closed socket");
 
 #define RECEIVE_BUFFER_SIZE 4096
 	char buffer[RECEIVE_BUFFER_SIZE];
@@ -73,7 +73,7 @@ void Socket::receive(Packet& packet) {
 
 void Socket::send(const Packet& packet) {
 	if(_socket == UNINITIALIZED_SOCKET)
-		return;
+		THROW(SocketClosedException, "Trying receive packet on closed socket");
 
 	if(::send(_socket, packet.getBuffer(), packet.getSize(), 0) == -1) {
 		THROW(SystemException, "Error during send", errno);

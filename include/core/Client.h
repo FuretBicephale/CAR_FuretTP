@@ -5,6 +5,7 @@
 #include "network/tcp/Socket.h"
 #include "network/tcp/Listener.h"
 #include "exception/SystemException.h"
+#include "exception/NoActiveConnectionException.h"
 
 #include "core/RequestHandler.h"
 #include "core/message/request/RequestFactory.h"
@@ -30,7 +31,11 @@ namespace FuretTP {
 		void resetLogin();
 
 		/// \brief open new connection with client
-		bool openActiveConnection(const IP::Address& address, unsigned int port);
+		void openActiveConnection();
+
+		void closeActiveConnection();
+
+		void setNextActiveConnection(const IP::Address& address, unsigned int port);
 
 		/// \brief set client current directory from it root directory. This pathname need to be absolute from root user (begin with a "/")
 		void setCurrentDirectory(const std::string& pathname);
@@ -56,6 +61,9 @@ namespace FuretTP {
 
 		TCP::Socket _activeDataSocket;
 		TCP::Listener _passiveDataSocket;
+
+		IP::Address _nextActiveAddress;
+		unsigned int _nextActivePort;
 
         static unsigned int _uidCounter;
 

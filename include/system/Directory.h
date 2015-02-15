@@ -20,8 +20,7 @@ namespace FuretTP {
 			std::string permission;
 			unsigned int size;
 			std::string name;
-
-
+			std::string lastModification;
 		};
 
 		Directory();

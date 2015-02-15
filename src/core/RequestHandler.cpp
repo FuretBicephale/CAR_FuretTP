@@ -84,23 +84,24 @@ void RequestHandler::processPass(PassRequest& request, Client* client) {
 void RequestHandler::processPort(PortRequest& request, Client* client) {
 	Packet p;
 
-	if(client->openActiveConnection(IP::Address(request.getAddress()), request.getPort())) {
-		AnswerDataConnectionOpen answer;
-		answer.addArgument("Data connection open");
-		answer.generatePacket(p);
+	client->setNextActiveConnection(request.getAddress(), request.getPort());
 
-	} else {
-		AnswerOpenConnectionFailed answer;
-		answer.generatePacket(p);
-		client->resetLogin();
-	}
+	AnswerSuccess answer;
+	answer.addArgument("Data connection register");
+	answer.generatePacket(p);
 
 	client->getSocket().send(p);
 }
 
 void RequestHandler::processList(ListRequest& request, Client* client) {
-	Packet p;
+	Packet p, p2;
 	try {
+
+		AnswerFileStatusOK answer;
+		answer.addArgument("Opening ASCII mode data connection");
+		answer.generatePacket(p2);
+		client->getSocket().send(p2);
+
 		Directory directory;
 
 		directory.open(client->getUser().getHomeDir()+client->getCurrentDirectory());
@@ -114,18 +115,16 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
 
 		for(auto it=entries.begin(); it != entries.end(); ++it) {
 			if(it->name != "." && it->name  != "..")
-				p_data << it->permission << " " << "1" << " " <<  "owner" << " " << "group" << " " << std::to_string(it->size) << " " << "Dec" << " " << "25" << " " << "16:23" << " " << it->name << "\0";
+				p_data << it->permission << " " << "1" << " " <<  client->getUser().getUsername() << " " << std::to_string(it->size) << " " << it->lastModification << " " << it->name << "\r\n";
 		}
 
-		std::cout << "Send=[" << p_data << "]" << std::endl;
-
+		client->openActiveConnection();
 		client->getActiveDataSocket().send(p_data);
+		client->closeActiveConnection();
 
-		//client->getDataSocket().close();
-sleep(1);
-		AnswerTransfertSuccess answer;
-		answer.addArgument("Data sended successfully");
-		answer.generatePacket(p);
+		AnswerTransfertSuccess answer2;
+		answer2.addArgument("Data sended successfully");
+		answer2.generatePacket(p);
 	}
 	catch(SystemException& e) {
 		AnswerFileUnavailable answer;
@@ -137,31 +136,74 @@ sleep(1);
 
 
 void RequestHandler::processRetr(RetrRequest& request, Client* client) {
-	Packet p;
+	Packet p, p2;
 
-	std::string filename = client->getCurrentDirectory()+request.getFilename();
+	std::string filename = client->getUser().getHomeDir()+request.getFilename();
 
 	std::ifstream file(filename, std::ios::in);
 
 	if(!file) {
 		AnswerFileUnavailable answer;
+		answer.addArgument("File not found \""+request.getFilename()+"\"");
 		answer.generatePacket(p);
 		client->getSocket().send(p);
 	}
 	else {
+		AnswerFileStatusOK answer;
+		answer.addArgument("Opening ASCII mode data connection");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+
 		file.seekg(0, file.end);
 		unsigned int size = file.tellg();
 		file.seekg(0, file.beg);
 
+		Packet p_data;
+
 		char* buffer = new char[size];
 		file.read(buffer, size);
-		p.rawWrite(buffer, size);
+		p_data.rawWrite(buffer, size);
 		delete buffer;
-		client->getActiveDataSocket().send(p);
 
-		Packet p2;
+		client->openActiveConnection();
+		client->getActiveDataSocket().send(p_data);
+		client->closeActiveConnection();
 
 		AnswerTransfertSuccess answer2;
+		answer2.addArgument("Data sended successfully");
+		answer2.generatePacket(p2);
+		client->getSocket().send(p2);
+	}
+}
+
+void RequestHandler::processStor(StorRequest& request, Client* client) {
+	Packet p, p2;
+
+	std::string filename = client->getUser().getHomeDir()+request.getFilename();
+
+	std::ofstream file(filename, std::ios::out | std::ios::trunc);
+
+	if(!file) {
+		AnswerFileUnavailable answer;
+		answer.addArgument("Unable to open \""+request.getFilename()+"\"");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+	}
+	else {
+		AnswerFileStatusOK answer;
+		answer.addArgument("Opening ASCII mode data connection");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+
+		client->openActiveConnection();
+
+		Packet packet_data;
+		client->getActiveDataSocket().receive(packet_data);
+		file.write(packet_data.getBuffer(), packet_data.getSize());
+		client->closeActiveConnection();
+
+		AnswerTransfertSuccess answer2;
+		answer2.addArgument("Data sended successfully");
 		answer2.generatePacket(p2);
 		client->getSocket().send(p2);
 	}
@@ -169,7 +211,7 @@ void RequestHandler::processRetr(RetrRequest& request, Client* client) {
 
 void RequestHandler::processSyst(SystRequest& request, Client* client) {
 	Packet p;
-	std::string sys_name(FURETTP_SYST_NAME);
+	std::string sys_name("UNIX"/*FURETTP_SYST_NAME*/);
 	std::transform(sys_name.begin(), sys_name.end(),sys_name.begin(), ::toupper);
 
 	AnswerSystemName answer(sys_name);
