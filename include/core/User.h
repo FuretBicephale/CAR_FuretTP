@@ -8,10 +8,28 @@
 
 namespace FTP {
 
+    ///
+    /// \struct ftp::User
+    /// \ingroup core
+    /// \brief Represents an user.
+    ///
+    /// Represents an user connected to the server.
+    ///
 	struct User {
 
 	public:
+
+        ///
+        /// \brief User constructor
+        ///
 		User();
+
+        ///
+        /// \brief User constructor
+        /// \param username User's username
+        /// \param password User's password
+        /// \param homeDir User's root directory
+        ///
 		User(const std::string& username, const std::string& password, const std::string& homeDir);
 
 		const std::string& getUsername() const;
@@ -19,17 +37,39 @@ namespace FTP {
 		const std::string& getHomeDir() const;
 
 	private:
-		std::string _username;
-		std::string _password;
-		std::string _homeDir;
+        std::string _username; ///< User's username
+        std::string _password; ///< User's password
+        std::string _homeDir; ///< User's root directory
 	};
 
+    ///
+    /// \class ftp::UserList
+    /// \ingroup core
+    /// \brief Represents a list of users.
+    ///
+    /// Represents a list of users connected to the server.
+    ///
 	class UserList {
 
 	public:
+
+        ///
+        /// \brief UserList constructor
+        ///
 		UserList();
 
+        ///
+        /// \brief Add an user to the list
+        /// \param user The user to add
+        /// \return True if the user is added, false otherwise
+        ///
 		bool addUser(const User& user);
+
+        ///
+        /// \brief Find an user with his username in the list
+        /// \param username the username of the user we're searching for
+        /// \return the user if he's finded, throw an UserNotFoundException otherwise
+        ///
 		const User& findUser(const std::string& username) const;
 		bool hasUser(const std::string& username) const;
 
@@ -37,7 +77,7 @@ namespace FTP {
 		UserList(const User& that);
 		UserList& operator=(const User& that);
 
-		std::vector<User> _userList;
+        std::vector<User> _userList; ///< The list of users connected to the server
 	};
 }
 

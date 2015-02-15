@@ -31,18 +31,31 @@ namespace FTP {
 
 	class Client;
 
+    ///
+    /// \class ftp::RequestHandler
+    /// \ingroup core
+    /// \brief Interpret and execute a known request.
+    ///
+    /// RequestHandler is a static Class.
+    /// It receives a request on its process method and then call the right method to execute it.
+    ///
     class RequestHandler {
 
     public:
 
-        // Call the right command handler for the message
-		static void process(Request& request, Client* client);
+        ///
+        /// \brief Call the right request handler for the request
+        /// \param request Request to interpret and execute
+        /// \param client the user who sends the request
+        ///
+        static void process(Request& request, Client* client);
 
 	private:
+
 		// Static class
-		RequestHandler();
-		RequestHandler(const RequestHandler& that);
-		RequestHandler& operator=(const RequestHandler& that);
+        RequestHandler();
+        RequestHandler(const RequestHandler& that);
+        RequestHandler& operator=(const RequestHandler& that);
 
         // Server command handlers
 		static void processUser(UserRequest& request, Client* client);
