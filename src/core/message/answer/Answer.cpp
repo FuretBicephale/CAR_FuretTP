@@ -1,6 +1,6 @@
 #include "core/message/answer/Answer.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 Answer::Answer(unsigned int code) : _code(code), _arguments() {
 

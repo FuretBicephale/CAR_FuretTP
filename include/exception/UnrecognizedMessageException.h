@@ -3,7 +3,7 @@
 
 #include "exception/Exception.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class UnrecognizedMessageException 	: public Exception {
 

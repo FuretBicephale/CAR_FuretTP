@@ -1,6 +1,6 @@
 #include "core/User.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 User::User() : _username(), _password(), _homeDir() {
 

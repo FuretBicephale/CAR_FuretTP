@@ -1,6 +1,6 @@
 #include "core/message/request/ListRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 ListRequest::ListRequest() : Request(ListRequest::CommandName) {
 

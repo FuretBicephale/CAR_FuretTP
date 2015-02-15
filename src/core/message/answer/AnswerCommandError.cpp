@@ -1,6 +1,6 @@
 #include "core/message/answer/AnswerCommandError.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AnswerUnimplemented::AnswerUnimplemented() : Answer(AnswerUnimplemented::Code) {
 

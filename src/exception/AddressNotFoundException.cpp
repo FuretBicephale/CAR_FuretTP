@@ -1,6 +1,6 @@
 #include "exception/AddressNotFoundException.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AddressNotFoundException::AddressNotFoundException(const std::string& address) : Exception("Address not found : \""+address+"\"") {
 

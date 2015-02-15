@@ -1,6 +1,6 @@
 #include "core/message/request/Request.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 Request::Request(const std::string& command) : _command(command) {
 

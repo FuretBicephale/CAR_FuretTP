@@ -1,10 +1,10 @@
-#ifndef _FURETTP_PORT_REQUEST_H
-#define _FURETTP_PORT_REQUEST_H
+#ifndef _FTP_PORT_REQUEST_H
+#define _FTP_PORT_REQUEST_H
 
 #include "core/message/request/Request.h"
 #include "network/ip/Address.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	/// Command send by the client when he want open a new connection.
 	class PortRequest : public Request {

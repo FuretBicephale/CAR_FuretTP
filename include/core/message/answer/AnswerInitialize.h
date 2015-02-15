@@ -1,12 +1,12 @@
-#ifndef _FURETTP_ANSWER_INITIALIZE_H
-#define _FURETTP_ANSWER_INITIALIZE_H
+#ifndef _FTP_ANSWER_INITIALIZE_H
+#define _FTP_ANSWER_INITIALIZE_H
 
 #include "core/message/answer/Answer.h"
 
 #include <vector>
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
 	/// \brief 150 file status okay; about to open data connection.
 

@@ -1,6 +1,6 @@
 #include "core/message/request/RequestFactory.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 Request* RequestFactory::eval(Packet& packet) {
 

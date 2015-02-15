@@ -1,10 +1,10 @@
-#ifndef _FURETTP_THREAD_H
-#define _FURETTP_THREAD_H
+#ifndef _FTP_THREAD_H
+#define _FTP_THREAD_H
 
 #include <pthread.h>
 #include "exception/Exception.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	template<class T>
 	class Thread {

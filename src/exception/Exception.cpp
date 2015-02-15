@@ -1,6 +1,6 @@
 #include "exception/Exception.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 Exception::Exception() : _file(nullptr), _line(-1), _message()  {
 

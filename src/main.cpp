@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-using namespace FuretTP;
+using namespace FTP;
 
 //Useful for stopping server on exit program request.
 static FTPServer* server_ref = nullptr;
@@ -18,7 +18,7 @@ void onExit() {
 int main() {
 
 	try {
-		std::cout << ".: FuretTP :." << std::endl;
+        std::cout << ".: FTP :." << std::endl;
 
 		ServerConfiguration configuration;
 

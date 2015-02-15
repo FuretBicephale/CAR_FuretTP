@@ -1,9 +1,9 @@
-#ifndef _FURETTP_CDUP_REQUEST_H
-#define _FURETTP_CDUP_REQUEST_H
+#ifndef _FTP_CDUP_REQUEST_H
+#define _FTP_CDUP_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
     class CDUPRequest : public Request {
 

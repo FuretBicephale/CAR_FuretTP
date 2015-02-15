@@ -1,9 +1,9 @@
-#ifndef _FURETTP_PASS_REQUEST_H
-#define _FURETTP_PASS_REQUEST_H
+#ifndef _FTP_PASS_REQUEST_H
+#define _FTP_PASS_REQUEST_H
 
 #include "core/message/request/Request.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	/// \brief Request send for end the login process. this message contains the user's passwors as first argument
 	class PassRequest : public Request {

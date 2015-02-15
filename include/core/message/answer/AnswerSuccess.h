@@ -1,12 +1,12 @@
-#ifndef _FURETTP_ANSWER_SUCCESS_H
-#define _FURETTP_ANSWER_SUCCESS_H
+#ifndef _FTP_ANSWER_SUCCESS_H
+#define _FTP_ANSWER_SUCCESS_H
 
 #include "core/message/answer/Answer.h"
 
 #include <vector>
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
 	/// \brief 200 OK
 	class AnswerSuccess : public Answer {

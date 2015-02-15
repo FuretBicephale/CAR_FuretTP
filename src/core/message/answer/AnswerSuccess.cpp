@@ -1,6 +1,6 @@
 #include "core/message/answer/AnswerSuccess.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AnswerSuccess::AnswerSuccess() : Answer(AnswerSuccess::Code) {
 

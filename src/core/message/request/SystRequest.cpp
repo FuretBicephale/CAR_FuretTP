@@ -1,6 +1,6 @@
 #include "core/message/request/SystRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 SystRequest::SystRequest() : Request(SystRequest::CommandName) {
 

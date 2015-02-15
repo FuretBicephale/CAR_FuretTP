@@ -1,6 +1,6 @@
 #include "exception/FileNotFoundException.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 FileNotFoundException::FileNotFoundException(const std::string& file) : Exception("File not found : \""+file+"\"") {
 

@@ -1,12 +1,12 @@
-#ifndef _FURETTP_ANSWER_H
-#define _FURETTP_ANSWER_H
+#ifndef _FTP_ANSWER_H
+#define _FTP_ANSWER_H
 
 #include "network/Packet.h"
 
 #include <vector>
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
 	class Answer {
 

@@ -1,9 +1,9 @@
-#ifndef _FURETTP_REQUEST_H
-#define _FURETTP_REQUEST_H
+#ifndef _FTP_REQUEST_H
+#define _FTP_REQUEST_H
 
 #include <string>
 
-namespace FuretTP {
+namespace FTP {
 
 	class Request {
 

@@ -1,5 +1,5 @@
-#ifndef _FURETTP_CLIENT_H
-#define _FURETTP_CLIENT_H
+#ifndef _FTP_CLIENT_H
+#define _FTP_CLIENT_H
 
 #include "core/User.h"
 #include "network/tcp/Socket.h"
@@ -10,41 +10,80 @@
 #include "core/RequestHandler.h"
 #include "core/message/request/RequestFactory.h"
 
-namespace FuretTP {
+namespace FTP {
 
     class FTPServer;
 
+    ///
+    /// \class ftp::Client
+    /// \ingroup core
+    /// \brief User connexion to the Server.
+    ///
+    /// Represents the connexion between the user and the server.
+    /// It's used to receive and send the different packet between the both entities.
+    ///
     class Client {
 
     public:
+
+        ///
+        /// \brief Client constructor.
+        /// \param server Server which the user is connecting.
+        /// \param socket User's socket.
+        ///
         Client(FTPServer* server, TCP::Socket& socket);
 
+        ///
+        /// \brief Runs the connexion between Client and Server.
+        ///
+        /// Runs the connexion between Client and Server while the socket is open.
+        /// Receives each packet from the user and interprets them.
+        /// If the received packet is a known request, it calls the RequestHandler, else it sends an unimplemented command packet.
+        ///
         void run();
 
-		/// \brief set username of the client
-		bool setUsername(const std::string& username);
+        /// \brief set username of the client.
+        bool setUsername(const std::string& username);
 
+        ///
 		/// \brief try to loggin with the previous username.
-		bool login(const std::string& password);
 
-		/// \brief reset loggin information
-		void resetLogin();
+        /// \param password Password send by the user.
+        /// \return True if the client is logged in, false otherwise.
+        ///
+        /// Try to login the client, if an username had been setted.
+        /// If the password is corresponding with the username, the user is logged in and the method return true.
+        /// If not, the method return false.
+        ///
+        bool login(const std::string& password);
 
-		/// \brief open new connection with client
+        /// \brief Reset login informations.
+        void resetLogin();
+
+		/// \brief open new data connection with client
 		void openDataConnection();
 
+		/// \brief send packet on data connection
 		void sendToDataConnection(const Packet& packet);
 
+
+		/// \brief receive packet on data connection
 		void receiveFromDataConnection(Packet& packet);
 
+		/// \brief Close the current data connection with the client.
 		void closeDataConnection();
 
+        /// \brief
 		void setNextActiveConnection(const IP::Address& address, unsigned int port);
 
-		/// \brief set client current directory from it root directory. This pathname need to be absolute from root user (begin with a "/")
-		void setCurrentDirectory(const std::string& pathname);
+        ///
+        /// \brief Set client current directory from its root directory.
+        ///
+        /// This pathname need to be absolute considering client root directory as root
+        ///
+        void setCurrentDirectory(const std::string& pathname);
 
-		/// \brief entering in passive mode
+        /// \brief Entering in passive mode
 		void switchPassiveMode();
 
 		/// \brief close the client connection and terminate client
@@ -59,24 +98,26 @@ namespace FuretTP {
 		TCP::Listener& getPassiveDataListener();
 
     private:
-        unsigned int _uid;
-        TCP::Socket _socket;
-        FTPServer* _server;
-		std::string _currrentDirectory;
 
-		bool _inPassiveMode;
-		bool  _isOpen;
-		TCP::Socket _activeDataSocket;
+		bool  _isOpen; ///< True if the client is running, false otherwise
+        unsigned int _uid; ///< Client id
+        TCP::Socket _socket; ///< Client socket
+        FTPServer* _server; ///< Server which client is connected to
+        std::string _currrentDirectory; ///< Current directory of the server for this client
 
-		TCP::Listener _passiveDataListener;
-		TCP::Socket _passiveDataSocket;
+        bool _inPassiveMode; ///< True if the client is in passive mode, false otherwise
 
-		IP::Address _nextActiveAddress;
-		unsigned int _nextActivePort;
+		TCP::Socket _activeDataSocket; ///< current data socket used in active mode
 
-        static unsigned int _uidCounter;
+		TCP::Listener _passiveDataListener; ///< the socket listener used in passive mode
+		TCP::Socket _passiveDataSocket; ///< current data socket used in passive mode
 
-		User _user;
+        IP::Address _nextActiveAddress; ///<
+        unsigned int _nextActivePort; ///<
+
+        static unsigned int _uidCounter; ///<
+
+        User _user; ///< User linked to this connexion
     };
 }
 

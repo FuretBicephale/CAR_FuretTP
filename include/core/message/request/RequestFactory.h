@@ -1,5 +1,5 @@
-#ifndef _FURETTP_REQUEST_FACTORY_H
-#define _FURETTP_REQUEST_FACTORY_H
+#ifndef _FTP_REQUEST_FACTORY_H
+#define _FTP_REQUEST_FACTORY_H
 
 #include <memory>
 #include <sstream>
@@ -28,7 +28,7 @@
 
 #include "network/Packet.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class RequestFactory {
 

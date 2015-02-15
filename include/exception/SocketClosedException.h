@@ -1,11 +1,11 @@
-#ifndef _FURETTP_SOCKET_CLOSED_EXCEPTION_H
-#define _FURETTP_SOCKET_CLOSED_EXCEPTION_H
+#ifndef _FTP_SOCKET_CLOSED_EXCEPTION_H
+#define _FTP_SOCKET_CLOSED_EXCEPTION_H
 
 #include <string>
 
 #include "exception/Exception.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class SocketClosedException : public Exception {
 

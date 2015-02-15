@@ -1,6 +1,6 @@
 #include "core/message/request/TypeRequest.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 TypeRequest::TypeRequest(Type type) : Request(TypeRequest::CommandName), _type(type) {
 

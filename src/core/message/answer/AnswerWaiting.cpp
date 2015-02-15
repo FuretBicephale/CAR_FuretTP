@@ -1,6 +1,6 @@
 #include "core/message/answer/AnswerWaiting.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 AnswerUsernameOK::AnswerUsernameOK() : Answer(AnswerUsernameOK::Code) {
 

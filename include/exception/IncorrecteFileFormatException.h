@@ -1,11 +1,11 @@
-#ifndef _FURETTP_INCORRECTE_FILE_FORMAT_EXCEPTION_H
-#define _FURETTP_INCORRECTE_FILE_FORMAT_EXCEPTION_H
+#ifndef _FTP_INCORRECTE_FILE_FORMAT_EXCEPTION_H
+#define _FTP_INCORRECTE_FILE_FORMAT_EXCEPTION_H
 
 #include <string>
 
 #include "exception/Exception.h"
 
-namespace FuretTP {
+namespace FTP {
 
 	class IncorrecteFileFormatException : public Exception {
 

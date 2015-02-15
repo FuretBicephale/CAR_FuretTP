@@ -1,6 +1,6 @@
 #include "system/Directory.h"
 
-using namespace FuretTP;
+using namespace FTP;
 
 
 

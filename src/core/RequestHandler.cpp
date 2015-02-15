@@ -2,7 +2,7 @@
 #include "core/Client.h"
 #include <dirent.h>
 
-using namespace FuretTP;
+using namespace FTP;
 
 
 void RequestHandler::process(Request& request, Client* client) {
@@ -217,7 +217,7 @@ void RequestHandler::processStor(StorRequest& request, Client* client) {
 
 void RequestHandler::processSyst(SystRequest& request, Client* client) {
 	Packet p;
-	std::string sys_name("UNIX"/*FURETTP_SYST_NAME*/);
+    std::string sys_name("UNIX"/*FTP_SYST_NAME*/);
 	std::transform(sys_name.begin(), sys_name.end(),sys_name.begin(), ::toupper);
 
 	AnswerSystemName answer(sys_name);
