@@ -19,6 +19,7 @@
 #include "core/message/request/PwdRequest.h"
 #include "core/message/request/TypeRequest.h"
 #include "core/message/request/PasvRequest.h"
+#include "core/message/request/CWDRequest.h"
 #include "system/Directory.h"
 
 #include "network/ip/Address.h"
@@ -51,10 +52,10 @@ namespace FuretTP {
 		static void processPwd(PwdRequest& request, Client* client);
 		static void processType(TypeRequest& request, Client* client);
 		static void processPasv(PasvRequest& request, Client* client);
+        static void processCwd(CWDRequest& request, Client* client);
 		/*static void processStor(StorRequest &request, Client &client);
         static void processQuit(QuitRequest &request, Client &client);
         static void processPwd(PwdRequest &request, Client &client);
-        static void processCwd(CwdRequest &request, Client &client);
 		static void processCdup(CdupRequest &request, Client &client);*/
 
     };

@@ -117,6 +117,11 @@ Request* RequestFactory::eval(Packet& packet) {
 	else if(message_command == PasvRequest::CommandName) {
 		return new PasvRequest();
 	}
+    else if(message_command == CWDRequest::CommandName) {
+        std::string directory;
+        packet >> directory;
+        return new CWDRequest(directory);
+    }
 
     std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 

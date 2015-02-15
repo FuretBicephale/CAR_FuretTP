@@ -87,6 +87,7 @@ namespace FuretTP {
 		static const unsigned int Code = 257;
 
 	};
+
 }
 
 #endif
