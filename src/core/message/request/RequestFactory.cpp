@@ -56,7 +56,7 @@ Request* RequestFactory::eval(Packet& packet) {
 
 					if(token == end_nb) {
 						delete c_raw_addr;
-						THROW(UnrecognizedMessageException, "PORT "+raw_address, std::string(token)+" is an incorrecte number");
+                        THROW(UnrecognizedMessageException, "PORT "+raw_address, std::string(token)+" is an incorrect number");
 					}
 					port += factor*nb;
 				}
@@ -70,7 +70,7 @@ Request* RequestFactory::eval(Packet& packet) {
 		}
 		delete c_raw_addr;
 		if(i != 6)
-			THROW(UnrecognizedMessageException, "PORT "+raw_address, "no enough argument");
+            THROW(UnrecognizedMessageException, "PORT "+raw_address, "not enough argument");
 
 
 
