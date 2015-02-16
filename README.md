@@ -34,7 +34,7 @@ Le package core contient tout ce qui concerne le serveur en lui même. Il est co
 
 Le package exception contient, comme son nom l'indique, tout ce qui concerne les exceptions
 
-Les packages system et network sont des packages contenant toutes l'encapsulation de méthode C permettant de manipuler les dossier (system) et les sockets et adresses IP (network).
+Les packages system et network sont des packages contenant toute l'encapsulation de méthode C permettant de manipuler les dossier (system) et les sockets et adresses IP (network).
 
 L'application fonctionne de la sorte :
 * Le serveur est lancé, il attends une connexion.
@@ -50,8 +50,8 @@ Voici les différentes erreurs pouvant être attrapées ou lancées par l'applic
 * THROW(UnrecognizedMessageException, "PORT "+raw_address, std::string(token)+" is an incorrect number") par la méthode eval de la classe RequestFactory.
 * THROW(UnrecognizedMessageException, "PORT "+raw_address, "too many arguments") par la méthode eval de la classe RequestFactory.
 * THROW(UnrecognizedMessageException, "PORT "+raw_address, "not enough argument") par la méthode eval de la classe RequestFactory.
-* THROW(UnrecognizedMessageException, "TYPE", "Unrecognized type "+type_char) par la méthode eval de la classe RequestFactory.
-* THROW(NoActiveConnectionException, "") par la méthode openDataConnection de la classe Client.
+* THROW(UnrecognizedMessageException, "TYPE", "Unrecognized type "+type_char) par la méthode eval de la classe RequestFactory. Lancée lorsque le type de fichier à transferer demander par l'utilisateur est inconnu
+* THROW(NoActiveConnectionException, "") par la méthode openDataConnection de la classe Client. Lancée lorsque le serveur tente d'ouvrir une nouvelle connexion active alors qu'aucun port n'a été spécifié.
 * try { ... } catch(SystemException& e) { ...	} par la méthode processListConnection de la classe RequestHandler. L'exception est attrapée lorsque le répertoire donné avec la requête liste n'est pas atteignable. Une réponse de type AnswerFileUnavailable sera alors envoyée à l'utilisateur
 * THROW(UserNotFoundException, username) par la méthode findUser de la classe UserList. Lancée lorsque l'utilisateur cherché n'a pas été trouvé.
 * THROW(FileNotFoundException, pathname) par la méthode process de la classe UserConfigurationReader. Lancée lorsque le fichier de configuration n'a pas été trouvé.
