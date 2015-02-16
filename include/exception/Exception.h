@@ -12,12 +12,31 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::Exception
+    /// \ingroup exception
+    /// \brief Basic exception
+    ///
 	class Exception {
 
 	public:
+
+        ///
+        /// \brief Exception constructor
+        ///
 		Exception();
+
+        ///
+        /// \brief Exception constructor
+        /// \param message A message to print
+        ///
 		Exception(const std::string& message);
 
+        ///
+        /// \brief Set error localisation in a file
+        /// \param file The file which contains the error
+        /// \param line The line which contains the error
+        ///
 		void setLocalisation(const char* file, int line);
 
 		const std::string& getMessage() const throw();
@@ -25,9 +44,9 @@ namespace FTP {
 		int getLine() const throw();
 
 	private:
-		const char* _file;
-		int _line;
-		std::string _message;
+        const char* _file; ///< The file which contains the error
+        int _line; ///< The line which contains the error
+        std::string _message; ///< A message to print
 
 	};
 }
