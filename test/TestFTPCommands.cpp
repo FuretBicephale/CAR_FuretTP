@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <core/FTPServer.h>
+#include <core/UserConfigurationReader.h>
 
 using namespace FTP;
 
@@ -12,10 +13,16 @@ public:
 		_configuration = new  ServerConfiguration();
 		_configuration->setBindPort(++currentPort);
 
+		UserConfigurationReader::process(_configuration->getUserConfigurationPathname(), *_configuration);
+
+		std::cout << "Start server on port " << currentPort << std::endl;
+
 		_server = new FTPServer(*_configuration);
 		_thread = new Thread<FTPServer>(_server);
 
 		_thread->run();
+
+		usleep(1e5);
 
     }
 
@@ -55,14 +62,27 @@ public:
 	}
 
 	Packet commandeUser(const std::string& username) {
-		Packet packet_user;
-		packet_user << "USER" << " " << "falezp";
-		_socket.send(packet_user);
 
-		Packet packet_answer_user;
-		_socket.receive(packet_answer_user);
+		Packet packet;
+		packet << "USER" << " " << username;
+		_socket.send(packet);
 
-		return packet_answer_user;
+		Packet packet_answer;
+		_socket.receive(packet_answer);
+
+		return packet_answer;
+	}
+
+	Packet commandePass(const std::string& password) {
+
+		Packet packet;
+		packet << "PASS" << " " << password;
+		_socket.send(packet);
+
+		Packet packet_answer;
+		_socket.receive(packet_answer);
+
+		return packet_answer;
 	}
 
 private:
@@ -70,7 +90,6 @@ private:
 };
 
 TEST_F(TestFTPCommands, testConnection) {
-
 	FTPClient client;
 
 	Packet packet = client.initializeConnection(currentPort);
@@ -78,23 +97,35 @@ TEST_F(TestFTPCommands, testConnection) {
 	std::string packet_answer_code;
 	packet >> packet_answer_code;
 	ASSERT_EQ(std::to_string(AnswerSuccess::Code), packet_answer_code);
-
-	sleep(1);
 }
 
-TEST_F(TestFTPCommands, testAUTH) {
-
+TEST_F(TestFTPCommands, testUser) {
 	FTPClient client;
 
 	client.initializeConnection(currentPort);
 	Packet packet_user = client.commandeUser("falezp");
 
-
 	std::string packet_answer_user_code;
 	packet_user >> packet_answer_user_code;
 	ASSERT_EQ(std::to_string(AnswerUsernameOK::Code), packet_answer_user_code);
+}
 
-	usleep(100);
+TEST_F(TestFTPCommands, testPass) {
+	FTPClient client;
+
+	try {
+
+	client.initializeConnection(currentPort);
+	client.commandeUser("falezp");
+	Packet packet_pass = client.commandePass("mdp1");
+
+	std::string packet_answer_pass_code;
+	packet_pass >> packet_answer_pass_code;
+	ASSERT_EQ(std::to_string(AnswerLoginOk::Code), packet_answer_pass_code);
+
+	} catch(Exception& e) {
+		std::cout << e.getMessage() << std::endl;
+	}
 }
 /*
 TEST_F(TestFTPCommands, testLIST) {

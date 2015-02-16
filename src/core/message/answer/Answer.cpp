@@ -18,12 +18,7 @@ void Answer::generatePacket(Packet& packet) {
 		packet << " " << *it;
 	}
 
-	this->fillPacket(packet);
 	packet << "\n";
-}
-
-void Answer::fillPacket(Packet& packet) {
-
 }
 
 void Answer::addArgument(const std::string& argument) {
