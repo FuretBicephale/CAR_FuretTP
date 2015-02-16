@@ -11,7 +11,7 @@ namespace FTP {
     /// \brief CWD request.
     ///
     /// Asks the server to change the current directory.
-    /// Only accept absolute path.
+    /// Accept absolute and relative path
     ///
     class CWDRequest : public Request {
 
@@ -21,7 +21,7 @@ namespace FTP {
         /// \brief CWDRequest constructor
         /// \param directory New current directory
         ///
-        /// The directory must be an absolute path and need to exists
+        /// The directory needs to exist
         ///
         CWDRequest(const std::string& directory);
 
