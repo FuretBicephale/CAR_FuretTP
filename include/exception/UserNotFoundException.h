@@ -7,9 +7,19 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::UserNotFoundException
+    /// \ingroup exception
+    /// \brief Exception launched when a user isn't found
+    ///
 	class UserNotFoundException : public Exception {
 
 	public:
+
+        ///
+        /// \brief UserNotFoundException constructor
+        /// \param username The name of the user
+        ///
 		UserNotFoundException(const std::string& username);
 	};
 }

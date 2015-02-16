@@ -7,9 +7,19 @@
 
 namespace FTP {
 
+    ///
+    /// \class ftp::NoActiveConnectionException
+    /// \ingroup exception
+    /// \brief Exception launched when there isn't Active connection when it's needed
+    ///
 	class NoActiveConnectionException : public Exception {
 
 	public:
+
+        ///
+        /// \brief NoActiveConnectionException constructor
+        /// \param message A message to print
+        ///
 		NoActiveConnectionException(const std::string& message = "");
 	};
 }

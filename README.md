@@ -34,7 +34,7 @@ Le package core contient tout ce qui concerne le serveur en lui même. Il est co
 
 Le package exception contient, comme son nom l'indique, tout ce qui concerne les exceptions
 
-Les packages system et network sont des packages contenant toute l'encapsulation de méthode C permettant de manipuler les dossier (system) et les sockets et adresses IP (network).
+Les packages system et network sont des packages contenant toute l'encapsulation de méthodes C permettant de manipuler les dossiers (system) et les sockets et adresses IP (network).
 
 L'application fonctionne de la sorte :
 * Le serveur est lancé, il attends une connexion.
