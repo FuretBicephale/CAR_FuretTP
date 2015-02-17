@@ -8,6 +8,13 @@
 #include <cctype>
 namespace FTP {
 
+	///
+	/// \class Packet
+	/// \ingroup system
+	/// \brief
+	///
+	/// Class which contains data
+	///
 	class Packet {
 
 	public:

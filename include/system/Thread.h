@@ -6,14 +6,23 @@
 
 namespace FTP {
 
+	///
+	/// \class FTP::Thread<T>
+	/// \ingroup system
+	/// \brief Thread managment class
+	///
+	/// Enscapsulate POSIX thread (pthread). Template parameter is the class to launch in a thread. this one need to implement method void run()
+	///
 	template<class T>
 	class Thread {
 
 	public:
+		/// \brief Create new thread with class instance target of type T
 		Thread(T* target) : _class(target) {
 
 		}
 
+		/// \brief Launch thread
 		void run() {
 			ProxyArgs* arg = new ProxyArgs();
 			arg->_class = _class;
