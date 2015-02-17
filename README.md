@@ -59,3 +59,62 @@ Voici les différentes erreurs pouvant être attrapées ou lancées par l'applic
 * try { ... }	catch(const Exception& e) { ... } par la méthode main. Attrape l'exception lorsque le serveur à lancé une exception. La méthode envoie alors un message aux utilisateurs indiquant que le serveur a planté.
 
 #### Code Samples
+
+Gestion de l'écoute de nouveau client
+
+```
+while(_listener.isOpen()) {
+	TCP::Socket client;
+        _listener.accept(client); // accept next client
+
+        Thread<Client> thread(new Client(this, client)); // open a new thread for handle the client connection
+        thread.run(); // run client thread
+    }
+
+```
+
+Gestion des meesage dans chaque client
+
+```
+
+while(_socket.isOpen() && _isOpen) { // While the socket is open and the client is running
+	Packet packet;
+
+	_socket.receive(packet); // receive next packet
+
+	Request* message = RequestFactory::eval(packet); //Send apcket to factory for create a structured message
+
+	if(message != nullptr) {
+		RequestHandler::process(*message, this); //process message
+		delete message;
+        }
+	else { // if message is unrecognized, then send Answer to client with unimplemented command content
+            Packet answer_packet;
+
+            AnswerUnimplemented answer;
+            answer.addArgument("Uninplemented command");
+            answer.generatePacket(answer_packet);
+
+            _socket.send(answer_packet);
+        }
+}
+
+```
+
+Gestion de connexion sur le canal de donnée pour les mode passif et actif
+
+```
+
+if(_inPassiveMode) { // if client is currently in passive mode
+	_passiveDataSocket.close();
+	_passiveDataListener.accept(_passiveDataSocket); // then wait client connection
+	std::cout << "[Client " << _uid << "] Accept new passive data connection" << std::endl;
+}
+else {
+	if(_nextActivePort == 0) // if client don't specified data socket address with a PORT command
+		THROW(NoActiveConnectionException, "");
+	_activeDataSocket.close();
+	_activeDataSocket.connect(_nextActiveAddress, _nextActivePort); // then connect to the address:port specified in last command PORT
+	std::cout << "[Client " << _uid << "] Open new active data connection (" << _nextActiveAddress << ":" << _nextActivePort << ") " << std::endl;
+}
+```
