@@ -38,15 +38,16 @@ namespace FTP {
 		};
 
 		static void* proxy(void* arg) {
-			ProxyArgs* arg_cast = (ProxyArgs*)arg;
+			ProxyArgs* arg_cast = (ProxyArgs*)arg; // get arguments from proxy
 			try {
-				arg_cast->_class->run();
+				arg_cast->_class->run(); // run the main methods of thread class
 			}
-			catch(const Exception& e) {
+			catch(const Exception& e) { // if uncaught exception arise here
+				std::cerr << "Exception caught" << std::endl;
 				std::cerr << e.getMessage() << std::endl;
-				std::cerr << "Exception caught in client thread" << std::endl;
 				if(e.getFile() != nullptr)
 					std::cerr << "Line " << e.getLine() << " in file " << e.getFile() << std::endl;
+				arg_cast->_class->close(); // close thread class
 			}
 
 			delete arg_cast;

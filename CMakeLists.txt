@@ -46,7 +46,10 @@ find_package(Threads)
 
 configure_file("user.conf" "user.conf" COPYONLY)
 
+
 add_subdirectory(test)
+#FTP test directory
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/user_test_directory")
 
 add_executable(${executable_name} ${include_files} ${source_files} src/main.cpp)
 target_link_libraries (${executable_name} ${CMAKE_THREAD_LIBS_INIT})

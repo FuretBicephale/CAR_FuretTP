@@ -46,7 +46,7 @@ namespace FTP {
 
 		/// \brief open a directory
 		/// \param pathname of the directory
-		void open(const std::string& pathname);
+		void open(std::string pathname);
 		/// \brief list the directory contents. Need previously be openend
 		/// \param entries : a vector which be fill with all the entries of the opened directory
 		void list(std::vector<Entry>& entries);

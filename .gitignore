@@ -32,3 +32,6 @@
 
 # User File
 *.user
+
+# Doc
+doc/*

@@ -105,7 +105,6 @@ void RequestHandler::processList(ListRequest& request, Client* client) {
         client->getSocket().send(p2);
 
         Directory directory;
-        std::cout << "(" << client->getUser().getHomeDir() << ";" << client->getCurrentDirectory() << ")" << std::endl;
         directory.open(client->getUser().getHomeDir()+client->getCurrentDirectory());
 
 
@@ -316,8 +315,6 @@ void RequestHandler::processCdup(CDUPRequest& request, Client* client) {
 
     if(directory.size() > 1) {
         unsigned int index = client->getCurrentDirectory().substr(0, client->getCurrentDirectory().size()-1).find_last_of("/");
-        std::cout << "->>" << client->getCurrentDirectory().substr(0, client->getCurrentDirectory().size()-1) << std::endl;
-        std::cout << "->>" << client->getCurrentDirectory().substr(0, index+1) << std::endl;
         CWDRequest newRequest(client->getCurrentDirectory().substr(0, index+1));
         processCwd(newRequest, client);
     }

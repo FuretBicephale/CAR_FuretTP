@@ -4,6 +4,9 @@
 
 using namespace FTP;
 
+#define USER_LOGIN "user_test"
+#define USER_PASSWORD "user_test_password"
+
 namespace {
 
 class TestFTPCommands : public ::testing::Test {
@@ -106,7 +109,7 @@ public:
      */
 
     void parsePasvInfo(std::string str) {
-        unsigned int start_index = str.find_first_of("(");
+		unsigned int start_index = str.find_first_of("(")+1;
         unsigned int end_index = str.find_last_of(")");
 
         std::string raw_address = str.substr(start_index, end_index-start_index);
@@ -202,7 +205,7 @@ TEST_F(TestFTPCommands, testUser) {
     FTPClient client;
 
     client.initializeConnection(currentPort);
-    Packet packet_user = client.commandeUser("falezp");
+	Packet packet_user = client.commandeUser(USER_LOGIN);
 
     std::string packet_answer_user_code;
     packet_user >> packet_answer_user_code;
@@ -213,8 +216,8 @@ TEST_F(TestFTPCommands, testPass) {
     FTPClient client;
 
     client.initializeConnection(currentPort);
-    client.commandeUser("falezp");
-    Packet packet_pass = client.commandePass("mdp1");
+	client.commandeUser(USER_LOGIN);
+	Packet packet_pass = client.commandePass(USER_PASSWORD);
 
     std::string packet_answer_pass_code;
     packet_pass >> packet_answer_pass_code;
@@ -225,8 +228,8 @@ TEST_F(TestFTPCommands, testPasv) {
     FTPClient client;
 
     client.initializeConnection(currentPort);
-    client.commandeUser("falezp");
-    client.commandePass("mdp1");
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
     Packet packet_pasv = client.commandePasv();
 
     std::string packet_answer_pasv_code;

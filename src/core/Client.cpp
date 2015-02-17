@@ -19,8 +19,6 @@ void Client::run() {
     answer.addArgument(_server->getConfiguration().getMOTD());
     answer.generatePacket(packet);
 
-    std::cout << packet << std::endl;
-
     _socket.send(packet);
 
 

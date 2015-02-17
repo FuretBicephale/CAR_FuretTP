@@ -2,8 +2,6 @@
 
 using namespace FTP;
 
-
-
 Directory::Directory() : _directory(nullptr), _pathname() {
 
 }
@@ -12,7 +10,16 @@ Directory::~Directory() {
 	close();
 }
 
-void Directory::open(const std::string& pathname) {
+void Directory::open(std::string pathname) {
+	std::cout << "pathname=" << pathname << std::endl;
+
+	if(pathname.front() == '/')
+		pathname = pathname.substr(1);
+	if(pathname.size() == 0)
+		pathname = ".";
+
+	std::cout << "pathname=" << pathname << std::endl;
+
 	if((_directory = opendir(pathname.c_str())) == nullptr) {
 		_directory = nullptr;
 		THROW(SystemException, "Unable open directory \""+pathname+"\"", errno);
