@@ -8,24 +8,24 @@
 
 namespace FTP {
 
-    /// \brief 425 Can't open a data connection
-	class AnswerOpenConnectionFailed : public Answer {
+/// \brief 425 Can't open a data connection
+class AnswerOpenConnectionFailed : public Answer {
 
-	public:
-		AnswerOpenConnectionFailed();
+public:
+    AnswerOpenConnectionFailed();
 
-		static const unsigned int Code = 425;
-	};
+    static const unsigned int Code = 425;
+};
 
 
-    /// \brief 430 Username or password incorrect
-	class AnswerLoginFail : public Answer {
+/// \brief 430 Username or password incorrect
+class AnswerLoginFail : public Answer {
 
-	public:
-		AnswerLoginFail();
+public:
+    AnswerLoginFail();
 
-		static const unsigned int Code = 430;
-	};
+    static const unsigned int Code = 430;
+};
 
 
 

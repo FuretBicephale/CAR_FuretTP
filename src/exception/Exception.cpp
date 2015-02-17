@@ -11,18 +11,18 @@ Exception::Exception(const std::string& message) : _file(nullptr), _line(-1), _m
 }
 
 void Exception::setLocalisation(const char* file, int line) {
-	_file = file;
-	_line = line;
+    _file = file;
+    _line = line;
 }
 
 const std::string& Exception::getMessage() const throw() {
-	return _message;
+    return _message;
 }
 
 const char* Exception::getFile() const throw() {
-	return _file;
+    return _file;
 }
 
 int Exception::getLine() const throw() {
-	return _line;
+    return _line;
 }

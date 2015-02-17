@@ -7,5 +7,5 @@ TypeRequest::TypeRequest(Type type) : Request(TypeRequest::CommandName), _type(t
 }
 
 TypeRequest::Type TypeRequest::getType() const {
-	return _type;
+    return _type;
 }

@@ -7,21 +7,21 @@
 
 namespace FTP {
 
-    ///
-    /// \class ftp::FileNotFoundException
-    /// \ingroup exception
-    /// \brief Exception launched when a file is needed but not found
-    ///
-	class FileNotFoundException : public Exception {
+///
+/// \class ftp::FileNotFoundException
+/// \ingroup exception
+/// \brief Exception launched when a file is needed but not found
+///
+class FileNotFoundException : public Exception {
 
-	public:
+public:
 
-        ///
-        /// \brief FileNotFoundException constructor
-        /// \param file The file which is not found
-        ///
-		FileNotFoundException(const std::string& file);
-	};
+    ///
+    /// \brief FileNotFoundException constructor
+    /// \param file The file which is not found
+    ///
+    FileNotFoundException(const std::string& file);
+};
 }
 
 #endif

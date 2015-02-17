@@ -6,40 +6,40 @@
 
 namespace FTP {
 
+///
+/// \class ftp::TypeRequest
+/// \ingroup request
+/// \brief Type request.
+///
+/// Set the type of file to be transferred
+///
+class TypeRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::TypeRequest
-    /// \ingroup request
-    /// \brief Type request.
+    /// \brief File type enumeration
     ///
-    /// Set the type of file to be transferred
+    enum Type {
+        Ascii,
+        Ebcdic,
+        Image,
+        Local
+    };
+
     ///
-	class TypeRequest : public Request {
+    /// \brief TypeRequest constructor
+    /// \param type File type to set
+    ///
+    TypeRequest(Type type);
 
-	public:
+    Type getType() const;
 
-        ///
-        /// \brief File type enumeration
-        ///
-		enum Type {
-			Ascii,
-			Ebcdic,
-			Image,
-			Local
-		};
+    static constexpr const char* CommandName = "TYPE";
 
-        ///
-        /// \brief TypeRequest constructor
-        /// \param type File type to set
-        ///
-		TypeRequest(Type type);
-
-		Type getType() const;
-
-		static constexpr const char* CommandName = "TYPE";
-
-	private:
-        Type _type; ///< The file type to set
-	};
+private:
+    Type _type; ///< The file type to set
+};
 }
 
 #endif

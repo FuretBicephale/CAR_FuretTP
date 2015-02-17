@@ -7,5 +7,5 @@ UserRequest::UserRequest(const std::string& username) : Request(UserRequest::Com
 }
 
 const std::string& UserRequest::getUsername() const {
-	return _username;
+    return _username;
 }

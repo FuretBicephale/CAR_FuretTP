@@ -5,31 +5,31 @@
 
 namespace FTP {
 
+///
+/// \class ftp::UserRequest
+/// \ingroup request
+/// \brief User request.
+///
+/// Request sent when user begins login. This command contains the username as first argument.
+///
+class UserRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::UserRequest
-    /// \ingroup request
-    /// \brief User request.
+    /// \brief UserRequest constructor
+    /// \param username User's username
     ///
-    /// Request sent when user begins login. This command contains the username as first argument.
-    ///
-	class UserRequest : public Request {
+    UserRequest(const std::string& username);
 
-	public:
+    const std::string& getUsername() const;
 
-        ///
-        /// \brief UserRequest constructor
-        /// \param username User's username
-        ///
-		UserRequest(const std::string& username);
+    static constexpr const char* CommandName = "USER";
 
-		const std::string& getUsername() const;
+private:
+    std::string _username; ///< User's username
 
-		static constexpr const char* CommandName = "USER";
-
-	private:
-        std::string _username; ///< User's username
-
-	};
+};
 }
 
 #endif

@@ -6,24 +6,24 @@
 
 namespace FTP {
 
-    ///
-    /// \class ftp::SystRequest
-    /// \ingroup request
-    /// \brief Syst request.
-    ///
-    /// Asks the server's system.
-    ///
-	class SystRequest : public Request {
+///
+/// \class ftp::SystRequest
+/// \ingroup request
+/// \brief Syst request.
+///
+/// Asks the server's system.
+///
+class SystRequest : public Request {
 
-	public:
+public:
 
-        ///
-        /// \brief SystRequest constructor
-        ///
-		SystRequest();
+    ///
+    /// \brief SystRequest constructor
+    ///
+    SystRequest();
 
-		static constexpr const char* CommandName = "SYST";
-	};
+    static constexpr const char* CommandName = "SYST";
+};
 }
 
 #endif

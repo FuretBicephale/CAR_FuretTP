@@ -7,5 +7,5 @@ PassRequest::PassRequest(const std::string& password) : Request(PassRequest::Com
 }
 
 const std::string& PassRequest::getPassword() const {
-	return _password;
+    return _password;
 }

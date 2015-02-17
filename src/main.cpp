@@ -10,37 +10,37 @@ using namespace FTP;
 static FTPServer* server_ref = nullptr;
 
 void onExit() {
-	if(server_ref != nullptr) {
-		server_ref->close();
-	}
+    if(server_ref != nullptr) {
+        server_ref->close();
+    }
 }
 
 int main() {
 
-	try {
+    try {
         std::cout << ".: FTP :." << std::endl;
 
-		ServerConfiguration configuration;
+        ServerConfiguration configuration;
 
-		std::cout << "Read user list configuration (" << configuration.getUserConfigurationPathname() << ")" << std::endl;
+        std::cout << "Read user list configuration (" << configuration.getUserConfigurationPathname() << ")" << std::endl;
 
-		UserConfigurationReader::process(configuration.getUserConfigurationPathname(), configuration);
+        UserConfigurationReader::process(configuration.getUserConfigurationPathname(), configuration);
 
-		FTPServer server(configuration);
-		server_ref = &server;
+        FTPServer server(configuration);
+        server_ref = &server;
 
-		atexit(onExit);
+        atexit(onExit);
 
-		server.run();
+        server.run();
 
-	}
-	catch(const Exception& e) {
-		std::cerr << e.getMessage() << std::endl;
-		std::cerr << "Exception caught in main thread" << std::endl;
-		if(e.getFile() != nullptr)
-			std::cerr << "Line " << e.getLine() << " in file " << e.getFile() << std::endl;
-		return EXIT_FAILURE;
-	}
+    }
+    catch(const Exception& e) {
+        std::cerr << e.getMessage() << std::endl;
+        std::cerr << "Exception caught in main thread" << std::endl;
+        if(e.getFile() != nullptr)
+            std::cerr << "Line " << e.getLine() << " in file " << e.getFile() << std::endl;
+        return EXIT_FAILURE;
+    }
 
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }

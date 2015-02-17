@@ -5,27 +5,27 @@
 
 namespace FTP {
 
+///
+/// \class ftp::Request
+/// \ingroup request
+/// \brief Basic request.
+///
+/// Represents a packet send by user to the server.
+///
+class Request {
+
+public:
+
     ///
-    /// \class ftp::Request
-    /// \ingroup request
-    /// \brief Basic request.
+    /// \brief Request constructor
+    /// \param command Command name of the request
     ///
-    /// Represents a packet send by user to the server.
-    ///
-	class Request {
+    Request(const std::string& command);
 
-	public:
+    const std::string& getCommandName() const;
 
-        ///
-        /// \brief Request constructor
-        /// \param command Command name of the request
-        ///
-		Request(const std::string& command);
-
-		const std::string& getCommandName() const;
-
-	private:
-        std::string _command; ///< The command name of the request
-	};
+private:
+    std::string _command; ///< The command name of the request
+};
 }
 #endif

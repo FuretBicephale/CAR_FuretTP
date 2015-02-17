@@ -5,31 +5,31 @@
 
 namespace FTP {
 
+///
+/// \class ftp::MkdRequest
+/// \ingroup request
+/// \brief Mkd request.
+///
+/// Asks the server to create a new folder in the current directory.
+///
+class MkdRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::MkdRequest
-    /// \ingroup request
-    /// \brief Mkd request.
+    /// \brief MkdRequest constructor
+    /// \param name The name of the folder
     ///
-    /// Asks the server to create a new folder in the current directory.
-    ///
-	class MkdRequest : public Request {
+    MkdRequest(const std::string& name);
 
-	public:
+    const std::string& getName() const;
 
-        ///
-        /// \brief MkdRequest constructor
-        /// \param name The name of the folder
-        ///
-		MkdRequest(const std::string& name);
+    static constexpr const char* CommandName = "MKD";
 
-		const std::string& getName() const;
+private:
+    std::string _name; ///< The name of the folder the user wants to create
 
-		static constexpr const char* CommandName = "MKD";
-
-	private:
-        std::string _name; ///< The name of the folder the user wants to create
-
-	};
+};
 }
 
 #endif

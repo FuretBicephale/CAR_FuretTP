@@ -12,16 +12,16 @@ Answer::~Answer() {
 
 
 void Answer::generatePacket(Packet& packet) {
-	packet << std::to_string(_code);
+    packet << std::to_string(_code);
 
-	for(auto it = _arguments.begin(); it != _arguments.end(); ++it) {
-		packet << " " << *it;
-	}
+    for(auto it = _arguments.begin(); it != _arguments.end(); ++it) {
+        packet << " " << *it;
+    }
 
-	packet << "\n";
+    packet << "\n";
 }
 
 void Answer::addArgument(const std::string& argument) {
-	_arguments.push_back(argument);
+    _arguments.push_back(argument);
 }
 

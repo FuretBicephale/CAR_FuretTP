@@ -6,31 +6,31 @@
 
 namespace FTP {
 
+///
+/// \class ftp::RetrRequest
+/// \ingroup request
+/// \brief Retr request.
+///
+/// Command sent by the client to receive a remote file.
+///
+class RetrRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::RetrRequest
-    /// \ingroup request
-    /// \brief Retr request.
+    /// \brief RetrRequest constructor
+    /// \param filename The file to receive
     ///
-    /// Command sent by the client to receive a remote file.
-    ///
-	class RetrRequest : public Request {
+    RetrRequest(const std::string& filename);
 
-	public:
+    const std::string& getFilename() const;
 
-        ///
-        /// \brief RetrRequest constructor
-        /// \param filename The file to receive
-        ///
-		RetrRequest(const std::string& filename);
+    static constexpr const char* CommandName = "RETR";
 
-		const std::string& getFilename() const;
+private:
+    std::string _filename; ///< The name of the file the user wants to receive
 
-		static constexpr const char* CommandName = "RETR";
-
-	private:
-        std::string _filename; ///< The name of the file the user wants to receive
-
-	};
+};
 }
 
 #endif

@@ -5,27 +5,27 @@
 
 namespace FTP {
 
+///
+/// \class ftp::CDUPRequest
+/// \ingroup request
+/// \brief CDUP request.
+///
+/// Asks the server to set the current directory to its parent folder.
+///
+class CDUPRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::CDUPRequest
-    /// \ingroup request
-    /// \brief CDUP request.
+    /// \brief CDUPRequest constructor
     ///
-    /// Asks the server to set the current directory to its parent folder.
-    ///
-    class CDUPRequest : public Request {
+    CDUPRequest();
 
-    public:
+    static constexpr const char* CommandName = "CDUP";
 
-        ///
-        /// \brief CDUPRequest constructor
-        ///
-        CDUPRequest();
+private:
 
-        static constexpr const char* CommandName = "CDUP";
-
-    private:
-
-    };
+};
 }
 
 #endif

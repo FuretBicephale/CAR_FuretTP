@@ -7,46 +7,46 @@
 
 namespace FTP {
 
+///
+/// \class ftp::ServerConfiguration
+/// \ingroup core
+/// \brief Current configuration of the server
+///
+/// Contains user's account informations, communication port and message of the day
+///
+class ServerConfiguration {
+
+public:
+
     ///
-    /// \class ftp::ServerConfiguration
-    /// \ingroup core
-    /// \brief Current configuration of the server
+    /// \brief ServerConfiguration constructor
     ///
-    /// Contains user's account informations, communication port and message of the day
+    ServerConfiguration();
+
     ///
-    class ServerConfiguration {
+    /// \brief Load the default server configuration
+    ///
+    void loadDefault();
 
-    public:
+    UserList& getUserList();
+    const UserList& getUserList() const;
+    const std::string& getUserConfigurationPathname() const;
 
-        ///
-        /// \brief ServerConfiguration constructor
-        ///
-        ServerConfiguration();
+    unsigned int getBindPort() const;
+    const std::string& getMOTD() const;
 
-        ///
-        /// \brief Load the default server configuration
-        ///
-        void loadDefault();
-
-		UserList& getUserList();
-        const UserList& getUserList() const;
-		const std::string& getUserConfigurationPathname() const;
-
-        unsigned int getBindPort() const;
-		const std::string& getMOTD() const;
-
-		void setBindPort(unsigned int port);
+    void setBindPort(unsigned int port);
 
 
-    private:
+private:
 
-        std::string _userConfigurationPathname; ///< The name of the file which contains user's account informations
-        unsigned int _bindPort; ///< Communication port
-        std::string _motd; ///< Message displayed when an user is connected to the server
+    std::string _userConfigurationPathname; ///< The name of the file which contains user's account informations
+    unsigned int _bindPort; ///< Communication port
+    std::string _motd; ///< Message displayed when an user is connected to the server
 
-        UserList _userList; ///< Contains every connected user
+    UserList _userList; ///< Contains every connected user
 
-    };
+};
 }
 
 #endif

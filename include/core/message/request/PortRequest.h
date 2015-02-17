@@ -6,34 +6,34 @@
 
 namespace FTP {
 
+///
+/// \class ftp::PortRequest
+/// \ingroup request
+/// \brief Port request.
+///
+/// Command sent by the client when he wants to open a new connection.
+///
+class PortRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::PortRequest
-    /// \ingroup request
-    /// \brief Port request.
+    /// \brief PortRequest constructor
+    /// \param address the new address to connect to
+    /// \param port the new port to connect to
     ///
-    /// Command sent by the client when he wants to open a new connection.
-    ///
-	class PortRequest : public Request {
+    PortRequest(const IP::Address& address, unsigned int port);
 
-	public:
+    const IP::Address& getAddress() const;
+    unsigned int getPort() const;
 
-        ///
-        /// \brief PortRequest constructor
-        /// \param address the new address to connect to
-        /// \param port the new port to connect to
-        ///
-		PortRequest(const IP::Address& address, unsigned int port);
+    static constexpr const char* CommandName = "PORT";
 
-		const IP::Address& getAddress() const;
-		unsigned int getPort() const;
+private:
+    IP::Address _address; ///< the new address to connect to
+    unsigned int _port; ///< the new port to connect to
 
-		static constexpr const char* CommandName = "PORT";
-
-	private:
-        IP::Address _address; ///< the new address to connect to
-        unsigned int _port; ///< the new port to connect to
-
-	};
+};
 }
 
 #endif

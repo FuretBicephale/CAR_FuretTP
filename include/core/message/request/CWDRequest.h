@@ -5,34 +5,34 @@
 
 namespace FTP {
 
+///
+/// \class ftp::CWDPRequest
+/// \ingroup request
+/// \brief CWD request.
+///
+/// Asks the server to change the current directory.
+/// Accept absolute and relative path
+///
+class CWDRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::CWDPRequest
-    /// \ingroup request
-    /// \brief CWD request.
+    /// \brief CWDRequest constructor
+    /// \param directory New current directory
     ///
-    /// Asks the server to change the current directory.
-    /// Accept absolute and relative path
+    /// The directory needs to exist
     ///
-    class CWDRequest : public Request {
+    CWDRequest(const std::string& directory);
 
-    public:
+    const std::string& getDirectory() const;
 
-        ///
-        /// \brief CWDRequest constructor
-        /// \param directory New current directory
-        ///
-        /// The directory needs to exist
-        ///
-        CWDRequest(const std::string& directory);
+    static constexpr const char* CommandName = "CWD";
 
-        const std::string& getDirectory() const;
+private:
+    std::string _directory; ///< The new current directory
 
-        static constexpr const char* CommandName = "CWD";
-
-    private:
-        std::string _directory; ///< The new current directory
-
-    };
+};
 }
 
 #endif

@@ -11,43 +11,43 @@
 
 namespace FTP {
 
+///
+/// \class ftp::FTPServer
+/// \ingroup core
+/// \brief Represents the FTP Server.
+///
+/// Represents the FTP Server.
+/// It receives user connections then create a Client instance for each of them.
+///
+class FTPServer {
+
+public:
+
     ///
-    /// \class ftp::FTPServer
-    /// \ingroup core
-    /// \brief Represents the FTP Server.
+    /// \brief FTPServer constructor.
+    /// \param configuration Configuration of the server.
     ///
-    /// Represents the FTP Server.
-    /// It receives user connections then create a Client instance for each of them.
+    FTPServer(const ServerConfiguration& configuration);
+
     ///
-	class FTPServer {
+    /// \brief run the server while the application is launched
+    ///
+    /// Creates a Client instance each time the server receives a user connection and create a new thread.
+    ///
+    void run();
 
-	public:
+    ///
+    /// \brief Close the server and every connection
+    ///
+    void close();
 
-        ///
-        /// \brief FTPServer constructor.
-        /// \param configuration Configuration of the server.
-        ///
-        FTPServer(const ServerConfiguration& configuration);
+    const ServerConfiguration& getConfiguration() const;
 
-        ///
-        /// \brief run the server while the application is launched
-        ///
-        /// Creates a Client instance each time the server receives a user connection and create a new thread.
-        ///
-		void run();
+private:
+    const ServerConfiguration&  _configuration; ///< Current configuration of the server
+    TCP::Listener _listener; ///<
 
-        ///
-        /// \brief Close the server and every connection
-        ///
-		void close();
-
-        const ServerConfiguration& getConfiguration() const;
-
-	private:
-        const ServerConfiguration&  _configuration; ///< Current configuration of the server
-        TCP::Listener _listener; ///<
-
-	};
+};
 }
 
 #endif

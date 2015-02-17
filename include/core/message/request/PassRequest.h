@@ -5,31 +5,31 @@
 
 namespace FTP {
 
+///
+/// \class ftp::PassRequest
+/// \ingroup request
+/// \brief Pass request.
+///
+/// Request sent to end the login process. Contains the user's password as first argument.
+///
+class PassRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::PassRequest
-    /// \ingroup request
-    /// \brief Pass request.
+    /// \brief PassRequest constructor
+    /// \param password User's password
     ///
-    /// Request sent to end the login process. Contains the user's password as first argument.
-    ///
-	class PassRequest : public Request {
+    PassRequest(const std::string& password);
 
-	public:
+    const std::string& getPassword() const;
 
-        ///
-        /// \brief PassRequest constructor
-        /// \param password User's password
-        ///
-		PassRequest(const std::string& password);
+    static constexpr const char* CommandName = "PASS";
 
-		const std::string& getPassword() const;
+private:
+    std::string _password; ///< User's password
 
-		static constexpr const char* CommandName = "PASS";
-
-	private:
-        std::string _password; ///< User's password
-
-	};
+};
 }
 
 #endif

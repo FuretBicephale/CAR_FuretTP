@@ -32,52 +32,52 @@
 
 namespace FTP {
 
-	class Client;
+class Client;
+
+///
+/// \class ftp::RequestHandler
+/// \ingroup core
+/// \brief Interpret and execute a known request.
+///
+/// RequestHandler is a static Class.
+/// It receives a request on its process method and then call the right method to execute it.
+///
+class RequestHandler {
+
+public:
 
     ///
-    /// \class ftp::RequestHandler
-    /// \ingroup core
-    /// \brief Interpret and execute a known request.
+    /// \brief Call the right request handler for the request
+    /// \param request Request to interpret and execute
+    /// \param client the user who sends the request
     ///
-    /// RequestHandler is a static Class.
-    /// It receives a request on its process method and then call the right method to execute it.
-    ///
-    class RequestHandler {
+    static void process(Request& request, Client* client);
 
-    public:
+private:
 
-        ///
-        /// \brief Call the right request handler for the request
-        /// \param request Request to interpret and execute
-        /// \param client the user who sends the request
-        ///
-        static void process(Request& request, Client* client);
+    // Static class
+    RequestHandler();
+    RequestHandler(const RequestHandler& that);
+    RequestHandler& operator=(const RequestHandler& that);
 
-	private:
-
-		// Static class
-        RequestHandler();
-        RequestHandler(const RequestHandler& that);
-        RequestHandler& operator=(const RequestHandler& that);
-
-        // Server command handlers
-		static void processUser(UserRequest& request, Client* client);
-		static void processPass(PassRequest& request, Client* client);
-        static void processList(ListRequest& request, Client* client);
-		static void processPort(PortRequest& request, Client* client);
-		static void processRetr(RetrRequest& request, Client* client);
-		static void processStor(StorRequest& request, Client* client);
-		static void processSyst(SystRequest& request, Client* client);
-		static void processFeat(FeatRequest& request, Client* client);
-		static void processPwd(PwdRequest& request, Client* client);
-		static void processType(TypeRequest& request, Client* client);
-		static void processPasv(PasvRequest& request, Client* client);
-        static void processCwd(CWDRequest& request, Client* client);
-        static void processCdup(CDUPRequest& request, Client* client);
-		static void processMkd(MkdRequest& request, Client* client);
-		static void processRmd(RmdRequest& request, Client* client);
-		static void processQuit(QuitRequest& request, Client* client);
-    };
+    // Server command handlers
+    static void processUser(UserRequest& request, Client* client);
+    static void processPass(PassRequest& request, Client* client);
+    static void processList(ListRequest& request, Client* client);
+    static void processPort(PortRequest& request, Client* client);
+    static void processRetr(RetrRequest& request, Client* client);
+    static void processStor(StorRequest& request, Client* client);
+    static void processSyst(SystRequest& request, Client* client);
+    static void processFeat(FeatRequest& request, Client* client);
+    static void processPwd(PwdRequest& request, Client* client);
+    static void processType(TypeRequest& request, Client* client);
+    static void processPasv(PasvRequest& request, Client* client);
+    static void processCwd(CWDRequest& request, Client* client);
+    static void processCdup(CDUPRequest& request, Client* client);
+    static void processMkd(MkdRequest& request, Client* client);
+    static void processRmd(RmdRequest& request, Client* client);
+    static void processQuit(QuitRequest& request, Client* client);
+};
 }
 
 #endif

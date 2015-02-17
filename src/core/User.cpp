@@ -11,19 +11,19 @@ User::User(const std::string& username, const std::string& password, const std::
 }
 
 const std::string& User::getUsername() const {
-	return _username;
+    return _username;
 }
 
 const std::string& User::getPassword() const {
-	return _password;
+    return _password;
 }
 
 const std::string& User::getHomeDir() const {
-	return _homeDir;
+    return _homeDir;
 }
 
 int User::getMode() const {
-	return _mode;
+    return _mode;
 }
 
 UserList::UserList() : _userList() {
@@ -31,30 +31,30 @@ UserList::UserList() : _userList() {
 }
 
 bool UserList::addUser(const User& user) {
-	if(hasUser(user.getUsername())) {
-		return false;
-	}
-	_userList.push_back(user);
+    if(hasUser(user.getUsername())) {
+        return false;
+    }
+    _userList.push_back(user);
 
-	return true;
+    return true;
 }
 
 const User& UserList::findUser(const std::string& username) const {
-	for(auto it = _userList.begin(); it != _userList.end(); ++it) {
-		if(it->getUsername() == username) {
-			return *it;
-		}
-	}
+    for(auto it = _userList.begin(); it != _userList.end(); ++it) {
+        if(it->getUsername() == username) {
+            return *it;
+        }
+    }
 
-	THROW(UserNotFoundException, username);
+    THROW(UserNotFoundException, username);
 }
 
 bool UserList::hasUser(const std::string& username) const {
-	for(auto it = _userList.begin(); it != _userList.end(); ++it) {
-		if(it->getUsername() == username) {
-			return true;
-		}
-	}
+    for(auto it = _userList.begin(); it != _userList.end(); ++it) {
+        if(it->getUsername() == username) {
+            return true;
+        }
+    }
 
-	return false;
+    return false;
 }

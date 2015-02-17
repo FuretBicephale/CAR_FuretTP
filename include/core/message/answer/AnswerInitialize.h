@@ -8,14 +8,14 @@
 
 namespace FTP {
 
-	/// \brief 150 file status okay; about to open data connection.
-	class AnswerFileStatusOK : public Answer {
+/// \brief 150 file status okay; about to open data connection.
+class AnswerFileStatusOK : public Answer {
 
-	public:
-		 AnswerFileStatusOK();
+public:
+    AnswerFileStatusOK();
 
-		static const unsigned int Code = 150;
-	};
+    static const unsigned int Code = 150;
+};
 }
 
 #endif

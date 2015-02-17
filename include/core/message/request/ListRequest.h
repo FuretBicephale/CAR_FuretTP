@@ -5,27 +5,27 @@
 
 namespace FTP {
 
+///
+/// \class ftp::ListRequest
+/// \ingroup request
+/// \brief List request.
+///
+/// Display every files present in the current directory.
+///
+class ListRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::ListRequest
-    /// \ingroup request
-    /// \brief List request.
+    /// \brief ListRequest constructor
     ///
-    /// Display every files present in the current directory.
-    ///
-    class ListRequest : public Request {
+    ListRequest();
 
-    public:
+    static constexpr const char* CommandName = "LIST";
 
-        ///
-        /// \brief ListRequest constructor
-        ///
-        ListRequest();
+private:
 
-        static constexpr const char* CommandName = "LIST";
-
-    private:
-
-    };
+};
 }
 
 #endif

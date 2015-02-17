@@ -9,21 +9,21 @@
 namespace FTP {
 
 
-    ///
-    /// \class ftp::AddressNotFoundException
-    /// \ingroup exception
-    /// \brief Exception for Operating system error
-    ///
-	class AddressNotFoundException : public Exception {
+///
+/// \class ftp::AddressNotFoundException
+/// \ingroup exception
+/// \brief Exception for Operating system error
+///
+class AddressNotFoundException : public Exception {
 
-    public:
+public:
 
-        ///
-        /// \brief AddressNotFoundException constructor
-        /// \param address The address which is not found
-        ///
-        AddressNotFoundException(const std::string& address);
-    };
+    ///
+    /// \brief AddressNotFoundException constructor
+    /// \param address The address which is not found
+    ///
+    AddressNotFoundException(const std::string& address);
+};
 
 }
 

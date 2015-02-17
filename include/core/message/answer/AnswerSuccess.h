@@ -8,95 +8,95 @@
 
 namespace FTP {
 
-	/// \brief 200 OK
-	class AnswerSuccess : public Answer {
+/// \brief 200 OK
+class AnswerSuccess : public Answer {
 
-	public:
-		AnswerSuccess();
+public:
+    AnswerSuccess();
 
-		static const unsigned int Code = 200;
+    static const unsigned int Code = 200;
 
-	};
+};
 
-	/// \brief 211 System status
-	class AnswerSystemStatus : public Answer {
+/// \brief 211 System status
+class AnswerSystemStatus : public Answer {
 
-	public:
-		AnswerSystemStatus();
+public:
+    AnswerSystemStatus();
 
-		static const unsigned int Code = 211;
+    static const unsigned int Code = 211;
 
-	};
+};
 
-    /// \brief 215 System name
-	class AnswerSystemName: public Answer {
+/// \brief 215 System name
+class AnswerSystemName: public Answer {
 
-	public:
-		AnswerSystemName(const std::string& systemName);
+public:
+    AnswerSystemName(const std::string& systemName);
 
-		static const unsigned int Code = 215;
+    static const unsigned int Code = 215;
 
-	};
+};
 
-	/// \brief 221 server close connection
-	class AnswerServerCloseConnection: public Answer {
+/// \brief 221 server close connection
+class AnswerServerCloseConnection: public Answer {
 
-	public:
-		AnswerServerCloseConnection();
+public:
+    AnswerServerCloseConnection();
 
-		static const unsigned int Code = 221;
+    static const unsigned int Code = 221;
 
-	};
+};
 
-	/// \brief 225 Data connection open, no transfert in progress
-	class AnswerDataConnectionOpen: public Answer {
+/// \brief 225 Data connection open, no transfert in progress
+class AnswerDataConnectionOpen: public Answer {
 
-	public:
-		AnswerDataConnectionOpen();
+public:
+    AnswerDataConnectionOpen();
 
-		static const unsigned int Code = 225;
+    static const unsigned int Code = 225;
 
-	};
+};
 
-	/// \brief 226 File transfert success
-	class AnswerTransfertSuccess: public Answer {
+/// \brief 226 File transfert success
+class AnswerTransfertSuccess: public Answer {
 
-	public:
-		AnswerTransfertSuccess();
+public:
+    AnswerTransfertSuccess();
 
-		static const unsigned int Code = 226;
+    static const unsigned int Code = 226;
 
-	};
+};
 
-    /// \brief 227 Entering passive mode
-	class AnswerEnteringPassiveMode: public Answer {
+/// \brief 227 Entering passive mode
+class AnswerEnteringPassiveMode: public Answer {
 
-	public:
-		AnswerEnteringPassiveMode();
+public:
+    AnswerEnteringPassiveMode();
 
-		static const unsigned int Code = 227;
+    static const unsigned int Code = 227;
 
-	};
+};
 
 
-    /// \brief 230 User identifiant ok
-	class AnswerLoginOk : public Answer {
+/// \brief 230 User identifiant ok
+class AnswerLoginOk : public Answer {
 
-	public:
-		AnswerLoginOk();
+public:
+    AnswerLoginOk();
 
-		static const unsigned int Code = 230;
-	};
+    static const unsigned int Code = 230;
+};
 
-    /// \brief 257 System pathname
-	class AnswerPathnameCreated: public Answer {
+/// \brief 257 System pathname
+class AnswerPathnameCreated: public Answer {
 
-	public:
-		AnswerPathnameCreated();
+public:
+    AnswerPathnameCreated();
 
-		static const unsigned int Code = 257;
+    static const unsigned int Code = 257;
 
-	};
+};
 
 }
 

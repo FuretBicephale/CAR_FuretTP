@@ -8,32 +8,32 @@
 
 namespace FTP {
 
-	/// \brief 502 unimplemented command
-	class AnswerUnimplemented : public Answer {
+/// \brief 502 unimplemented command
+class AnswerUnimplemented : public Answer {
 
-	public:
-		AnswerUnimplemented();
+public:
+    AnswerUnimplemented();
 
-		static const unsigned int Code = 502;
-	};
+    static const unsigned int Code = 502;
+};
 
-	/// \brief 532 need account for storing files.
-	class AnswerAuthRequired : public Answer {
+/// \brief 532 need account for storing files.
+class AnswerAuthRequired : public Answer {
 
-	public:
-		AnswerAuthRequired();
+public:
+    AnswerAuthRequired();
 
-		static const unsigned int Code = 532;
-	};
+    static const unsigned int Code = 532;
+};
 
-	/// \brief 550 file unavailable
-	class AnswerFileUnavailable : public Answer {
+/// \brief 550 file unavailable
+class AnswerFileUnavailable : public Answer {
 
-	public:
-		AnswerFileUnavailable();
+public:
+    AnswerFileUnavailable();
 
-		static const unsigned int Code = 550;
-	};
+    static const unsigned int Code = 550;
+};
 
 }
 

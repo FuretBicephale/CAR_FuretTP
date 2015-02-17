@@ -8,22 +8,22 @@
 
 namespace FTP {
 
-    ///
-    /// \class ftp::SystemException
-    /// \ingroup exception
-    /// \brief Exception for Operating system error
-    ///
-	class SystemException : public Exception {
+///
+/// \class ftp::SystemException
+/// \ingroup exception
+/// \brief Exception for Operating system error
+///
+class SystemException : public Exception {
 
-	public:
+public:
 
-        ///
-        /// \brief SystemException constructor
-        /// \param message A message to print
-        /// \param error The system error's number
-        ///
-		SystemException(const std::string& message, int error);
-	};
+    ///
+    /// \brief SystemException constructor
+    /// \param message A message to print
+    /// \param error The system error's number
+    ///
+    SystemException(const std::string& message, int error);
+};
 
 }
 

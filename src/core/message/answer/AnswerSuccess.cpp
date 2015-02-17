@@ -11,7 +11,7 @@ AnswerSystemStatus::AnswerSystemStatus() : Answer(AnswerSystemStatus::Code) {
 }
 
 AnswerSystemName::AnswerSystemName(const std::string& systemName) : Answer(AnswerSystemName::Code){
-	addArgument(systemName);
+    addArgument(systemName);
 }
 
 AnswerServerCloseConnection::AnswerServerCloseConnection() : Answer(AnswerServerCloseConnection::Code) {

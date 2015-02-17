@@ -7,5 +7,5 @@ StorRequest::StorRequest(const std::string& filename) : Request(StorRequest::Com
 }
 
 const std::string& StorRequest::getFilename() const {
-	return _filename;
+    return _filename;
 }

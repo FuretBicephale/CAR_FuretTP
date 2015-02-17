@@ -5,25 +5,25 @@
 
 namespace FTP {
 
+///
+/// \class ftp::PwdRequest
+/// \ingroup request
+/// \brief Pwd request.
+///
+/// Asks the server to send the current directory pathname.
+///
+class PwdRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::PwdRequest
-    /// \ingroup request
-    /// \brief Pwd request.
+    /// \brief PwdRequest constructor
     ///
-    /// Asks the server to send the current directory pathname.
-    ///
-	class PwdRequest : public Request {
+    PwdRequest();
 
-	public:
+    static constexpr const char* CommandName = "PWD";
 
-        ///
-        /// \brief PwdRequest constructor
-        ///
-		PwdRequest();
-
-		static constexpr const char* CommandName = "PWD";
-
-	};
+};
 }
 
 #endif

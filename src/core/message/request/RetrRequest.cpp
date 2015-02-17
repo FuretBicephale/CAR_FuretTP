@@ -7,5 +7,5 @@ RetrRequest::RetrRequest(const std::string& filename) : Request(RetrRequest::Com
 }
 
 const std::string& RetrRequest::getFilename() const {
-	return _filename;
+    return _filename;
 }

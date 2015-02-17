@@ -7,5 +7,5 @@ RmdRequest::RmdRequest(const std::string& name) : Request(RmdRequest::CommandNam
 }
 
 const std::string& RmdRequest::getName() const {
-	return _name;
+    return _name;
 }

@@ -5,31 +5,31 @@
 
 namespace FTP {
 
+///
+/// \class ftp::RmdRequest
+/// \ingroup request
+/// \brief Rmd request.
+///
+/// Asks the server to delete a folder in the current directory.
+///
+class RmdRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::RmdRequest
-    /// \ingroup request
-    /// \brief Rmd request.
+    /// \brief RmdRequest constructor
+    /// \param name The name of the folder to delete.
     ///
-    /// Asks the server to delete a folder in the current directory.
-    ///
-	class RmdRequest : public Request {
+    RmdRequest(const std::string& name);
 
-	public:
+    const std::string& getName() const;
 
-        ///
-        /// \brief RmdRequest constructor
-        /// \param name The name of the folder to delete.
-        ///
-		RmdRequest(const std::string& name);
+    static constexpr const char* CommandName = "RMD";
 
-		const std::string& getName() const;
+private:
+    std::string _name; ///< The name of the folder the user wants to delete.
 
-        static constexpr const char* CommandName = "RMD";
-
-	private:
-        std::string _name; ///< The name of the folder the user wants to delete.
-
-	};
+};
 }
 
 #endif

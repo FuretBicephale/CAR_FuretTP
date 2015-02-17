@@ -7,9 +7,9 @@ PortRequest::PortRequest(const IP::Address& address, unsigned int port) : Reques
 }
 
 const IP::Address& PortRequest::getAddress() const {
-	return _address;
+    return _address;
 }
 
 unsigned int PortRequest::getPort() const {
-	return _port;
+    return _port;
 }

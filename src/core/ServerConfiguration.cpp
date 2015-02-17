@@ -3,35 +3,35 @@
 using namespace FTP;
 
 ServerConfiguration::ServerConfiguration() {
-	loadDefault();
+    loadDefault();
 }
 
 void ServerConfiguration::loadDefault() {
-	_userConfigurationPathname = "user.conf";
-	_bindPort = 4223;
+    _userConfigurationPathname = "user.conf";
+    _bindPort = 4223;
     _motd = "Welcome on FTP Server V1.0";
 }
 
 UserList& ServerConfiguration::getUserList() {
-	return _userList;
+    return _userList;
 }
 
 const UserList& ServerConfiguration::getUserList() const {
-	return _userList;
+    return _userList;
 }
 
 const std::string& ServerConfiguration::getUserConfigurationPathname() const {
-	return _userConfigurationPathname;
+    return _userConfigurationPathname;
 }
 
 unsigned int ServerConfiguration::getBindPort() const {
-	return _bindPort;
+    return _bindPort;
 }
 
 const std::string& ServerConfiguration::getMOTD() const {
-	return _motd;
+    return _motd;
 }
 
 void ServerConfiguration::setBindPort(unsigned int port) {
-	_bindPort = port;
+    _bindPort = port;
 }

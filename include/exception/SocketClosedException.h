@@ -7,21 +7,21 @@
 
 namespace FTP {
 
-    ///
-    /// \class ftp::SocketClosedException
-    /// \ingroup exception
-    /// \brief Exception launched when a socket close at an unexpected moment
-    ///
-	class SocketClosedException : public Exception {
+///
+/// \class ftp::SocketClosedException
+/// \ingroup exception
+/// \brief Exception launched when a socket close at an unexpected moment
+///
+class SocketClosedException : public Exception {
 
-	public:
+public:
 
-        ///
-        /// \brief SocketClosedException constructor
-        /// \param message A message to print
-        ///
-		SocketClosedException(const std::string& message);
-	};
+    ///
+    /// \brief SocketClosedException constructor
+    /// \param message A message to print
+    ///
+    SocketClosedException(const std::string& message);
+};
 }
 
 #endif

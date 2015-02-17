@@ -5,27 +5,27 @@
 
 namespace FTP {
 
+///
+/// \class ftp::QuitRequest
+/// \ingroup request
+/// \brief Quit request.
+///
+/// Command sent to the server when an user quit it.
+///
+class QuitRequest : public Request {
+
+public:
+
     ///
-    /// \class ftp::QuitRequest
-    /// \ingroup request
-    /// \brief Quit request.
+    /// \brief QuitRequest constructor
     ///
-    /// Command sent to the server when an user quit it.
-    ///
-	class QuitRequest : public Request {
+    QuitRequest();
 
-	public:
+    static constexpr const char* CommandName = "QUIT";
 
-        ///
-        /// \brief QuitRequest constructor
-        ///
-		QuitRequest();
+private:
 
-		static constexpr const char* CommandName = "QUIT";
-
-	private:
-
-	};
+};
 }
 
 #endif

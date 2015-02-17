@@ -8,14 +8,14 @@
 
 namespace FTP {
 
-    /// \brief 331 Username OK, require password
-	class AnswerUsernameOK : public Answer {
+/// \brief 331 Username OK, require password
+class AnswerUsernameOK : public Answer {
 
-	public:
-		AnswerUsernameOK();
+public:
+    AnswerUsernameOK();
 
-		static const unsigned int Code = 331;
-	};
+    static const unsigned int Code = 331;
+};
 
 }
 
