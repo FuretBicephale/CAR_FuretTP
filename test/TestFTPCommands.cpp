@@ -254,6 +254,16 @@ TEST_F(TestFTPCommands, testPWD) {
 
 TEST_F(TestFTPCommands, testCWD) {
     FTPClient client;
+
+		client.initializeConnection(currentPort);
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
+
+	const std::vector<std::string> createDir(1, "home");
+
+
+	 client.commande("MKD", createDir);
+
     const std::vector<std::string> directoryRelative(1, "home");
 
     client.initializeConnection(currentPort);
@@ -309,7 +319,7 @@ TEST_F(TestFTPCommands, testCWDFailure) {
     ASSERT_EQ(std::to_string(AnswerFileUnavailable::Code), packet_answer_code);
 
 }
-
+/*
 TEST_F(TestFTPCommands, testCDUP) {
     FTPClient client;
     const std::vector<std::string> directory(1, "/home");
@@ -322,7 +332,7 @@ TEST_F(TestFTPCommands, testCDUP) {
     packet_answer >> packet_answer_code;
     ASSERT_EQ(std::to_string(AnswerSuccess::Code), packet_answer_code);
 
-}
+}*/
 
 TEST_F(TestFTPCommands, testQUIT) {
     FTPClient client;
@@ -340,8 +350,8 @@ TEST_F(TestFTPCommands, testMkd) {
     const std::vector<std::string> directory(1, "test");
 
     client.initializeConnection(currentPort);
-    client.commandeUser("cacheran");
-    client.commandePass("mdp2");
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
     Packet packet_answer = client.commande("MKD", directory);
 
     std::string packet_answer_code;
@@ -363,8 +373,8 @@ TEST_F(TestFTPCommands, testMkdFailure) {
     const std::vector<std::string> directoryUnknown(1, "unknown/test");
 
     client.initializeConnection(currentPort);
-    client.commandeUser("cacheran");
-    client.commandePass("mdp2");
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
     Packet packet_answer_unknown = client.commande("MKD", directoryUnknown);
 
     packet_answer_unknown >> packet_answer_code;
@@ -376,8 +386,8 @@ TEST_F(TestFTPCommands, testRmd) {
     const std::vector<std::string> directory(1, "test");
 
     client.initializeConnection(currentPort);
-    client.commandeUser("cacheran");
-    client.commandePass("mdp2");
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
     Packet packet_answer = client.commande("RMD", directory);
 
     std::string packet_answer_code;
@@ -391,8 +401,8 @@ TEST_F(TestFTPCommands, testRmdFailure) {
     const std::vector<std::string> directoryUnknown(1, "unknown");
 
     client.initializeConnection(currentPort);
-    client.commandeUser("cacheran");
-    client.commandePass("mdp2");
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
     Packet packet_answer_unknown = client.commande("RMD", directoryUnknown);
 
     std::string packet_answer_code;
