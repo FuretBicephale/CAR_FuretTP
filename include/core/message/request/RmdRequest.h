@@ -24,7 +24,7 @@ namespace FTP {
 
 		const std::string& getName() const;
 
-		static constexpr const char* CommandName = "Rmd";
+        static constexpr const char* CommandName = "RMD";
 
 	private:
         std::string _name; ///< The name of the folder the user wants to delete.
