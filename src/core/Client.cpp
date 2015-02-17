@@ -23,21 +23,22 @@ void Client::run() {
 
     _socket.send(packet);
 
-    while(_socket.isOpen() && _isOpen) {
+
+	while(_socket.isOpen() && _isOpen) { // While the socket is open and the client is running
         Packet packet;
 
-        _socket.receive(packet);
+		_socket.receive(packet); // receive next packet
 
         std::cout << "Received buffer (" << packet.getSize() << ")" << std::endl;
         std::cout <<  packet << std::endl;
 
-        Request* message = RequestFactory::eval(packet);
+		Request* message = RequestFactory::eval(packet); //Send apcket to factory for create a structured message
 
-        if(message != nullptr) {
-            RequestHandler::process(*message, this);
-            delete message;
+		if(message != nullptr) {
+			RequestHandler::process(*message, this); //process message
+			delete message;
         }
-        else {
+		else { //if message is unrecognized, then send Answer to client with unimplemented command content
             Packet answer_packet;
 
             AnswerUnimplemented answer;
@@ -76,16 +77,16 @@ void Client::resetLogin() {
 }
 
 void Client::openDataConnection() {
-    if(_inPassiveMode) {
+	if(_inPassiveMode) { // if client is currently in passive mode
         _passiveDataSocket.close();
-        _passiveDataListener.accept(_passiveDataSocket);
+		_passiveDataListener.accept(_passiveDataSocket); // then wait client connection
         std::cout << "[Client " << _uid << "] Accept new passive data connection" << std::endl;
     }
     else {
-        if(_nextActivePort == 0)
+		if(_nextActivePort == 0) // if client don't specified data socket address with a PORT command
             THROW(NoActiveConnectionException, "");
         _activeDataSocket.close();
-        _activeDataSocket.connect(_nextActiveAddress, _nextActivePort);
+		_activeDataSocket.connect(_nextActiveAddress, _nextActivePort); // then connect to the address:port specified in last command PORT
         std::cout << "[Client " << _uid << "] Open new active data connection (" << _nextActiveAddress << ":" << _nextActivePort << ") " << std::endl;
     }
 }

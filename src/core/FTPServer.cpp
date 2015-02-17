@@ -14,12 +14,10 @@ void FTPServer::run() {
 
     while(_listener.isOpen()) {
         TCP::Socket client;
-        _listener.accept(client);
+		_listener.accept(client); // accept next client
 
-        Thread<Client> thread(new Client(this, client));
-        thread.run();
-
-
+		Thread<Client> thread(new Client(this, client)); // open a new thread for handle the client connection
+		thread.run(); // run client thread
     }
 
 }
