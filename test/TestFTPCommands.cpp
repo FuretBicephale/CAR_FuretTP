@@ -261,21 +261,20 @@ TEST_F(TestFTPCommands, testCWD) {
 
 	const std::vector<std::string> createDir(1, "home");
 
-
+	 std::string packet_answer_code;
 	 client.commande("MKD", createDir);
 
     const std::vector<std::string> directoryRelative(1, "home");
 
-    client.initializeConnection(currentPort);
     Packet packet_answer_relative = client.commande("CWD", directoryRelative);
 
-    std::string packet_answer_code;
+
     packet_answer_relative >> packet_answer_code;
     ASSERT_EQ(std::to_string(AnswerSuccess::Code), packet_answer_code);
 
     const std::vector<std::string> directoryAbsolute(1, "/home");
 
-    client.initializeConnection(currentPort);
+
     Packet packet_answer_absolute = client.commande("CWD", directoryAbsolute);
 
     packet_answer_absolute >> packet_answer_code;
@@ -283,7 +282,6 @@ TEST_F(TestFTPCommands, testCWD) {
 
     const std::vector<std::string> directoryRelative2(1, ".");
 
-    client.initializeConnection(currentPort);
     Packet packet_answer_relative2 = client.commande("CWD", directoryRelative2);
 
     packet_answer_relative2 >> packet_answer_code;
@@ -291,7 +289,6 @@ TEST_F(TestFTPCommands, testCWD) {
 
     const std::vector<std::string> directoryRelative3(1, "..");
 
-    client.initializeConnection(currentPort);
     Packet packet_answer_relative3 = client.commande("CWD", directoryRelative3);
 
     packet_answer_relative3 >> packet_answer_code;
@@ -319,12 +316,19 @@ TEST_F(TestFTPCommands, testCWDFailure) {
     ASSERT_EQ(std::to_string(AnswerFileUnavailable::Code), packet_answer_code);
 
 }
-/*
+
 TEST_F(TestFTPCommands, testCDUP) {
     FTPClient client;
-    const std::vector<std::string> directory(1, "/home");
 
     client.initializeConnection(currentPort);
+	client.commandeUser(USER_LOGIN);
+	client.commandePass(USER_PASSWORD);
+
+	const std::vector<std::string> createDir(1, "home");
+	 client.commande("MKD", createDir);
+
+	const std::vector<std::string> directory(1, "/home");
+
     client.commande("CWD", directory);
     Packet packet_answer = client.commande("CDUP");
 
@@ -332,7 +336,7 @@ TEST_F(TestFTPCommands, testCDUP) {
     packet_answer >> packet_answer_code;
     ASSERT_EQ(std::to_string(AnswerSuccess::Code), packet_answer_code);
 
-}*/
+}
 
 TEST_F(TestFTPCommands, testQUIT) {
     FTPClient client;
