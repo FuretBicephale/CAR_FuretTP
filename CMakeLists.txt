@@ -48,7 +48,10 @@ configure_file("user.conf" "user.conf" COPYONLY)
 
 
 add_subdirectory(test)
-#FTP test directory
+
+#FTP base directory
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/user_normal")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/user_anonymous")
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/user_test_directory")
 
 add_executable(${executable_name} ${include_files} ${source_files} src/main.cpp)
