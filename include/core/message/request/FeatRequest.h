@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::FeatRequest
+/// \class FeatRequest
 /// \ingroup request
 /// \brief Feat request.
 ///

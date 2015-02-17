@@ -13,7 +13,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::Exception
+/// \class Exception
 /// \ingroup exception
 /// \brief Basic exception
 ///

@@ -7,7 +7,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::StorRequest
+/// \class StorRequest
 /// \ingroup request
 /// \brief Stor request.
 ///

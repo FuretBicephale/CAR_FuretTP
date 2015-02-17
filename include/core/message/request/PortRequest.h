@@ -7,7 +7,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::PortRequest
+/// \class PortRequest
 /// \ingroup request
 /// \brief Port request.
 ///

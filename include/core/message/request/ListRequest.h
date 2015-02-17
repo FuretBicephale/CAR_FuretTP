@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::ListRequest
+/// \class ListRequest
 /// \ingroup request
 /// \brief List request.
 ///

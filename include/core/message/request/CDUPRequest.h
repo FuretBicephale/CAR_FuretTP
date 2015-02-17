@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::CDUPRequest
+/// \class CDUPRequest
 /// \ingroup request
 /// \brief CDUP request.
 ///

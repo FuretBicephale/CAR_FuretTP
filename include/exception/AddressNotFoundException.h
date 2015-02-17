@@ -10,7 +10,7 @@ namespace FTP {
 
 
 ///
-/// \class ftp::AddressNotFoundException
+/// \class AddressNotFoundException
 /// \ingroup exception
 /// \brief Exception for Operating system error
 ///

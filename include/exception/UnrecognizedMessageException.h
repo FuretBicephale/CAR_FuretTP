@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::UnrecognizedMessageException
+/// \class UnrecognizedMessageException
 /// \ingroup exception
 /// \brief Exception launched when a message send by user isn't recognized
 ///

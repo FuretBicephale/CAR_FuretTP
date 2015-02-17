@@ -15,7 +15,7 @@ namespace FTP {
 class FTPServer;
 
 ///
-/// \class ftp::Client
+/// \class Client
 /// \ingroup core
 /// \brief User connection to the Server.
 ///

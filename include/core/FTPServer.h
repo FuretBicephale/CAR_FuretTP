@@ -12,7 +12,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::FTPServer
+/// \class FTPServer
 /// \ingroup core
 /// \brief Represents the FTP Server.
 ///

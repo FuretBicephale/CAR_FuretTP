@@ -7,7 +7,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::TypeRequest
+/// \class TypeRequest
 /// \ingroup request
 /// \brief Type request.
 ///
