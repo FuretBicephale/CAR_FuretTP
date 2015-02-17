@@ -5,7 +5,10 @@ namespace FTP {
 
 	namespace TCP {
 
+		/// \brief Bentley socket type
 		typedef int SocketDescriptor;
+
+		/// \brief closed socket identifier
 		#define UNINITIALIZED_SOCKET 0
 
 

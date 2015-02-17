@@ -23,8 +23,6 @@ void Socket::_initialize(SocketDescriptor socket) {
 	struct sockaddr_in address;
 	socklen_t length = sizeof(struct sockaddr_in);
 	getsockname(socket, (struct sockaddr*)&address, &length);
-
-	_address._initialize();
 }
 
 void Socket::connect(const IP::Address& address, unsigned int port) {

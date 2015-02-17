@@ -1,0 +1,103 @@
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket}{\section{F\-T\-P\-:\-:T\-C\-P\-:\-:Socket Class Reference}
+\label{class_f_t_p_1_1_t_c_p_1_1_socket}\index{F\-T\-P\-::\-T\-C\-P\-::\-Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a38968f94a259b3052b4aada84ed7bcca}{\hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a38968f94a259b3052b4aada84ed7bcca}{Socket} ()}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a38968f94a259b3052b4aada84ed7bcca}
+
+\begin{DoxyCompactList}\small\item\em create on non connected socket \end{DoxyCompactList}\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a13f3818892ac508f3240ca55db98459b}{\hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a13f3818892ac508f3240ca55db98459b}{Socket} (\hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket}{Socket} \&\&that)}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a13f3818892ac508f3240ca55db98459b}
+
+\begin{DoxyCompactList}\small\item\em move the socket from 'that' \end{DoxyCompactList}\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a17e008f492188ab6f9114ff68b0c160b}{\hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a17e008f492188ab6f9114ff68b0c160b}{$\sim$\-Socket} ()}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a17e008f492188ab6f9114ff68b0c160b}
+
+\begin{DoxyCompactList}\small\item\em destroy socket and close it connection if he is connected \end{DoxyCompactList}\item 
+void \hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a220e0105754cdf9378411b24809a4f04}{connect} (const \hyperlink{class_f_t_p_1_1_i_p_1_1_address}{I\-P\-::\-Address} \&address, unsigned int port)
+\begin{DoxyCompactList}\small\item\em connect the socket to the target 'address' \-: 'port' socket \end{DoxyCompactList}\item 
+void \hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a1a06bb837f2a2d82f3477ecf4da373c7}{receive} (\hyperlink{class_f_t_p_1_1_packet}{Packet} \&packet)
+\begin{DoxyCompactList}\small\item\em wait and receive a packet and transfere it content into 'packet' \end{DoxyCompactList}\item 
+void \hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a7ebcedc1c8baba1a838bdb46babea2eb}{send} (const \hyperlink{class_f_t_p_1_1_packet}{Packet} \&packet)
+\begin{DoxyCompactList}\small\item\em send a packet with the content of 'packet' \end{DoxyCompactList}\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a783815d519b4f76ac7f25e946e8be21e}{void \hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a783815d519b4f76ac7f25e946e8be21e}{close} ()}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a783815d519b4f76ac7f25e946e8be21e}
+
+\begin{DoxyCompactList}\small\item\em close the socket connection \end{DoxyCompactList}\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a9323b1947771c55468a303199742a840}{bool \hyperlink{class_f_t_p_1_1_t_c_p_1_1_socket_a9323b1947771c55468a303199742a840}{is\-Open} () const }\label{class_f_t_p_1_1_t_c_p_1_1_socket_a9323b1947771c55468a303199742a840}
+
+\begin{DoxyCompactList}\small\item\em return true if the socket is currently connected with another socket, false otherwhise \end{DoxyCompactList}\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a79f3892a2088f566286baf5e4e89f939}{const \hyperlink{class_f_t_p_1_1_i_p_1_1_address}{I\-P\-::\-Address} \& {\bfseries get\-Address} () const }\label{class_f_t_p_1_1_t_c_p_1_1_socket_a79f3892a2088f566286baf5e4e89f939}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a53a20affc0dd32b432b7e596a68002fe}{class {\bfseries Listener}}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a53a20affc0dd32b432b7e596a68002fe}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a220e0105754cdf9378411b24809a4f04}{\index{F\-T\-P\-::\-T\-C\-P\-::\-Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}!connect@{connect}}
+\index{connect@{connect}!FTP::TCP::Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}void F\-T\-P\-::\-T\-C\-P\-::\-Socket\-::connect (
+\begin{DoxyParamCaption}
+\item[{const {\bf I\-P\-::\-Address} \&}]{address, }
+\item[{unsigned int}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a220e0105754cdf9378411b24809a4f04}
+
+
+connect the socket to the target 'address' \-: 'port' socket 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_f_t_p_1_1_system_exception}{System\-Exception}} & if the connection fail \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a1a06bb837f2a2d82f3477ecf4da373c7}{\index{F\-T\-P\-::\-T\-C\-P\-::\-Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}!receive@{receive}}
+\index{receive@{receive}!FTP::TCP::Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}}
+\subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}void F\-T\-P\-::\-T\-C\-P\-::\-Socket\-::receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} \&}]{packet}
+\end{DoxyParamCaption}
+)}}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a1a06bb837f2a2d82f3477ecf4da373c7}
+
+
+wait and receive a packet and transfere it content into 'packet' 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & is an packet for store the received message. this one need to be allocated during all the receive execution \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_f_t_p_1_1_socket_closed_exception}{Socket\-Closed\-Exception}} & if the socket is closed \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_f_t_p_1_1_t_c_p_1_1_socket_a7ebcedc1c8baba1a838bdb46babea2eb}{\index{F\-T\-P\-::\-T\-C\-P\-::\-Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}!send@{send}}
+\index{send@{send}!FTP::TCP::Socket@{F\-T\-P\-::\-T\-C\-P\-::\-Socket}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}void F\-T\-P\-::\-T\-C\-P\-::\-Socket\-::send (
+\begin{DoxyParamCaption}
+\item[{const {\bf Packet} \&}]{packet}
+\end{DoxyParamCaption}
+)}}\label{class_f_t_p_1_1_t_c_p_1_1_socket_a7ebcedc1c8baba1a838bdb46babea2eb}
+
+
+send a packet with the content of 'packet' 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & is an packet which contain the message. this one need to be allocated during all the receive execution \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_f_t_p_1_1_socket_closed_exception}{Socket\-Closed\-Exception}} & if the socket is closed \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/network/tcp/Socket.\-h\end{DoxyCompactItemize}

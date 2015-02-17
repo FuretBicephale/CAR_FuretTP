@@ -15,10 +15,6 @@ Address::Address(const std::string& hostname) : _host(nullptr) {
     }
 }
 
-void Address::_initialize() {
-
-}
-
 Address::Address(const Address& model) : _host(model._host) {
 
 }

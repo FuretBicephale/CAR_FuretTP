@@ -19,14 +19,17 @@ namespace FTP {
 
 	namespace TCP {
 
+		/// \class Listener
+		/// \ingroup network
+		/// \brief TCP socket listener
 		///
-		/// \brief TCP client listenner. Thi class use POSIX Socket.
-		///
+		/// This class bind a port for listen entry tcp connection on this last. This class use a POSIX Socket.
 		class Listener {
 
 		public:
 			const int MaxSimultaneousConnection = 8;
 
+			/// \brief create a listener.
 			Listener();
 			~Listener();
 
@@ -43,6 +46,7 @@ namespace FTP {
 			/// \brief close the socket
 			void close();
 
+			/// \brief return true if the listener can currently accept new client, false otherwise
 			bool isOpen() const;
 
 			unsigned int getPort() const;

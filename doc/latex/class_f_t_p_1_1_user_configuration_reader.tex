@@ -1,0 +1,35 @@
+\hypertarget{class_f_t_p_1_1_user_configuration_reader}{\section{F\-T\-P\-:\-:User\-Configuration\-Reader Class Reference}
+\label{class_f_t_p_1_1_user_configuration_reader}\index{F\-T\-P\-::\-User\-Configuration\-Reader@{F\-T\-P\-::\-User\-Configuration\-Reader}}
+}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_f_t_p_1_1_user_configuration_reader_a2e522080a3cc4b378e82b75fc3ceb529}{process} (const std\-::string \&pathname, \hyperlink{class_f_t_p_1_1_server_configuration}{Server\-Configuration} \&configuration)
+\begin{DoxyCompactList}\small\item\em Read the file pathname and add the users to configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_f_t_p_1_1_user_configuration_reader_a2e522080a3cc4b378e82b75fc3ceb529}{\index{F\-T\-P\-::\-User\-Configuration\-Reader@{F\-T\-P\-::\-User\-Configuration\-Reader}!process@{process}}
+\index{process@{process}!FTP::UserConfigurationReader@{F\-T\-P\-::\-User\-Configuration\-Reader}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}static void F\-T\-P\-::\-User\-Configuration\-Reader\-::process (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{pathname, }
+\item[{{\bf Server\-Configuration} \&}]{configuration}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_f_t_p_1_1_user_configuration_reader_a2e522080a3cc4b378e82b75fc3ceb529}
+
+
+Read the file pathname and add the users to configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & the file to read \\
+\hline
+{\em configuration} & the configuration where the methods will add users\\
+\hline
+\end{DoxyParams}
+The read must contains n lines for n user. Each lines must be in the following format \-: $<$username$>$ $<$password$>$ $<$home\-\_\-dir$>$ If the file doesn't respect this syntax, the method will throw an \hyperlink{class_f_t_p_1_1_incorrecte_file_format_exception}{Incorrecte\-File\-Format\-Exception} 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/core/User\-Configuration\-Reader.\-h\end{DoxyCompactItemize}
