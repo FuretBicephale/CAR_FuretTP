@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::NoActiveConnectionException
+/// \class NoActiveConnectionException
 /// \ingroup exception
 /// \brief Exception launched when there isn't Active connection when it's needed
 ///

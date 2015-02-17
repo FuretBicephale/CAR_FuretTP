@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::QuitRequest
+/// \class QuitRequest
 /// \ingroup request
 /// \brief Quit request.
 ///

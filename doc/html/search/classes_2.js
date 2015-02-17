@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['directory',['Directory',['../class_f_t_p_1_1_directory.html',1,'FTP']]]
+  ['directory',['Directory',['../classFTP_1_1Directory.html',1,'FTP']]]
 ];

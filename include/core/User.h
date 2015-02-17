@@ -9,7 +9,7 @@
 namespace FTP {
 
 ///
-/// \struct ftp::User
+/// \struct User
 /// \ingroup core
 /// \brief Represents an user.
 ///

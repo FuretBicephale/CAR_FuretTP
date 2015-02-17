@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['cduprequest',['CDUPRequest',['../class_f_t_p_1_1_c_d_u_p_request.html',1,'FTP::CDUPRequest'],['../classftp_1_1_c_d_u_p_request.html',1,'ftp::CDUPRequest']]],
-  ['client',['Client',['../class_f_t_p_1_1_client.html',1,'FTP::Client'],['../classftp_1_1_client.html',1,'ftp::Client']]],
-  ['cwdprequest',['CWDPRequest',['../classftp_1_1_c_w_d_p_request.html',1,'ftp']]],
-  ['cwdrequest',['CWDRequest',['../class_f_t_p_1_1_c_w_d_request.html',1,'FTP']]]
+  ['cduprequest',['CDUPRequest',['../classFTP_1_1CDUPRequest.html',1,'FTP']]],
+  ['client',['Client',['../classFTP_1_1Client.html',1,'FTP']]],
+  ['cwdprequest',['CWDPRequest',['../classCWDPRequest.html',1,'']]],
+  ['cwdrequest',['CWDRequest',['../classFTP_1_1CWDRequest.html',1,'FTP']]]
 ];

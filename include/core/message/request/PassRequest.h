@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::PassRequest
+/// \class PassRequest
 /// \ingroup request
 /// \brief Pass request.
 ///

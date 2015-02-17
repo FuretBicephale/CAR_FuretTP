@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::PwdRequest
+/// \class PwdRequest
 /// \ingroup request
 /// \brief Pwd request.
 ///

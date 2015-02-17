@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::SocketClosedException
+/// \class SocketClosedException
 /// \ingroup exception
 /// \brief Exception launched when a socket close at an unexpected moment
 ///

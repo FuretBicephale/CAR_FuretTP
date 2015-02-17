@@ -9,7 +9,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::Answer
+/// \class Answer
 /// \ingroup answer
 /// \brief Basic request's answer.
 ///

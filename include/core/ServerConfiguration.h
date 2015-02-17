@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::ServerConfiguration
+/// \class ServerConfiguration
 /// \ingroup core
 /// \brief Current configuration of the server
 ///

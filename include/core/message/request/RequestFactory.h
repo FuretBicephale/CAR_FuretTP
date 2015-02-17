@@ -31,7 +31,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::RequestFactory
+/// \class RequestFactory
 /// \ingroup request
 /// \brief Determine the class of request packet
 ///

@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::IncorrecteFileFormatException
+/// \class IncorrecteFileFormatException
 /// \ingroup exception
 /// \brief Exception launched when a file format is incorrect
 ///

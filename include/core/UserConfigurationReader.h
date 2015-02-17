@@ -13,7 +13,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::UserConfigurationReader
+/// \class UserConfigurationReader
 /// \ingroup core
 /// \brief A class used to read a file which contains user's account information
 ///

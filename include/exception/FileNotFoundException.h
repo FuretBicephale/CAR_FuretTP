@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::FileNotFoundException
+/// \class FileNotFoundException
 /// \ingroup exception
 /// \brief Exception launched when a file is needed but not found
 ///

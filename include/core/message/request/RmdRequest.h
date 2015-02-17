@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::RmdRequest
+/// \class RmdRequest
 /// \ingroup request
 /// \brief Rmd request.
 ///

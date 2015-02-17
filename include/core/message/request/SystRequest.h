@@ -7,7 +7,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::SystRequest
+/// \class SystRequest
 /// \ingroup request
 /// \brief Syst request.
 ///

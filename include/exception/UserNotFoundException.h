@@ -8,7 +8,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::UserNotFoundException
+/// \class UserNotFoundException
 /// \ingroup exception
 /// \brief Exception launched when a user isn't found
 ///

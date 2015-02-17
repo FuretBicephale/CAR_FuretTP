@@ -9,7 +9,7 @@
 namespace FTP {
 
 ///
-/// \class ftp::SystemException
+/// \class SystemException
 /// \ingroup exception
 /// \brief Exception for Operating system error
 ///

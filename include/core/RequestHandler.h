@@ -35,7 +35,7 @@ namespace FTP {
 class Client;
 
 ///
-/// \class ftp::RequestHandler
+/// \class RequestHandler
 /// \ingroup core
 /// \brief Interpret and execute a known request.
 ///
