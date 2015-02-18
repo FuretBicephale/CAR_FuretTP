@@ -1,0 +1,71 @@
+\hypertarget{classFTP_1_1Directory}{}\section{F\+T\+P\+:\+:Directory Class Reference}
+\label{classFTP_1_1Directory}\index{F\+T\+P\+::\+Directory@{F\+T\+P\+::\+Directory}}
+
+
+\hyperlink{classFTP_1_1Directory}{Directory} management classx.  
+
+
+
+
+{\ttfamily \#include $<$Directory.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{structFTP_1_1Directory_1_1Entry}{Entry}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structFTP_1_1Directory_1_1Entry}{Entry} in directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classFTP_1_1Directory_a55f609eb353e6f9806c19e93e294ac0a}{open} (std\+::string pathname)
+\begin{DoxyCompactList}\small\item\em open a directory \end{DoxyCompactList}\item 
+void \hyperlink{classFTP_1_1Directory_a2030a6e209fbe90537db216839eb6c75}{list} (std\+::vector$<$ \hyperlink{structFTP_1_1Directory_1_1Entry}{Entry} $>$ \&entries)
+\begin{DoxyCompactList}\small\item\em list the directory contents. Need previously be openend \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Directory_abb5502a657390ea09207d51494213b27}{}void \hyperlink{classFTP_1_1Directory_abb5502a657390ea09207d51494213b27}{close} ()\label{classFTP_1_1Directory_abb5502a657390ea09207d51494213b27}
+
+\begin{DoxyCompactList}\small\item\em close directory \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classFTP_1_1Directory}{Directory} management classx. 
+
+Enscapsulate C directory reader functions. Allow to list the content directory 
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1Directory_a2030a6e209fbe90537db216839eb6c75}{}\index{F\+T\+P\+::\+Directory@{F\+T\+P\+::\+Directory}!list@{list}}
+\index{list@{list}!F\+T\+P\+::\+Directory@{F\+T\+P\+::\+Directory}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}void F\+T\+P\+::\+Directory\+::list (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Entry} $>$ \&}]{entries}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Directory_a2030a6e209fbe90537db216839eb6c75}
+
+
+list the directory contents. Need previously be openend 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entries} & \+: a vector which be fill with all the entries of the opened directory \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFTP_1_1Directory_a55f609eb353e6f9806c19e93e294ac0a}{}\index{F\+T\+P\+::\+Directory@{F\+T\+P\+::\+Directory}!open@{open}}
+\index{open@{open}!F\+T\+P\+::\+Directory@{F\+T\+P\+::\+Directory}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}void F\+T\+P\+::\+Directory\+::open (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{pathname}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Directory_a55f609eb353e6f9806c19e93e294ac0a}
+
+
+open a directory 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & of the directory \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/system/Directory.\+h\end{DoxyCompactItemize}

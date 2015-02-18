@@ -1,0 +1,48 @@
+\hypertarget{classFTP_1_1UserConfigurationReader}{}\section{F\+T\+P\+:\+:User\+Configuration\+Reader Class Reference}
+\label{classFTP_1_1UserConfigurationReader}\index{F\+T\+P\+::\+User\+Configuration\+Reader@{F\+T\+P\+::\+User\+Configuration\+Reader}}
+
+
+A class used to read a file which contains user\textquotesingle{}s account information.  
+
+
+
+
+{\ttfamily \#include $<$User\+Configuration\+Reader.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classFTP_1_1UserConfigurationReader_a2e522080a3cc4b378e82b75fc3ceb529}{process} (const std\+::string \&pathname, \hyperlink{classFTP_1_1ServerConfiguration}{Server\+Configuration} \&configuration)
+\begin{DoxyCompactList}\small\item\em Read the file pathname and add the users to configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class used to read a file which contains user\textquotesingle{}s account information. 
+
+\hyperlink{classFTP_1_1UserConfigurationReader}{User\+Configuration\+Reader} is a static class. It reads a file to retrieve information about server users accounts and add them to the server configuration \hyperlink{classFTP_1_1UserList}{User\+List} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1UserConfigurationReader_a2e522080a3cc4b378e82b75fc3ceb529}{}\index{F\+T\+P\+::\+User\+Configuration\+Reader@{F\+T\+P\+::\+User\+Configuration\+Reader}!process@{process}}
+\index{process@{process}!F\+T\+P\+::\+User\+Configuration\+Reader@{F\+T\+P\+::\+User\+Configuration\+Reader}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}static void F\+T\+P\+::\+User\+Configuration\+Reader\+::process (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{pathname, }
+\item[{{\bf Server\+Configuration} \&}]{configuration}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classFTP_1_1UserConfigurationReader_a2e522080a3cc4b378e82b75fc3ceb529}
+
+
+Read the file pathname and add the users to configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathname} & the file to read \\
+\hline
+{\em configuration} & the configuration where the methods will add users\\
+\hline
+\end{DoxyParams}
+The read must contains n lines for n user. Each lines must be in the following format \+: $<$username$>$ $<$password$>$ $<$home\+\_\+dir$>$ If the file doesn\textquotesingle{}t respect this syntax, the method will throw an \hyperlink{classFTP_1_1IncorrecteFileFormatException}{Incorrecte\+File\+Format\+Exception} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/core/User\+Configuration\+Reader.\+h\end{DoxyCompactItemize}

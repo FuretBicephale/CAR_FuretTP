@@ -1,0 +1,93 @@
+\hypertarget{classFTP_1_1UserList}{}\section{F\+T\+P\+:\+:User\+List Class Reference}
+\label{classFTP_1_1UserList}\index{F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}}
+
+
+Represents a list of users.  
+
+
+
+
+{\ttfamily \#include $<$User.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFTP_1_1UserList_af2f3d0d0df23f6a00bea95f0be707601}{}\hyperlink{classFTP_1_1UserList_af2f3d0d0df23f6a00bea95f0be707601}{User\+List} ()\label{classFTP_1_1UserList_af2f3d0d0df23f6a00bea95f0be707601}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFTP_1_1UserList}{User\+List} constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classFTP_1_1UserList_a0427b71d7f5c0ed383cb6254f36d210c}{add\+User} (const \hyperlink{structFTP_1_1User}{User} \&user)
+\begin{DoxyCompactList}\small\item\em Add an user to the list. \end{DoxyCompactList}\item 
+const \hyperlink{structFTP_1_1User}{User} \& \hyperlink{classFTP_1_1UserList_a260d4aa185854aefa9266e762fb5a0dc}{find\+User} (const std\+::string \&username) const 
+\begin{DoxyCompactList}\small\item\em Find an user with his username in the list. \end{DoxyCompactList}\item 
+bool \hyperlink{classFTP_1_1UserList_a9b6441c5595dbdcdd872d4c3182da44a}{has\+User} (const std\+::string \&username) const 
+\begin{DoxyCompactList}\small\item\em has\+User Says if the list contains an user with the username username \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a list of users. 
+
+Represents a list of users connected to the server. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1UserList_a0427b71d7f5c0ed383cb6254f36d210c}{}\index{F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}!add\+User@{add\+User}}
+\index{add\+User@{add\+User}!F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}}
+\subsubsection[{add\+User}]{\setlength{\rightskip}{0pt plus 5cm}bool F\+T\+P\+::\+User\+List\+::add\+User (
+\begin{DoxyParamCaption}
+\item[{const {\bf User} \&}]{user}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1UserList_a0427b71d7f5c0ed383cb6254f36d210c}
+
+
+Add an user to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the user is added, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classFTP_1_1UserList_a260d4aa185854aefa9266e762fb5a0dc}{}\index{F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}!find\+User@{find\+User}}
+\index{find\+User@{find\+User}!F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}}
+\subsubsection[{find\+User}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf User}\& F\+T\+P\+::\+User\+List\+::find\+User (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{username}
+\end{DoxyParamCaption}
+) const}\label{classFTP_1_1UserList_a260d4aa185854aefa9266e762fb5a0dc}
+
+
+Find an user with his username in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the user we\textquotesingle{}re searching for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the user if he\textquotesingle{}s finded, throw an \hyperlink{classFTP_1_1UserNotFoundException}{User\+Not\+Found\+Exception} otherwise 
+\end{DoxyReturn}
+\hypertarget{classFTP_1_1UserList_a9b6441c5595dbdcdd872d4c3182da44a}{}\index{F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}!has\+User@{has\+User}}
+\index{has\+User@{has\+User}!F\+T\+P\+::\+User\+List@{F\+T\+P\+::\+User\+List}}
+\subsubsection[{has\+User}]{\setlength{\rightskip}{0pt plus 5cm}bool F\+T\+P\+::\+User\+List\+::has\+User (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{username}
+\end{DoxyParamCaption}
+) const}\label{classFTP_1_1UserList_a9b6441c5595dbdcdd872d4c3182da44a}
+
+
+has\+User Says if the list contains an user with the username username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the list contains the user username, False otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/core/User.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\hypertarget{classFTP_1_1RequestFactory}{}\section{F\+T\+P\+:\+:Request\+Factory Class Reference}
+\label{classFTP_1_1RequestFactory}\index{F\+T\+P\+::\+Request\+Factory@{F\+T\+P\+::\+Request\+Factory}}
+
+
+Determine the class of request packet.  
+
+
+
+
+{\ttfamily \#include $<$Request\+Factory.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classFTP_1_1Request}{Request} $\ast$ \hyperlink{classFTP_1_1RequestFactory_ac53c72a15f6f91db30d6b0dfa11425dc}{eval} (\hyperlink{classFTP_1_1Packet}{Packet} \&packet)
+\begin{DoxyCompactList}\small\item\em Create a request from the packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Determine the class of request packet. 
+
+\hyperlink{classFTP_1_1RequestFactory}{Request\+Factory} is a static class. It evaluate a packet in order to create a request from it. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1RequestFactory_ac53c72a15f6f91db30d6b0dfa11425dc}{}\index{F\+T\+P\+::\+Request\+Factory@{F\+T\+P\+::\+Request\+Factory}!eval@{eval}}
+\index{eval@{eval}!F\+T\+P\+::\+Request\+Factory@{F\+T\+P\+::\+Request\+Factory}}
+\subsubsection[{eval}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Request}$\ast$ F\+T\+P\+::\+Request\+Factory\+::eval (
+\begin{DoxyParamCaption}
+\item[{{\bf Packet} \&}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classFTP_1_1RequestFactory_ac53c72a15f6f91db30d6b0dfa11425dc}
+
+
+Create a request from the packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & The packet to evaluate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+F\+T\+P\+Message
+\end{DoxyReturn}
+The receiver is responsible of the returned object deletion 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/core/message/request/Request\+Factory.\+h\end{DoxyCompactItemize}

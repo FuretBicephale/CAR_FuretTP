@@ -1,0 +1,55 @@
+\hypertarget{classFTP_1_1Packet}{}\section{F\+T\+P\+:\+:Packet Class Reference}
+\label{classFTP_1_1Packet}\index{F\+T\+P\+::\+Packet@{F\+T\+P\+::\+Packet}}
+
+
+Class which contains data. \hyperlink{classFTP_1_1Packet}{Packet} are used to send and receive message from sockets.  
+
+
+
+
+{\ttfamily \#include $<$Packet.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFTP_1_1Packet_a95e1b1075f22a60bca81da1740533595}{}\hyperlink{classFTP_1_1Packet_a95e1b1075f22a60bca81da1740533595}{Packet} ()\label{classFTP_1_1Packet_a95e1b1075f22a60bca81da1740533595}
+
+\begin{DoxyCompactList}\small\item\em create empty packet \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_aa027c8478b3aa7a964a1c5c7a2e57eba}{}\hyperlink{classFTP_1_1Packet_aa027c8478b3aa7a964a1c5c7a2e57eba}{Packet} (const \hyperlink{classFTP_1_1Packet}{Packet} \&that)\label{classFTP_1_1Packet_aa027c8478b3aa7a964a1c5c7a2e57eba}
+
+\begin{DoxyCompactList}\small\item\em create new packet and copy \textquotesingle{}that\textquotesingle{} contents into it \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_a0615f4be31088b859d770e6f620e357c}{}\hyperlink{classFTP_1_1Packet_a0615f4be31088b859d770e6f620e357c}{$\sim$\+Packet} ()\label{classFTP_1_1Packet_a0615f4be31088b859d770e6f620e357c}
+
+\begin{DoxyCompactList}\small\item\em destroy packet and free memory \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_a896fef76d79779c046dcd1918bc3ee68}{}\hyperlink{classFTP_1_1Packet}{Packet} \& \hyperlink{classFTP_1_1Packet_a896fef76d79779c046dcd1918bc3ee68}{operator=} (const \hyperlink{classFTP_1_1Packet}{Packet} \&that)\label{classFTP_1_1Packet_a896fef76d79779c046dcd1918bc3ee68}
+
+\begin{DoxyCompactList}\small\item\em copy content of another packet into current packet \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_ab67e5329d916ca745500c5cc0942a3f1}{}unsigned int {\bfseries get\+Size} () const \label{classFTP_1_1Packet_ab67e5329d916ca745500c5cc0942a3f1}
+
+\item 
+\hypertarget{classFTP_1_1Packet_af141e6f529ed3230e562ee3f3340fbcb}{}const char $\ast$ {\bfseries get\+Buffer} () const \label{classFTP_1_1Packet_af141e6f529ed3230e562ee3f3340fbcb}
+
+\item 
+\hypertarget{classFTP_1_1Packet_a579ab0ada8b4adbd2685cd6a8389c05a}{}void \hyperlink{classFTP_1_1Packet_a579ab0ada8b4adbd2685cd6a8389c05a}{raw\+Write} (const char $\ast$buffer, unsigned int length)\label{classFTP_1_1Packet_a579ab0ada8b4adbd2685cd6a8389c05a}
+
+\begin{DoxyCompactList}\small\item\em write a raw buffer of size \textquotesingle{}length\textquotesingle{} into the packet \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_af3ce1782e8b128d3c5e29cb42ca00f97}{}\hyperlink{classFTP_1_1Packet}{Packet} \& \hyperlink{classFTP_1_1Packet_af3ce1782e8b128d3c5e29cb42ca00f97}{operator$<$$<$} (const std\+::string \&str)\label{classFTP_1_1Packet_af3ce1782e8b128d3c5e29cb42ca00f97}
+
+\begin{DoxyCompactList}\small\item\em write a string at the end of the packet content \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Packet_ad8407d95fda0ff5febf2ceb8fdbf67fe}{}\hyperlink{classFTP_1_1Packet}{Packet} \& \hyperlink{classFTP_1_1Packet_ad8407d95fda0ff5febf2ceb8fdbf67fe}{operator$>$$>$} (std\+::string \&str)\label{classFTP_1_1Packet_ad8407d95fda0ff5febf2ceb8fdbf67fe}
+
+\begin{DoxyCompactList}\small\item\em get the next word of the packet content \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFTP_1_1Packet_a845b2286ebe97771dfb21b69ee0f2f21}{}std\+::ostream \& \hyperlink{classFTP_1_1Packet_a845b2286ebe97771dfb21b69ee0f2f21}{operator$<$$<$} (std\+::ostream \&stream, const \hyperlink{classFTP_1_1Packet}{Packet} \&packet)\label{classFTP_1_1Packet_a845b2286ebe97771dfb21b69ee0f2f21}
+
+\begin{DoxyCompactList}\small\item\em display the content of the packet on the stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class which contains data. \hyperlink{classFTP_1_1Packet}{Packet} are used to send and receive message from sockets. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/network/Packet.\+h\end{DoxyCompactItemize}

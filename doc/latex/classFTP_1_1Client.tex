@@ -1,0 +1,137 @@
+\hypertarget{classFTP_1_1Client}{}\section{F\+T\+P\+:\+:Client Class Reference}
+\label{classFTP_1_1Client}\index{F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}}
+
+
+\hyperlink{structFTP_1_1User}{User} connection to the Server.  
+
+
+
+
+{\ttfamily \#include $<$Client.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFTP_1_1Client_ab611529ac304de5e847df898306b7408}{Client} (\hyperlink{classFTP_1_1FTPServer}{F\+T\+P\+Server} $\ast$server, \hyperlink{classFTP_1_1TCP_1_1Socket}{T\+C\+P\+::\+Socket} \&socket)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFTP_1_1Client}{Client} constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classFTP_1_1Client_a260407a0f8d8fe5c7c26b68b5ac2443b}{run} ()
+\begin{DoxyCompactList}\small\item\em Runs the connection between \hyperlink{classFTP_1_1Client}{Client} and Server. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a5423cfaf6fc6242ad010c8605df143df}{}bool \hyperlink{classFTP_1_1Client_a5423cfaf6fc6242ad010c8605df143df}{set\+Username} (const std\+::string \&username)\label{classFTP_1_1Client_a5423cfaf6fc6242ad010c8605df143df}
+
+\begin{DoxyCompactList}\small\item\em set username of the client. \end{DoxyCompactList}\item 
+bool \hyperlink{classFTP_1_1Client_abfdc9020e33df97a728211b81097113f}{login} (const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em try to loggin with the previous username. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a9d09db3246bb37ee6cd1cb48ae48ec67}{}void \hyperlink{classFTP_1_1Client_a9d09db3246bb37ee6cd1cb48ae48ec67}{reset\+Login} ()\label{classFTP_1_1Client_a9d09db3246bb37ee6cd1cb48ae48ec67}
+
+\begin{DoxyCompactList}\small\item\em Reset login informations. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a027ed05405359ceb55ed5c6a7205ac41}{}void \hyperlink{classFTP_1_1Client_a027ed05405359ceb55ed5c6a7205ac41}{open\+Data\+Connection} ()\label{classFTP_1_1Client_a027ed05405359ceb55ed5c6a7205ac41}
+
+\begin{DoxyCompactList}\small\item\em open new data connection with client \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_af278600020f84005d320054c55f2d260}{}void \hyperlink{classFTP_1_1Client_af278600020f84005d320054c55f2d260}{send\+To\+Data\+Connection} (const \hyperlink{classFTP_1_1Packet}{Packet} \&packet)\label{classFTP_1_1Client_af278600020f84005d320054c55f2d260}
+
+\begin{DoxyCompactList}\small\item\em send packet on data connection \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a8fccfc0518176fb246308f2fb6bc3d62}{}void \hyperlink{classFTP_1_1Client_a8fccfc0518176fb246308f2fb6bc3d62}{receive\+From\+Data\+Connection} (\hyperlink{classFTP_1_1Packet}{Packet} \&packet)\label{classFTP_1_1Client_a8fccfc0518176fb246308f2fb6bc3d62}
+
+\begin{DoxyCompactList}\small\item\em receive packet on data connection \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_ad8c92ae82b9371bc6da087c77ef0d9d9}{}void \hyperlink{classFTP_1_1Client_ad8c92ae82b9371bc6da087c77ef0d9d9}{close\+Data\+Connection} ()\label{classFTP_1_1Client_ad8c92ae82b9371bc6da087c77ef0d9d9}
+
+\begin{DoxyCompactList}\small\item\em Close the current data connection with the client. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a140d72957c3ee4ed2ecc91bd21ce0c66}{}void \hyperlink{classFTP_1_1Client_a140d72957c3ee4ed2ecc91bd21ce0c66}{set\+Next\+Active\+Connection} (const \hyperlink{classFTP_1_1IP_1_1Address}{I\+P\+::\+Address} \&address, unsigned int port)\label{classFTP_1_1Client_a140d72957c3ee4ed2ecc91bd21ce0c66}
+
+\begin{DoxyCompactList}\small\item\em Set next port and address for active connection. \end{DoxyCompactList}\item 
+void \hyperlink{classFTP_1_1Client_a545b1a0a22f36391a6ee8f8563012fa6}{set\+Current\+Directory} (const std\+::string \&pathname)
+\begin{DoxyCompactList}\small\item\em Set client current directory from its root directory. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a57cd373e14fbd270455df91ddf0ac0e7}{}void \hyperlink{classFTP_1_1Client_a57cd373e14fbd270455df91ddf0ac0e7}{switch\+Passive\+Mode} ()\label{classFTP_1_1Client_a57cd373e14fbd270455df91ddf0ac0e7}
+
+\begin{DoxyCompactList}\small\item\em Entering in passive mode. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_a78f23a9b26bbf98f9fb9b266552d94bb}{}void \hyperlink{classFTP_1_1Client_a78f23a9b26bbf98f9fb9b266552d94bb}{close} ()\label{classFTP_1_1Client_a78f23a9b26bbf98f9fb9b266552d94bb}
+
+\begin{DoxyCompactList}\small\item\em close the client connection and terminate client \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1Client_abf9b8beac9e9769c78244de4406451d6}{}const \hyperlink{structFTP_1_1User}{User} \& {\bfseries get\+User} () const \label{classFTP_1_1Client_abf9b8beac9e9769c78244de4406451d6}
+
+\item 
+\hypertarget{classFTP_1_1Client_ab5f9b53875bb0847045e056a8f9f8073}{}const std\+::string \& {\bfseries get\+Current\+Directory} () const \label{classFTP_1_1Client_ab5f9b53875bb0847045e056a8f9f8073}
+
+\item 
+\hypertarget{classFTP_1_1Client_a285e48c50c37c7dd7832a3731182b362}{}\hyperlink{classFTP_1_1TCP_1_1Socket}{T\+C\+P\+::\+Socket} \& {\bfseries get\+Socket} ()\label{classFTP_1_1Client_a285e48c50c37c7dd7832a3731182b362}
+
+\item 
+\hypertarget{classFTP_1_1Client_add44878cec59e5f08b68504e0756a87e}{}\hyperlink{classFTP_1_1TCP_1_1Listener}{T\+C\+P\+::\+Listener} \& {\bfseries get\+Passive\+Data\+Listener} ()\label{classFTP_1_1Client_add44878cec59e5f08b68504e0756a87e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structFTP_1_1User}{User} connection to the Server. 
+
+Represents the connection between the user and the server. It\textquotesingle{}s used to receive and send the different packet between the both entities. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFTP_1_1Client_ab611529ac304de5e847df898306b7408}{}\index{F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}!Client@{Client}}
+\index{Client@{Client}!F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}}
+\subsubsection[{Client}]{\setlength{\rightskip}{0pt plus 5cm}F\+T\+P\+::\+Client\+::\+Client (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+T\+P\+Server} $\ast$}]{server, }
+\item[{{\bf T\+C\+P\+::\+Socket} \&}]{socket}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Client_ab611529ac304de5e847df898306b7408}
+
+
+\hyperlink{classFTP_1_1Client}{Client} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em server} & Server which the user is connecting. \\
+\hline
+{\em socket} & \hyperlink{structFTP_1_1User}{User}\textquotesingle{}s socket. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1Client_abfdc9020e33df97a728211b81097113f}{}\index{F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}!login@{login}}
+\index{login@{login}!F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}bool F\+T\+P\+::\+Client\+::login (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{password}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Client_abfdc9020e33df97a728211b81097113f}
+
+
+try to loggin with the previous username. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em password} & Password send by the user. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the client is logged in, false otherwise.
+\end{DoxyReturn}
+Try to login the client, if an username had been setted. If the password is corresponding with the username, the user is logged in and the method return true. If not, the method return false. \hypertarget{classFTP_1_1Client_a260407a0f8d8fe5c7c26b68b5ac2443b}{}\index{F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}!run@{run}}
+\index{run@{run}!F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void F\+T\+P\+::\+Client\+::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Client_a260407a0f8d8fe5c7c26b68b5ac2443b}
+
+
+Runs the connection between \hyperlink{classFTP_1_1Client}{Client} and Server. 
+
+Runs the connection between \hyperlink{classFTP_1_1Client}{Client} and Server while the socket is open. Receives each packet from the user and interprets them. If the received packet is a known request, it calls the \hyperlink{classFTP_1_1RequestHandler}{Request\+Handler}, else it sends an unimplemented command packet. \hypertarget{classFTP_1_1Client_a545b1a0a22f36391a6ee8f8563012fa6}{}\index{F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}!set\+Current\+Directory@{set\+Current\+Directory}}
+\index{set\+Current\+Directory@{set\+Current\+Directory}!F\+T\+P\+::\+Client@{F\+T\+P\+::\+Client}}
+\subsubsection[{set\+Current\+Directory}]{\setlength{\rightskip}{0pt plus 5cm}void F\+T\+P\+::\+Client\+::set\+Current\+Directory (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{pathname}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1Client_a545b1a0a22f36391a6ee8f8563012fa6}
+
+
+Set client current directory from its root directory. 
+
+This pathname need to be absolute considering client root directory as root 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/core/Client.\+h\end{DoxyCompactItemize}

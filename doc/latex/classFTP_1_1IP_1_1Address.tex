@@ -1,0 +1,66 @@
+\hypertarget{classFTP_1_1IP_1_1Address}{}\section{F\+T\+P\+:\+:I\+P\+:\+:Address Class Reference}
+\label{classFTP_1_1IP_1_1Address}\index{F\+T\+P\+::\+I\+P\+::\+Address@{F\+T\+P\+::\+I\+P\+::\+Address}}
+
+
+Represents an I\+P address.  
+
+
+
+
+{\ttfamily \#include $<$Address.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFTP_1_1IP_1_1Address_a43b4fdcaeea7feec12c8c39018a2c426}{}\hyperlink{classFTP_1_1IP_1_1Address_a43b4fdcaeea7feec12c8c39018a2c426}{Address} ()\label{classFTP_1_1IP_1_1Address_a43b4fdcaeea7feec12c8c39018a2c426}
+
+\begin{DoxyCompactList}\small\item\em Constructor create an empty address. \end{DoxyCompactList}\item 
+\hyperlink{classFTP_1_1IP_1_1Address_a6d18d47e09493c961921214e24bf5a16}{Address} (const std\+::string \&hostname)
+\begin{DoxyCompactList}\small\item\em create the address with the \textquotesingle{}hostname\textquotesingle{} parameter \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1IP_1_1Address_ac22351617c160051333e8d3dbb29ca18}{}\hyperlink{classFTP_1_1IP_1_1Address_ac22351617c160051333e8d3dbb29ca18}{Address} (const \hyperlink{classFTP_1_1IP_1_1Address}{Address} \&model)\label{classFTP_1_1IP_1_1Address_ac22351617c160051333e8d3dbb29ca18}
+
+\begin{DoxyCompactList}\small\item\em copy the address from \textquotesingle{}model\textquotesingle{} \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1IP_1_1Address_a0523601625aea2ae8b5c63d367abf1fd}{}\hyperlink{classFTP_1_1IP_1_1Address}{Address} \& \hyperlink{classFTP_1_1IP_1_1Address_a0523601625aea2ae8b5c63d367abf1fd}{operator=} (const \hyperlink{classFTP_1_1IP_1_1Address}{Address} \&model)\label{classFTP_1_1IP_1_1Address_a0523601625aea2ae8b5c63d367abf1fd}
+
+\begin{DoxyCompactList}\small\item\em assign an address from \textquotesingle{}model\textquotesingle{} \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1IP_1_1Address_ab3fc1258d32aad9f62e05cc8addc7e4a}{}const char $\ast$ {\bfseries get\+Raw\+Address} () const \label{classFTP_1_1IP_1_1Address_ab3fc1258d32aad9f62e05cc8addc7e4a}
+
+\item 
+\hypertarget{classFTP_1_1IP_1_1Address_a698468c4084d89b0e3517763b5c9e76f}{}int {\bfseries get\+Address\+Type} () const \label{classFTP_1_1IP_1_1Address_a698468c4084d89b0e3517763b5c9e76f}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFTP_1_1IP_1_1Address_a36fedfa6e623cc0068e4b839b9cca38a}{}std\+::ostream \& \hyperlink{classFTP_1_1IP_1_1Address_a36fedfa6e623cc0068e4b839b9cca38a}{operator$<$$<$} (std\+::ostream \&stream, const \hyperlink{classFTP_1_1IP_1_1Address}{Address} \&address)\label{classFTP_1_1IP_1_1Address_a36fedfa6e623cc0068e4b839b9cca38a}
+
+\begin{DoxyCompactList}\small\item\em display the address on the stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an I\+P address. 
+
+Represents an I\+P address by encapuling the Unix representation 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFTP_1_1IP_1_1Address_a6d18d47e09493c961921214e24bf5a16}{}\index{F\+T\+P\+::\+I\+P\+::\+Address@{F\+T\+P\+::\+I\+P\+::\+Address}!Address@{Address}}
+\index{Address@{Address}!F\+T\+P\+::\+I\+P\+::\+Address@{F\+T\+P\+::\+I\+P\+::\+Address}}
+\subsubsection[{Address}]{\setlength{\rightskip}{0pt plus 5cm}F\+T\+P\+::\+I\+P\+::\+Address\+::\+Address (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{hostname}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1IP_1_1Address_a6d18d47e09493c961921214e24bf5a16}
+
+
+create the address with the \textquotesingle{}hostname\textquotesingle{} parameter 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classFTP_1_1AddressNotFoundException}{Address\+Not\+Found\+Exception}} & if the address is invalide or can not be found \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/network/ip/Address.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,67 @@
+\hypertarget{classFTP_1_1FTPServer}{}\section{F\+T\+P\+:\+:F\+T\+P\+Server Class Reference}
+\label{classFTP_1_1FTPServer}\index{F\+T\+P\+::\+F\+T\+P\+Server@{F\+T\+P\+::\+F\+T\+P\+Server}}
+
+
+Represents the F\+T\+P Server.  
+
+
+
+
+{\ttfamily \#include $<$F\+T\+P\+Server.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFTP_1_1FTPServer_a8ea3b0bab4f4991de8060c7741ef84b2}{F\+T\+P\+Server} (const \hyperlink{classFTP_1_1ServerConfiguration}{Server\+Configuration} \&configuration)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFTP_1_1FTPServer}{F\+T\+P\+Server} constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classFTP_1_1FTPServer_ac484c041ac5c602c6a0e5eb77b4c2828}{run} ()
+\begin{DoxyCompactList}\small\item\em run the server while the application is launched \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1FTPServer_a3606447f498e487d2ab498dfddb62422}{}void \hyperlink{classFTP_1_1FTPServer_a3606447f498e487d2ab498dfddb62422}{close} ()\label{classFTP_1_1FTPServer_a3606447f498e487d2ab498dfddb62422}
+
+\begin{DoxyCompactList}\small\item\em Close the server and every connection. \end{DoxyCompactList}\item 
+\hypertarget{classFTP_1_1FTPServer_a505cd213609eccfa11d806562010d13f}{}const \hyperlink{classFTP_1_1ServerConfiguration}{Server\+Configuration} \& {\bfseries get\+Configuration} () const \label{classFTP_1_1FTPServer_a505cd213609eccfa11d806562010d13f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the F\+T\+P Server. 
+
+Represents the F\+T\+P Server. It receives user connections then create a \hyperlink{classFTP_1_1Client}{Client} instance for each of them. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFTP_1_1FTPServer_a8ea3b0bab4f4991de8060c7741ef84b2}{}\index{F\+T\+P\+::\+F\+T\+P\+Server@{F\+T\+P\+::\+F\+T\+P\+Server}!F\+T\+P\+Server@{F\+T\+P\+Server}}
+\index{F\+T\+P\+Server@{F\+T\+P\+Server}!F\+T\+P\+::\+F\+T\+P\+Server@{F\+T\+P\+::\+F\+T\+P\+Server}}
+\subsubsection[{F\+T\+P\+Server}]{\setlength{\rightskip}{0pt plus 5cm}F\+T\+P\+::\+F\+T\+P\+Server\+::\+F\+T\+P\+Server (
+\begin{DoxyParamCaption}
+\item[{const {\bf Server\+Configuration} \&}]{configuration}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1FTPServer_a8ea3b0bab4f4991de8060c7741ef84b2}
+
+
+\hyperlink{classFTP_1_1FTPServer}{F\+T\+P\+Server} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em configuration} & Configuration of the server. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFTP_1_1FTPServer_ac484c041ac5c602c6a0e5eb77b4c2828}{}\index{F\+T\+P\+::\+F\+T\+P\+Server@{F\+T\+P\+::\+F\+T\+P\+Server}!run@{run}}
+\index{run@{run}!F\+T\+P\+::\+F\+T\+P\+Server@{F\+T\+P\+::\+F\+T\+P\+Server}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void F\+T\+P\+::\+F\+T\+P\+Server\+::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFTP_1_1FTPServer_ac484c041ac5c602c6a0e5eb77b4c2828}
+
+
+run the server while the application is launched 
+
+Creates a \hyperlink{classFTP_1_1Client}{Client} instance each time the server receives a user connection and create a new thread. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Nicolas Cachera/\+Documents/\+Programmation/\+C\+A\+R\+\_\+\+Furet\+T\+P/include/core/F\+T\+P\+Server.\+h\end{DoxyCompactItemize}
