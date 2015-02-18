@@ -8,7 +8,6 @@ var searchData=
   ['closedataconnection',['closeDataConnection',['../classFTP_1_1Client.html#ad8c92ae82b9371bc6da087c77ef0d9d9',1,'FTP::Client']]],
   ['connect',['connect',['../classFTP_1_1TCP_1_1Socket.html#a220e0105754cdf9378411b24809a4f04',1,'FTP::TCP::Socket']]],
   ['core_20package',['Core Package',['../group__core.html',1,'']]],
-  ['cwdprequest',['CWDPRequest',['../classCWDPRequest.html',1,'']]],
-  ['cwdrequest',['CWDRequest',['../classFTP_1_1CWDRequest.html#a091feea182bab2dd9a7b4fd5d4d3decc',1,'FTP::CWDRequest']]],
-  ['cwdrequest',['CWDRequest',['../classFTP_1_1CWDRequest.html',1,'FTP']]]
+  ['cwdrequest',['CWDRequest',['../classFTP_1_1CWDRequest.html',1,'FTP']]],
+  ['cwdrequest',['CWDRequest',['../classFTP_1_1CWDRequest.html#a091feea182bab2dd9a7b4fd5d4d3decc',1,'FTP::CWDRequest']]]
 ];

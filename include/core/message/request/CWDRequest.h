@@ -6,7 +6,7 @@
 namespace FTP {
 
 ///
-/// \class CWDPRequest
+/// \class CWDRequest
 /// \ingroup request
 /// \brief CWD request.
 ///

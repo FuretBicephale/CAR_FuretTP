@@ -48,7 +48,7 @@ private:
 };
 
 ///
-/// \class ftp::UserList
+/// \class UserList
 /// \ingroup core
 /// \brief Represents a list of users.
 ///
