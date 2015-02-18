@@ -4,21 +4,21 @@
 
 #### Introduction
 
-Cette application est un serveur FTP classique permettant d'exécuter les commandes les plus classiques. Le serveur nécessite un compte afin de pouvoir s'y connecter, comptes stockés dans le fichier user.conf. Toutefois, il existe un compte anonyme ayant pour identifiant "anonymous" et pour mot de passe "_".
+Cette application est un serveur FTP classique permettant d'exécuter les commandes les plus classiques. Le serveur nécessite un compte afin de pouvoir s'y connecter, comptes stockés dans le fichier user.conf. Toutefois, il existe un compte anonyme ayant pour identifiant "anonymous" sans mot de passe n'ayant que des droits de lecture.
 
 Voici la liste des commandes disponibles sur le serveur
 * CDUP -> Equivalent à CWD ..
 * CWD directory -> Permet de changer le répertoire courant du serveur.
 * FEAT -> Permet de connaitre d'éventuelles commandes non-habituelles supportées par le serveur.
-* LIST -> Affiche la liste des fichiers présent dans le répertoire courant du serveur.
-* MKD directory -> Supprime le dossier directory dans le répertoire courant du serveur.
-* PASS password -> Permet d'entre le mot de passe utilisateur.
+* LIST -> Affiche la liste des fichiers présents dans le répertoire courant du serveur.
+* MKD directory -> Supprime le dossier directory du serveur.
+* PASS password -> Permet d'entrer le mot de passe utilisateur.
 * PASV -> Permet d'activer le mode passif.
 * PORT -> Permet d'ouvrir une nouvelle connexion.
 * PWD -> Affiche le chemin du répertoire courant du serveur.
 * QUIT -> Permet de quitter le serveur.
 * RETR filename -> Permet de récuperer un fichier sur le serveur.
-* RMD directory -> Crée le dossier directory dans le répertoire courant du serveur.
+* RMD directory -> Crée le dossier directory sur le serveur.
 * STOR filename -> Permet de déposer un fichier sur le serveur.
 * SYST -> Demande des informations sur le système du serveur.
 * TYPE -> Définis le type de fichier à transférer.
@@ -38,26 +38,28 @@ Les packages system et network sont des packages contenant toute l'encapsulation
 
 L'application fonctionne de la sorte :
 * Le serveur est lancé, il attends une connexion.
-* Lorsqu'une connexion est reçue, le serveur en crée un utilisateur et lui créer un nouveau thread pour pouvoir continuer de recevoir d'autres connexions.
+* Lorsqu'une connexion est reçue, le serveur en crée un utilisateur et lui crée un nouveau thread pour pouvoir continuer de recevoir d'autres connexions.
 * Une connexion est créée sous la forme de la classe Client, elle est utilisée pour reçevoir toutes les requêtes que l'utilisateur lui enverra.
 * Elle garde en mémoire, grâce à la classe User, le nom d'utilisateur et le dossier courant de l'utilisateur.
-* Une fois une requête reçu, la classe User la prend et l'envoie à la RequestFactory afin de récupérer la bonne classe correspondant à la requête.
+* Une fois une requête reçue, la classe Client la prend et l'envoie à la RequestFactory afin de récupérer la bonne classe correspondant à la requête.
 * La RequestFactory va en réalité prendre le premier argument de la requête et le comparer aux commandes qu'elle connait. Si elle trouve la commande, elle crée la requête avec l'aide des arguments suivants si nécessaire. Sinon, elle retourne un pointeur null.
-* Enfin, la classe User enverra cette classe au RequestHandler qui s'occupera de distribuer la classe à la bonne méthode afin qu'elle puisse l'executer et renvoyer d'elle même la réponse. Si la classe retournée est un pointeur null, le client enverra une réponse de type AnswerUnimplemented à l'utilisateur.
-* Plusieurs classe de réponse sont précréée, chacune liée à un code. Un texte peut y être ajouté en tant qu'argument pour accompagner le code qui sera affiché à l'utilisateur.
+* Enfin, la classe Client enverra cette classe au RequestHandler qui s'occupera de distribuer la classe à la bonne méthode afin qu'elle puisse l'executer et renvoyer d'elle même la réponse. Si la classe retournée est un pointeur null, le client enverra une réponse de type AnswerUnimplemented à l'utilisateur.
+* Plusieurs classe de réponse sont précréées, chacune liée à un code. Un texte peut y être ajouté en tant qu'argument pour accompagner le code qui sera affiché à l'utilisateur.
+* Le client peut se connecter de manière passive ou active au serveur.
 
 Voici les différentes erreurs pouvant être attrapées ou lancées par l'application :
-* THROW(UnrecognizedMessageException, "PORT "+raw_address, std::string(token)+" is an incorrect number") par la méthode eval de la classe RequestFactory. Lancée lorsque la commande PORT comporte des champ qui ne sont pas des nombre dans l'addresse et le port client (a1,a2,a3,a4,p1,p2)
-* THROW(UnrecognizedMessageException, "PORT "+raw_address, "too many arguments") par la méthode eval de la classe RequestFactory. Lancée lorsque il y a plus de 6 nombre separé par des virgule dans la commande PORT
-* THROW(UnrecognizedMessageException, "PORT "+raw_address, "not enough argument") par la méthode eval de la classe RequestFactory. Lancée lorsque il y a moins de 6 nombre separé par des virgule dans la commande PORT
-* THROW(UnrecognizedMessageException, "TYPE", "Unrecognized type "+type_char) par la méthode eval de la classe RequestFactory. Lancée lorsque le type de fichier à transferer demander par l'utilisateur est inconnu
+* THROW(UnrecognizedMessageException, "PORT "+raw_address, std::string(token)+" is an incorrect number") par la méthode eval de la classe RequestFactory. Lancée lorsque la commande PORT comporte des champs qui ne sont pas des nombres dans l'addresse ou le port client.
+* THROW(UnrecognizedMessageException, "PORT "+raw_address, "too many arguments") par la méthode eval de la classe RequestFactory. Lancée lorsqu'il y a plus de 6 nombres separés par des virgules dans la commande PORT.
+* THROW(UnrecognizedMessageException, "PORT "+raw_address, "not enough argument") par la méthode eval de la classe RequestFactory. Lancée lorsqu'il y a moins de 6 nombres separés par des virgules dans la commande PORT.
+* THROW(UnrecognizedMessageException, "TYPE", "Unrecognized type "+type_char) par la méthode eval de la classe RequestFactory. Lancée lorsque le type de fichier à transférer demandé par l'utilisateur est inconnu.
 * THROW(NoActiveConnectionException, "") par la méthode openDataConnection de la classe Client. Lancée lorsque le serveur tente d'ouvrir une nouvelle connexion active alors qu'aucun port n'a été spécifié.
-* try { ... } catch(SystemException& e) { ...	} par la méthode processListConnection de la classe RequestHandler. L'exception est attrapée lorsque le répertoire donné avec la requête liste n'est pas atteignable. Une réponse de type AnswerFileUnavailable sera alors envoyée à l'utilisateur
+* try { ... } catch(SystemException& e) { ...	} par la méthode processListConnection de la classe RequestHandler. L'exception est attrapée lorsque le répertoire donné avec la requête liste n'est pas atteignable. Une réponse de type AnswerFileUnavailable sera alors envoyée à l'utilisateur.
 * THROW(UserNotFoundException, username) par la méthode findUser de la classe UserList. Lancée lorsque l'utilisateur cherché n'a pas été trouvé.
 * THROW(FileNotFoundException, pathname) par la méthode process de la classe UserConfigurationReader. Lancée lorsque le fichier de configuration n'a pas été trouvé.
 * THROW(IncorrecteFileFormatException, FILE_FORMAT_LINE, line_number, pathname) par la méthode process de la classe UserConfigurationReader. Lancée lorsque la syntaxe du fichier config est incorrecte.
-* try { ... }	catch(const Exception& e) { ... } par la méthode main. Attrape l'exception lorsque le serveur à lancé une exception. La méthode envoie alors un message aux utilisateurs indiquant que le serveur a planté.
-* try { ... }	catch(const Exception& e) { ... } par chaque thread client. Attrape l'exception lorsque le client à lancé une exception. Le client en question est fermé mais les autres client et le serveur no sont pas atteind
+* try { ... }	catch(const Exception& e) { ... } par la méthode main. Attrape l'exception lorsque le serveur a lancé une exception. La méthode envoie alors un message aux utilisateurs indiquant que le serveur a planté.
+* try { ... }	catch(const Exception& e) { ... } par chaque thread client. Attrape l'exception lorsque le client a lancé une exception. Le client en question est fermé mais les autres clients et le serveur ne sont pas atteint.
+
 #### Code Samples
 
 Gestion de l'écoute de nouveau client
@@ -72,7 +74,7 @@ while(_listener.isOpen()) {
 
 ```
 
-Gestion des meesage dans chaque client
+Gestion des messages dans chaque client
 ```
 
 while(_socket.isOpen() && _isOpen) { // While the socket is open and the client is running
@@ -99,7 +101,7 @@ while(_socket.isOpen() && _isOpen) { // While the socket is open and the client 
 
 ```
 
-Gestion de connexion sur le canal de donnée pour les mode passif et actif
+Gestion de connexion sur le canal de donnée pour les modes passif et actif
 
 ```
 
@@ -117,7 +119,7 @@ else {
 }
 ```
 
-Gestion des erreur dans les thread pour éviter de stopper toute l'application quand une exception survient dans un thread client 
+Gestion des erreurs dans les thread pour éviter de stopper toute l'application quand une exception survient dans un thread client 
 ```
 try {
 	arg_cast->_class->run(); // run the main methods of thread class
@@ -131,7 +133,7 @@ catch(const Exception& e) { // if uncaught exception arise here
 }
 ```
 
-Création du server et libération des ressources, comme les socket encore connecté, lorsque le programme s'arrete de maniere attendu ou non.
+Création du server et libération des ressources, comme les sockets encore connectés, lorsque le programme s'arrête de manière attendue ou non.
 ```
 void onExit() {
     if(server_ref != nullptr) {
