@@ -24,6 +24,21 @@ Voici la liste des commandes disponibles sur le serveur
 * TYPE -> Définis le type de fichier à transférer.
 * USER username -> Permet d'entrer le login utilisateur.
 
+#### Utilisation
+
+Lancement du serveur FTP : ./bin/FTP
+Port de connexion au serveur FTP : 4223
+
+Utilisateurs disponibles :
+* Anonymous (Read-Only)
+* user password
+
+Lancement des tests :
+* ./bin/TestExceptions
+* ./bin/TestFTPCommand
+
+Documentaiton : doc/index.html
+
 #### Architecture
 
 Cette application comprends 4 packages : core, exception, system et network
