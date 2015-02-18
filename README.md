@@ -27,6 +27,7 @@ Voici la liste des commandes disponibles sur le serveur
 #### Utilisation
 
 Lancement du serveur FTP : ./bin/FTP
+
 Port de connexion au serveur FTP : 4223
 
 Utilisateurs disponibles :
@@ -134,7 +135,7 @@ else {
 }
 ```
 
-Gestion des erreurs dans les thread pour éviter de stopper toute l'application quand une exception survient dans un thread client 
+Gestion des erreurs dans les thread pour éviter de stopper toute l'application quand une exception survient dans un thread client
 ```
 try {
 	arg_cast->_class->run(); // run the main methods of thread class
