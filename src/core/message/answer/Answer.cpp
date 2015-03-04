@@ -18,7 +18,7 @@ void Answer::generatePacket(Packet& packet) {
         packet << " " << *it;
     }
 
-    packet << "\n";
+	packet << "\r\n";
 }
 
 void Answer::addArgument(const std::string& argument) {
