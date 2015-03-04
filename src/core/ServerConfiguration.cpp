@@ -8,7 +8,7 @@ ServerConfiguration::ServerConfiguration() {
 
 void ServerConfiguration::loadDefault() {
     _userConfigurationPathname = "user.conf";
-	_bindPort = 4223;
+	_bindPort = 4224;
     _motd = "Welcome on FTP Server V1.0";
 }
 

@@ -25,6 +25,7 @@
 #include "core/message/request/MkdRequest.h"
 #include "core/message/request/RmdRequest.h"
 #include "core/message/request/QuitRequest.h"
+#include "core/message/request/DeleRequest.h"
 
 #include "network/Packet.h"
 

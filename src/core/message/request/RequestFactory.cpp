@@ -143,6 +143,11 @@ Request* RequestFactory::eval(Packet& packet) {
     else if(message_command == QuitRequest::CommandName) {
         return new QuitRequest();
     }
+	else if(message_command == DeleRequest::CommandName) {
+		std::string pathname;
+		packet >> pathname;
+		return new DeleRequest(pathname);
+	}
 
     std::cerr << "Unrecognized command \"" << message_command << "\"" << std::endl;
 

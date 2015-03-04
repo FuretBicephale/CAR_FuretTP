@@ -26,6 +26,7 @@
 #include "core/message/request/MkdRequest.h"
 #include "core/message/request/RmdRequest.h"
 #include "core/message/request/QuitRequest.h"
+#include "core/message/request/DeleRequest.h"
 #include "system/Directory.h"
 
 #include "network/ip/Address.h"
@@ -77,6 +78,7 @@ private:
     static void processMkd(MkdRequest& request, Client* client);
     static void processRmd(RmdRequest& request, Client* client);
     static void processQuit(QuitRequest& request, Client* client);
+	static void processDele(DeleRequest& request, Client* client);
 };
 }
 

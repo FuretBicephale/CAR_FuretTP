@@ -39,7 +39,9 @@ void RequestHandler::process(Request& request, Client* client) {
         processRmd(static_cast<RmdRequest&>(request), client);
     } else if(name == QuitRequest::CommandName) {
         processQuit(static_cast<QuitRequest&>(request), client);
-    }
+	} else if(name == DeleRequest::CommandName) {
+		processDele(static_cast<DeleRequest&>(request), client);
+	}
 
 }
 
@@ -382,4 +384,16 @@ void RequestHandler::processQuit(QuitRequest& request, Client* client) {
     client->getSocket().send(p);
 
     client->close();
+}
+
+void RequestHandler::processDele(DeleRequest& request, Client* client) {
+	unlink((client->getUser().getHomeDir()+"/"+request.getPathname()).c_str());
+
+	std::cout << "=>" << client->getUser().getHomeDir()+request.getPathname() << std::endl;
+
+	Packet p;
+	AnswerSuccess answer;
+	answer.addArgument("Delete File \""+request.getPathname()+"\"");
+	answer.generatePacket(p);
+	client->getSocket().send(p);
 }
