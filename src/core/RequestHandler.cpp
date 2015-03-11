@@ -198,6 +198,7 @@ void RequestHandler::processStor(StorRequest& request, Client* client) {
         answer.addArgument("No write privilege");
         answer.generatePacket(p);
         client->getSocket().send(p);
+		return;
     }
 
     std::string filename = client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getFilename();
@@ -338,6 +339,7 @@ void RequestHandler::processMkd(MkdRequest& request, Client* client) {
         answer.addArgument("No write privilege");
         answer.generatePacket(p);
         client->getSocket().send(p);
+		return;
     }
 
     if(mkdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str(), S_IRWXU | S_IRWXG | S_IRWXO) == -1) {
@@ -357,10 +359,11 @@ void RequestHandler::processRmd(RmdRequest& request, Client* client) {
     Packet p;
 
     if(!(client->getUser().getMode() & User::WriteFlag)) {
-        AnswerAuthRequired answer;
+		AnswerAuthRequired answer;
         answer.addArgument("No write privilege");
         answer.generatePacket(p);
         client->getSocket().send(p);
+		return;
     }
 
     if(rmdir(std::string(client->getUser().getHomeDir()+client->getCurrentDirectory()+request.getName()).c_str()) == -1) {
@@ -387,11 +390,18 @@ void RequestHandler::processQuit(QuitRequest& request, Client* client) {
 }
 
 void RequestHandler::processDele(DeleRequest& request, Client* client) {
+	Packet p;
+	if(!(client->getUser().getMode() & User::WriteFlag)) {
+		AnswerAuthRequired answer;
+		answer.addArgument("No write privilege");
+		answer.generatePacket(p);
+		client->getSocket().send(p);
+		return;
+	}
+
 	unlink((client->getUser().getHomeDir()+"/"+request.getPathname()).c_str());
 
-	std::cout << "=>" << client->getUser().getHomeDir()+request.getPathname() << std::endl;
 
-	Packet p;
 	AnswerSuccess answer;
 	answer.addArgument("Delete File \""+request.getPathname()+"\"");
 	answer.generatePacket(p);
